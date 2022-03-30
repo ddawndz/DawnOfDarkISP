@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/master.swiftdeps"
+  },
+  "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/Background.swift": {
+    "dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/Background.d",
+    "object": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/Background.swift.o",
+    "swiftmodule": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/Background~partial.swiftmodule",
+    "swift-dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/Background.swiftdeps"
+  },
+  "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/BackgroundLayer.swift": {
+    "dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/BackgroundLayer.d",
+    "object": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/BackgroundLayer.swift.o",
+    "swiftmodule": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/BackgroundLayer~partial.swiftmodule",
+    "swift-dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/BackgroundLayer.swiftdeps"
+  },
+  "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/ForegroundLayer.swift": {
+    "dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ForegroundLayer.d",
+    "object": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ForegroundLayer.swift.o",
+    "swiftmodule": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ForegroundLayer~partial.swiftmodule",
+    "swift-dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ForegroundLayer.swiftdeps"
+  },
+  "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/InteractionLayer.swift": {
+    "dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/InteractionLayer.d",
+    "object": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/InteractionLayer.swift.o",
+    "swiftmodule": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/InteractionLayer~partial.swiftmodule",
+    "swift-dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/InteractionLayer.swiftdeps"
+  },
+  "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/MainScene.swift": {
+    "dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/MainScene.d",
+    "object": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/MainScene.swift.o",
+    "swiftmodule": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/MainScene~partial.swiftmodule",
+    "swift-dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/MainScene.swiftdeps"
+  },
+  "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/ShellDirector.swift": {
+    "dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ShellDirector.d",
+    "object": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ShellDirector.swift.o",
+    "swiftmodule": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ShellDirector~partial.swiftmodule",
+    "swift-dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ShellDirector.swiftdeps"
+  },
+  "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/main.swift": {
+    "dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/main.d",
+    "object": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/main.swift.o",
+    "swiftmodule": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/main~partial.swiftmodule",
+    "swift-dependencies": "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/main.swiftdeps"
+  }
+}

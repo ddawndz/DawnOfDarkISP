@@ -12,19 +12,11 @@
       "inputs" : [
         {
           "kind" : "file",
-          "name" : "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/Background.swift"
+          "name" : "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/Aidan.swift"
         },
         {
           "kind" : "file",
-          "name" : "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/BackgroundLayer.swift"
-        },
-        {
-          "kind" : "file",
-          "name" : "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/ForegroundLayer.swift"
-        },
-        {
-          "kind" : "file",
-          "name" : "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/InteractionLayer.swift"
+          "name" : "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/AidanBase.swift"
         },
         {
           "kind" : "file",
@@ -32,7 +24,23 @@
         },
         {
           "kind" : "file",
+          "name" : "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/Robbie.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/RobbieBase.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/ShellDirector.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/layer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/layerBase.swift"
         },
         {
           "kind" : "file",
@@ -43,12 +51,14 @@
       "moduleName" : "ScenesShell",
       "moduleOutputPath" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ScenesShell.swiftmodule",
       "objects" : [
-        "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/Background.swift.o",
-        "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/BackgroundLayer.swift.o",
-        "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ForegroundLayer.swift.o",
-        "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/InteractionLayer.swift.o",
+        "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/Aidan.swift.o",
+        "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/AidanBase.swift.o",
         "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/MainScene.swift.o",
+        "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/Robbie.swift.o",
+        "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/RobbieBase.swift.o",
         "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ShellDirector.swift.o",
+        "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/layer.swift.o",
+        "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/layerBase.swift.o",
         "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/main.swift.o"
       ],
       "otherArguments" : [
@@ -83,19 +93,11 @@
       "outputs" : [
         {
           "kind" : "file",
-          "name" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/Background.swift.o"
+          "name" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/Aidan.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/BackgroundLayer.swift.o"
-        },
-        {
-          "kind" : "file",
-          "name" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ForegroundLayer.swift.o"
-        },
-        {
-          "kind" : "file",
-          "name" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/InteractionLayer.swift.o"
+          "name" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/AidanBase.swift.o"
         },
         {
           "kind" : "file",
@@ -103,7 +105,23 @@
         },
         {
           "kind" : "file",
+          "name" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/Robbie.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/RobbieBase.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/ShellDirector.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/layer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build/layerBase.swift.o"
         },
         {
           "kind" : "file",
@@ -115,12 +133,14 @@
         }
       ],
       "sources" : [
-        "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/Background.swift",
-        "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/BackgroundLayer.swift",
-        "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/ForegroundLayer.swift",
-        "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/InteractionLayer.swift",
+        "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/Aidan.swift",
+        "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/AidanBase.swift",
         "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/MainScene.swift",
+        "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/Robbie.swift",
+        "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/RobbieBase.swift",
         "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/ShellDirector.swift",
+        "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/layer.swift",
+        "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/layerBase.swift",
         "/home/aidan-vasquez/DawnOD/Sources/ScenesShell/main.swift"
       ],
       "tempsPath" : "/home/aidan-vasquez/DawnOD/.build/x86_64-unknown-linux-gnu/debug/ScenesShell.build",

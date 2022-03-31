@@ -33,9 +33,57 @@
     },
     {
       "kind": "TypeDecl",
-      "name": "Background",
-      "printedName": "Background",
+      "name": "Aidan",
+      "printedName": "Aidan",
       "children": [
+        {
+          "kind": "Function",
+          "name": "renderColorRect",
+          "printedName": "renderColorRect(canvas:rect:R:G:B:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Canvas",
+              "printedName": "Igis.Canvas",
+              "usr": "s:4Igis6CanvasC"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Rect",
+              "printedName": "Igis.Rect",
+              "usr": "s:4Igis4RectV"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:11ScenesShell5AidanC15renderColorRect6canvas4rect1R1G1By4Igis6CanvasC_AJ0F0VS3itF",
+          "mangledName": "$s11ScenesShell5AidanC15renderColorRect6canvas4rect1R1G1By4Igis6CanvasC_AJ0F0VS3itF",
+          "moduleName": "ScenesShell",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
         {
           "kind": "Constructor",
           "name": "init",
@@ -43,16 +91,50 @@
           "children": [
             {
               "kind": "TypeNominal",
-              "name": "Background",
-              "printedName": "ScenesShell.Background",
-              "usr": "s:11ScenesShell10BackgroundC"
+              "name": "Aidan",
+              "printedName": "ScenesShell.Aidan",
+              "usr": "s:11ScenesShell5AidanC"
             }
           ],
           "declKind": "Constructor",
-          "usr": "s:11ScenesShell10BackgroundCACycfc",
-          "mangledName": "$s11ScenesShell10BackgroundCACycfc",
+          "usr": "s:11ScenesShell5AidanCACycfc",
+          "mangledName": "$s11ScenesShell5AidanCACycfc",
           "moduleName": "ScenesShell",
           "init_kind": "Designated"
+        },
+        {
+          "kind": "Function",
+          "name": "setup",
+          "printedName": "setup(canvasSize:canvas:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Size",
+              "printedName": "Igis.Size",
+              "usr": "s:4Igis4SizeV"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Canvas",
+              "printedName": "Igis.Canvas",
+              "usr": "s:4Igis6CanvasC"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:11ScenesShell5AidanC5setup10canvasSize0E0y4Igis0F0V_AG6CanvasCtF",
+          "mangledName": "$s11ScenesShell5AidanC5setup10canvasSize0E0y4Igis0F0V_AG6CanvasCtF",
+          "moduleName": "ScenesShell",
+          "overriding": true,
+          "isOpen": true,
+          "declAttributes": [
+            "Override"
+          ],
+          "funcSelfKind": "NonMutating"
         },
         {
           "kind": "Constructor",
@@ -61,9 +143,9 @@
           "children": [
             {
               "kind": "TypeNominal",
-              "name": "Background",
-              "printedName": "ScenesShell.Background",
-              "usr": "s:11ScenesShell10BackgroundC"
+              "name": "Aidan",
+              "printedName": "ScenesShell.Aidan",
+              "usr": "s:11ScenesShell5AidanC"
             },
             {
               "kind": "TypeNominal",
@@ -82,8 +164,8 @@
             }
           ],
           "declKind": "Constructor",
-          "usr": "s:11ScenesShell10BackgroundC4nameACSSSg_tcfc",
-          "mangledName": "$s11ScenesShell10BackgroundC4nameACSSSg_tcfc",
+          "usr": "s:11ScenesShell5AidanC4nameACSSSg_tcfc",
+          "mangledName": "$s11ScenesShell5AidanC4nameACSSSg_tcfc",
           "moduleName": "ScenesShell",
           "overriding": true,
           "implicit": true,
@@ -95,8 +177,8 @@
         }
       ],
       "declKind": "Class",
-      "usr": "s:11ScenesShell10BackgroundC",
-      "mangledName": "$s11ScenesShell10BackgroundC",
+      "usr": "s:11ScenesShell5AidanC",
+      "mangledName": "$s11ScenesShell5AidanC",
       "moduleName": "ScenesShell",
       "isOpen": true,
       "superclassUsr": "s:6Scenes16RenderableEntityC",
@@ -144,24 +226,24 @@
     },
     {
       "kind": "TypeDecl",
-      "name": "BackgroundLayer",
-      "printedName": "BackgroundLayer",
+      "name": "AidanBase",
+      "printedName": "AidanBase",
       "children": [
         {
           "kind": "Var",
-          "name": "background",
-          "printedName": "background",
+          "name": "aidan",
+          "printedName": "aidan",
           "children": [
             {
               "kind": "TypeNominal",
-              "name": "Background",
-              "printedName": "ScenesShell.Background",
-              "usr": "s:11ScenesShell10BackgroundC"
+              "name": "Aidan",
+              "printedName": "ScenesShell.Aidan",
+              "usr": "s:11ScenesShell5AidanC"
             }
           ],
           "declKind": "Var",
-          "usr": "s:11ScenesShell15BackgroundLayerC10backgroundAA0C0Cvp",
-          "mangledName": "$s11ScenesShell15BackgroundLayerC10backgroundAA0C0Cvp",
+          "usr": "s:11ScenesShell9AidanBaseC5aidanAA0C0Cvp",
+          "mangledName": "$s11ScenesShell9AidanBaseC5aidanAA0C0Cvp",
           "moduleName": "ScenesShell",
           "declAttributes": [
             "HasInitialValue",
@@ -179,14 +261,14 @@
               "children": [
                 {
                   "kind": "TypeNominal",
-                  "name": "Background",
-                  "printedName": "ScenesShell.Background",
-                  "usr": "s:11ScenesShell10BackgroundC"
+                  "name": "Aidan",
+                  "printedName": "ScenesShell.Aidan",
+                  "usr": "s:11ScenesShell5AidanC"
                 }
               ],
               "declKind": "Accessor",
-              "usr": "s:11ScenesShell15BackgroundLayerC10backgroundAA0C0Cvg",
-              "mangledName": "$s11ScenesShell15BackgroundLayerC10backgroundAA0C0Cvg",
+              "usr": "s:11ScenesShell9AidanBaseC5aidanAA0C0Cvg",
+              "mangledName": "$s11ScenesShell9AidanBaseC5aidanAA0C0Cvg",
               "moduleName": "ScenesShell",
               "implicit": true,
               "declAttributes": [
@@ -204,14 +286,14 @@
           "children": [
             {
               "kind": "TypeNominal",
-              "name": "BackgroundLayer",
-              "printedName": "ScenesShell.BackgroundLayer",
-              "usr": "s:11ScenesShell15BackgroundLayerC"
+              "name": "AidanBase",
+              "printedName": "ScenesShell.AidanBase",
+              "usr": "s:11ScenesShell9AidanBaseC"
             }
           ],
           "declKind": "Constructor",
-          "usr": "s:11ScenesShell15BackgroundLayerCACycfc",
-          "mangledName": "$s11ScenesShell15BackgroundLayerCACycfc",
+          "usr": "s:11ScenesShell9AidanBaseCACycfc",
+          "mangledName": "$s11ScenesShell9AidanBaseCACycfc",
           "moduleName": "ScenesShell",
           "init_kind": "Designated"
         },
@@ -222,9 +304,9 @@
           "children": [
             {
               "kind": "TypeNominal",
-              "name": "BackgroundLayer",
-              "printedName": "ScenesShell.BackgroundLayer",
-              "usr": "s:11ScenesShell15BackgroundLayerC"
+              "name": "AidanBase",
+              "printedName": "ScenesShell.AidanBase",
+              "usr": "s:11ScenesShell9AidanBaseC"
             },
             {
               "kind": "TypeNominal",
@@ -243,8 +325,8 @@
             }
           ],
           "declKind": "Constructor",
-          "usr": "s:11ScenesShell15BackgroundLayerC4nameACSSSg_tcfc",
-          "mangledName": "$s11ScenesShell15BackgroundLayerC4nameACSSSg_tcfc",
+          "usr": "s:11ScenesShell9AidanBaseC4nameACSSSg_tcfc",
+          "mangledName": "$s11ScenesShell9AidanBaseC4nameACSSSg_tcfc",
           "moduleName": "ScenesShell",
           "overriding": true,
           "implicit": true,
@@ -256,230 +338,8 @@
         }
       ],
       "declKind": "Class",
-      "usr": "s:11ScenesShell15BackgroundLayerC",
-      "mangledName": "$s11ScenesShell15BackgroundLayerC",
-      "moduleName": "ScenesShell",
-      "isOpen": true,
-      "superclassUsr": "s:6Scenes5LayerC",
-      "superclassNames": [
-        "Scenes.Layer",
-        "Scenes.IdentifiableObject"
-      ],
-      "conformances": [
-        {
-          "kind": "Conformance",
-          "name": "Equatable",
-          "printedName": "Equatable",
-          "usr": "s:SQ",
-          "mangledName": "$sSQ"
-        }
-      ]
-    },
-    {
-      "kind": "Import",
-      "name": "Igis",
-      "printedName": "Igis",
-      "declKind": "Import",
-      "moduleName": "ScenesShell"
-    },
-    {
-      "kind": "Import",
-      "name": "Scenes",
-      "printedName": "Scenes",
-      "declKind": "Import",
-      "moduleName": "ScenesShell"
-    },
-    {
-      "kind": "Import",
-      "name": "SwiftOnoneSupport",
-      "printedName": "SwiftOnoneSupport",
-      "declKind": "Import",
-      "moduleName": "ScenesShell"
-    },
-    {
-      "kind": "Import",
-      "name": "_Concurrency",
-      "printedName": "_Concurrency",
-      "declKind": "Import",
-      "moduleName": "ScenesShell"
-    },
-    {
-      "kind": "TypeDecl",
-      "name": "ForegroundLayer",
-      "printedName": "ForegroundLayer",
-      "children": [
-        {
-          "kind": "Constructor",
-          "name": "init",
-          "printedName": "init()",
-          "children": [
-            {
-              "kind": "TypeNominal",
-              "name": "ForegroundLayer",
-              "printedName": "ScenesShell.ForegroundLayer",
-              "usr": "s:11ScenesShell15ForegroundLayerC"
-            }
-          ],
-          "declKind": "Constructor",
-          "usr": "s:11ScenesShell15ForegroundLayerCACycfc",
-          "mangledName": "$s11ScenesShell15ForegroundLayerCACycfc",
-          "moduleName": "ScenesShell",
-          "init_kind": "Designated"
-        },
-        {
-          "kind": "Constructor",
-          "name": "init",
-          "printedName": "init(name:)",
-          "children": [
-            {
-              "kind": "TypeNominal",
-              "name": "ForegroundLayer",
-              "printedName": "ScenesShell.ForegroundLayer",
-              "usr": "s:11ScenesShell15ForegroundLayerC"
-            },
-            {
-              "kind": "TypeNominal",
-              "name": "Optional",
-              "printedName": "Swift.String?",
-              "children": [
-                {
-                  "kind": "TypeNominal",
-                  "name": "String",
-                  "printedName": "Swift.String",
-                  "usr": "s:SS"
-                }
-              ],
-              "hasDefaultArg": true,
-              "usr": "s:Sq"
-            }
-          ],
-          "declKind": "Constructor",
-          "usr": "s:11ScenesShell15ForegroundLayerC4nameACSSSg_tcfc",
-          "mangledName": "$s11ScenesShell15ForegroundLayerC4nameACSSSg_tcfc",
-          "moduleName": "ScenesShell",
-          "overriding": true,
-          "implicit": true,
-          "declAttributes": [
-            "UsableFromInline",
-            "Override"
-          ],
-          "init_kind": "Designated"
-        }
-      ],
-      "declKind": "Class",
-      "usr": "s:11ScenesShell15ForegroundLayerC",
-      "mangledName": "$s11ScenesShell15ForegroundLayerC",
-      "moduleName": "ScenesShell",
-      "isOpen": true,
-      "superclassUsr": "s:6Scenes5LayerC",
-      "superclassNames": [
-        "Scenes.Layer",
-        "Scenes.IdentifiableObject"
-      ],
-      "conformances": [
-        {
-          "kind": "Conformance",
-          "name": "Equatable",
-          "printedName": "Equatable",
-          "usr": "s:SQ",
-          "mangledName": "$sSQ"
-        }
-      ]
-    },
-    {
-      "kind": "Import",
-      "name": "Igis",
-      "printedName": "Igis",
-      "declKind": "Import",
-      "moduleName": "ScenesShell"
-    },
-    {
-      "kind": "Import",
-      "name": "Scenes",
-      "printedName": "Scenes",
-      "declKind": "Import",
-      "moduleName": "ScenesShell"
-    },
-    {
-      "kind": "Import",
-      "name": "SwiftOnoneSupport",
-      "printedName": "SwiftOnoneSupport",
-      "declKind": "Import",
-      "moduleName": "ScenesShell"
-    },
-    {
-      "kind": "Import",
-      "name": "_Concurrency",
-      "printedName": "_Concurrency",
-      "declKind": "Import",
-      "moduleName": "ScenesShell"
-    },
-    {
-      "kind": "TypeDecl",
-      "name": "InteractionLayer",
-      "printedName": "InteractionLayer",
-      "children": [
-        {
-          "kind": "Constructor",
-          "name": "init",
-          "printedName": "init()",
-          "children": [
-            {
-              "kind": "TypeNominal",
-              "name": "InteractionLayer",
-              "printedName": "ScenesShell.InteractionLayer",
-              "usr": "s:11ScenesShell16InteractionLayerC"
-            }
-          ],
-          "declKind": "Constructor",
-          "usr": "s:11ScenesShell16InteractionLayerCACycfc",
-          "mangledName": "$s11ScenesShell16InteractionLayerCACycfc",
-          "moduleName": "ScenesShell",
-          "init_kind": "Designated"
-        },
-        {
-          "kind": "Constructor",
-          "name": "init",
-          "printedName": "init(name:)",
-          "children": [
-            {
-              "kind": "TypeNominal",
-              "name": "InteractionLayer",
-              "printedName": "ScenesShell.InteractionLayer",
-              "usr": "s:11ScenesShell16InteractionLayerC"
-            },
-            {
-              "kind": "TypeNominal",
-              "name": "Optional",
-              "printedName": "Swift.String?",
-              "children": [
-                {
-                  "kind": "TypeNominal",
-                  "name": "String",
-                  "printedName": "Swift.String",
-                  "usr": "s:SS"
-                }
-              ],
-              "hasDefaultArg": true,
-              "usr": "s:Sq"
-            }
-          ],
-          "declKind": "Constructor",
-          "usr": "s:11ScenesShell16InteractionLayerC4nameACSSSg_tcfc",
-          "mangledName": "$s11ScenesShell16InteractionLayerC4nameACSSSg_tcfc",
-          "moduleName": "ScenesShell",
-          "overriding": true,
-          "implicit": true,
-          "declAttributes": [
-            "UsableFromInline",
-            "Override"
-          ],
-          "init_kind": "Designated"
-        }
-      ],
-      "declKind": "Class",
-      "usr": "s:11ScenesShell16InteractionLayerC",
-      "mangledName": "$s11ScenesShell16InteractionLayerC",
+      "usr": "s:11ScenesShell9AidanBaseC",
+      "mangledName": "$s11ScenesShell9AidanBaseC",
       "moduleName": "ScenesShell",
       "isOpen": true,
       "superclassUsr": "s:6Scenes5LayerC",
@@ -532,19 +392,19 @@
       "children": [
         {
           "kind": "Var",
-          "name": "backgroundLayer",
-          "printedName": "backgroundLayer",
+          "name": "bgLayer",
+          "printedName": "bgLayer",
           "children": [
             {
               "kind": "TypeNominal",
-              "name": "BackgroundLayer",
-              "printedName": "ScenesShell.BackgroundLayer",
-              "usr": "s:11ScenesShell15BackgroundLayerC"
+              "name": "LayerBase",
+              "printedName": "ScenesShell.LayerBase",
+              "usr": "s:11ScenesShell9LayerBaseC"
             }
           ],
           "declKind": "Var",
-          "usr": "s:11ScenesShell9MainSceneC15backgroundLayerAA010BackgroundF0Cvp",
-          "mangledName": "$s11ScenesShell9MainSceneC15backgroundLayerAA010BackgroundF0Cvp",
+          "usr": "s:11ScenesShell9MainSceneC7bgLayerAA0F4BaseCvp",
+          "mangledName": "$s11ScenesShell9MainSceneC7bgLayerAA0F4BaseCvp",
           "moduleName": "ScenesShell",
           "declAttributes": [
             "HasInitialValue",
@@ -562,14 +422,14 @@
               "children": [
                 {
                   "kind": "TypeNominal",
-                  "name": "BackgroundLayer",
-                  "printedName": "ScenesShell.BackgroundLayer",
-                  "usr": "s:11ScenesShell15BackgroundLayerC"
+                  "name": "LayerBase",
+                  "printedName": "ScenesShell.LayerBase",
+                  "usr": "s:11ScenesShell9LayerBaseC"
                 }
               ],
               "declKind": "Accessor",
-              "usr": "s:11ScenesShell9MainSceneC15backgroundLayerAA010BackgroundF0Cvg",
-              "mangledName": "$s11ScenesShell9MainSceneC15backgroundLayerAA010BackgroundF0Cvg",
+              "usr": "s:11ScenesShell9MainSceneC7bgLayerAA0F4BaseCvg",
+              "mangledName": "$s11ScenesShell9MainSceneC7bgLayerAA0F4BaseCvg",
               "moduleName": "ScenesShell",
               "implicit": true,
               "declAttributes": [
@@ -582,19 +442,19 @@
         },
         {
           "kind": "Var",
-          "name": "interactionLayer",
-          "printedName": "interactionLayer",
+          "name": "aLayer",
+          "printedName": "aLayer",
           "children": [
             {
               "kind": "TypeNominal",
-              "name": "InteractionLayer",
-              "printedName": "ScenesShell.InteractionLayer",
-              "usr": "s:11ScenesShell16InteractionLayerC"
+              "name": "AidanBase",
+              "printedName": "ScenesShell.AidanBase",
+              "usr": "s:11ScenesShell9AidanBaseC"
             }
           ],
           "declKind": "Var",
-          "usr": "s:11ScenesShell9MainSceneC16interactionLayerAA011InteractionF0Cvp",
-          "mangledName": "$s11ScenesShell9MainSceneC16interactionLayerAA011InteractionF0Cvp",
+          "usr": "s:11ScenesShell9MainSceneC6aLayerAA9AidanBaseCvp",
+          "mangledName": "$s11ScenesShell9MainSceneC6aLayerAA9AidanBaseCvp",
           "moduleName": "ScenesShell",
           "declAttributes": [
             "HasInitialValue",
@@ -612,14 +472,14 @@
               "children": [
                 {
                   "kind": "TypeNominal",
-                  "name": "InteractionLayer",
-                  "printedName": "ScenesShell.InteractionLayer",
-                  "usr": "s:11ScenesShell16InteractionLayerC"
+                  "name": "AidanBase",
+                  "printedName": "ScenesShell.AidanBase",
+                  "usr": "s:11ScenesShell9AidanBaseC"
                 }
               ],
               "declKind": "Accessor",
-              "usr": "s:11ScenesShell9MainSceneC16interactionLayerAA011InteractionF0Cvg",
-              "mangledName": "$s11ScenesShell9MainSceneC16interactionLayerAA011InteractionF0Cvg",
+              "usr": "s:11ScenesShell9MainSceneC6aLayerAA9AidanBaseCvg",
+              "mangledName": "$s11ScenesShell9MainSceneC6aLayerAA9AidanBaseCvg",
               "moduleName": "ScenesShell",
               "implicit": true,
               "declAttributes": [
@@ -632,19 +492,19 @@
         },
         {
           "kind": "Var",
-          "name": "foregroundLayer",
-          "printedName": "foregroundLayer",
+          "name": "rLayer",
+          "printedName": "rLayer",
           "children": [
             {
               "kind": "TypeNominal",
-              "name": "ForegroundLayer",
-              "printedName": "ScenesShell.ForegroundLayer",
-              "usr": "s:11ScenesShell15ForegroundLayerC"
+              "name": "RobbieBase",
+              "printedName": "ScenesShell.RobbieBase",
+              "usr": "s:11ScenesShell10RobbieBaseC"
             }
           ],
           "declKind": "Var",
-          "usr": "s:11ScenesShell9MainSceneC15foregroundLayerAA010ForegroundF0Cvp",
-          "mangledName": "$s11ScenesShell9MainSceneC15foregroundLayerAA010ForegroundF0Cvp",
+          "usr": "s:11ScenesShell9MainSceneC6rLayerAA10RobbieBaseCvp",
+          "mangledName": "$s11ScenesShell9MainSceneC6rLayerAA10RobbieBaseCvp",
           "moduleName": "ScenesShell",
           "declAttributes": [
             "HasInitialValue",
@@ -662,14 +522,14 @@
               "children": [
                 {
                   "kind": "TypeNominal",
-                  "name": "ForegroundLayer",
-                  "printedName": "ScenesShell.ForegroundLayer",
-                  "usr": "s:11ScenesShell15ForegroundLayerC"
+                  "name": "RobbieBase",
+                  "printedName": "ScenesShell.RobbieBase",
+                  "usr": "s:11ScenesShell10RobbieBaseC"
                 }
               ],
               "declKind": "Accessor",
-              "usr": "s:11ScenesShell9MainSceneC15foregroundLayerAA010ForegroundF0Cvg",
-              "mangledName": "$s11ScenesShell9MainSceneC15foregroundLayerAA010ForegroundF0Cvg",
+              "usr": "s:11ScenesShell9MainSceneC6rLayerAA10RobbieBaseCvg",
+              "mangledName": "$s11ScenesShell9MainSceneC6rLayerAA10RobbieBaseCvg",
               "moduleName": "ScenesShell",
               "implicit": true,
               "declAttributes": [
@@ -746,6 +606,278 @@
       "superclassUsr": "s:6Scenes5SceneC",
       "superclassNames": [
         "Scenes.Scene",
+        "Scenes.IdentifiableObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        }
+      ]
+    },
+    {
+      "kind": "Import",
+      "name": "Igis",
+      "printedName": "Igis",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "Import",
+      "name": "Scenes",
+      "printedName": "Scenes",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "Import",
+      "name": "SwiftOnoneSupport",
+      "printedName": "SwiftOnoneSupport",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "Import",
+      "name": "_Concurrency",
+      "printedName": "_Concurrency",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "Robbie",
+      "printedName": "Robbie",
+      "children": [
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Robbie",
+              "printedName": "ScenesShell.Robbie",
+              "usr": "s:11ScenesShell6RobbieC"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:11ScenesShell6RobbieCACycfc",
+          "mangledName": "$s11ScenesShell6RobbieCACycfc",
+          "moduleName": "ScenesShell",
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(name:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Robbie",
+              "printedName": "ScenesShell.Robbie",
+              "usr": "s:11ScenesShell6RobbieC"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "hasDefaultArg": true,
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:11ScenesShell6RobbieC4nameACSSSg_tcfc",
+          "mangledName": "$s11ScenesShell6RobbieC4nameACSSSg_tcfc",
+          "moduleName": "ScenesShell",
+          "overriding": true,
+          "implicit": true,
+          "declAttributes": [
+            "UsableFromInline",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "s:11ScenesShell6RobbieC",
+      "mangledName": "$s11ScenesShell6RobbieC",
+      "moduleName": "ScenesShell",
+      "isOpen": true,
+      "superclassUsr": "s:6Scenes16RenderableEntityC",
+      "superclassNames": [
+        "Scenes.RenderableEntity",
+        "Scenes.IdentifiableObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        }
+      ]
+    },
+    {
+      "kind": "Import",
+      "name": "Igis",
+      "printedName": "Igis",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "Import",
+      "name": "Scenes",
+      "printedName": "Scenes",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "Import",
+      "name": "SwiftOnoneSupport",
+      "printedName": "SwiftOnoneSupport",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "Import",
+      "name": "_Concurrency",
+      "printedName": "_Concurrency",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "RobbieBase",
+      "printedName": "RobbieBase",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "robbie",
+          "printedName": "robbie",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Robbie",
+              "printedName": "ScenesShell.Robbie",
+              "usr": "s:11ScenesShell6RobbieC"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:11ScenesShell10RobbieBaseC6robbieAA0C0Cvp",
+          "mangledName": "$s11ScenesShell10RobbieBaseC6robbieAA0C0Cvp",
+          "moduleName": "ScenesShell",
+          "declAttributes": [
+            "HasInitialValue",
+            "Final",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 0,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Robbie",
+                  "printedName": "ScenesShell.Robbie",
+                  "usr": "s:11ScenesShell6RobbieC"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell10RobbieBaseC6robbieAA0C0Cvg",
+              "mangledName": "$s11ScenesShell10RobbieBaseC6robbieAA0C0Cvg",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent",
+                "Final"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "RobbieBase",
+              "printedName": "ScenesShell.RobbieBase",
+              "usr": "s:11ScenesShell10RobbieBaseC"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:11ScenesShell10RobbieBaseCACycfc",
+          "mangledName": "$s11ScenesShell10RobbieBaseCACycfc",
+          "moduleName": "ScenesShell",
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(name:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "RobbieBase",
+              "printedName": "ScenesShell.RobbieBase",
+              "usr": "s:11ScenesShell10RobbieBaseC"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "hasDefaultArg": true,
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:11ScenesShell10RobbieBaseC4nameACSSSg_tcfc",
+          "mangledName": "$s11ScenesShell10RobbieBaseC4nameACSSSg_tcfc",
+          "moduleName": "ScenesShell",
+          "overriding": true,
+          "implicit": true,
+          "declAttributes": [
+            "UsableFromInline",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "s:11ScenesShell10RobbieBaseC",
+      "mangledName": "$s11ScenesShell10RobbieBaseC",
+      "moduleName": "ScenesShell",
+      "isOpen": true,
+      "superclassUsr": "s:6Scenes5LayerC",
+      "superclassNames": [
+        "Scenes.Layer",
         "Scenes.IdentifiableObject"
       ],
       "conformances": [
@@ -899,6 +1031,926 @@
       "printedName": "_Concurrency",
       "declKind": "Import",
       "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "bgLayer",
+      "printedName": "bgLayer",
+      "children": [
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "bgLayer",
+              "printedName": "ScenesShell.bgLayer",
+              "usr": "s:11ScenesShell7bgLayerC"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:11ScenesShell7bgLayerCACycfc",
+          "mangledName": "$s11ScenesShell7bgLayerCACycfc",
+          "moduleName": "ScenesShell",
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(name:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "bgLayer",
+              "printedName": "ScenesShell.bgLayer",
+              "usr": "s:11ScenesShell7bgLayerC"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "hasDefaultArg": true,
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:11ScenesShell7bgLayerC4nameACSSSg_tcfc",
+          "mangledName": "$s11ScenesShell7bgLayerC4nameACSSSg_tcfc",
+          "moduleName": "ScenesShell",
+          "overriding": true,
+          "implicit": true,
+          "declAttributes": [
+            "UsableFromInline",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "s:11ScenesShell7bgLayerC",
+      "mangledName": "$s11ScenesShell7bgLayerC",
+      "moduleName": "ScenesShell",
+      "isOpen": true,
+      "superclassUsr": "s:6Scenes16RenderableEntityC",
+      "superclassNames": [
+        "Scenes.RenderableEntity",
+        "Scenes.IdentifiableObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        }
+      ]
+    },
+    {
+      "kind": "Import",
+      "name": "Igis",
+      "printedName": "Igis",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "Import",
+      "name": "Scenes",
+      "printedName": "Scenes",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "Import",
+      "name": "SwiftOnoneSupport",
+      "printedName": "SwiftOnoneSupport",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "Import",
+      "name": "_Concurrency",
+      "printedName": "_Concurrency",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "LayerBase",
+      "printedName": "LayerBase",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "bglayer",
+          "printedName": "bglayer",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "bgLayer",
+              "printedName": "ScenesShell.bgLayer",
+              "usr": "s:11ScenesShell7bgLayerC"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:11ScenesShell9LayerBaseC7bglayerAA02bgC0Cvp",
+          "mangledName": "$s11ScenesShell9LayerBaseC7bglayerAA02bgC0Cvp",
+          "moduleName": "ScenesShell",
+          "declAttributes": [
+            "HasInitialValue",
+            "Final",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 0,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "bgLayer",
+                  "printedName": "ScenesShell.bgLayer",
+                  "usr": "s:11ScenesShell7bgLayerC"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell9LayerBaseC7bglayerAA02bgC0Cvg",
+              "mangledName": "$s11ScenesShell9LayerBaseC7bglayerAA02bgC0Cvg",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent",
+                "Final"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "LayerBase",
+              "printedName": "ScenesShell.LayerBase",
+              "usr": "s:11ScenesShell9LayerBaseC"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:11ScenesShell9LayerBaseCACycfc",
+          "mangledName": "$s11ScenesShell9LayerBaseCACycfc",
+          "moduleName": "ScenesShell",
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(name:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "LayerBase",
+              "printedName": "ScenesShell.LayerBase",
+              "usr": "s:11ScenesShell9LayerBaseC"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "hasDefaultArg": true,
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:11ScenesShell9LayerBaseC4nameACSSSg_tcfc",
+          "mangledName": "$s11ScenesShell9LayerBaseC4nameACSSSg_tcfc",
+          "moduleName": "ScenesShell",
+          "overriding": true,
+          "implicit": true,
+          "declAttributes": [
+            "UsableFromInline",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "s:11ScenesShell9LayerBaseC",
+      "mangledName": "$s11ScenesShell9LayerBaseC",
+      "moduleName": "ScenesShell",
+      "isOpen": true,
+      "superclassUsr": "s:6Scenes5LayerC",
+      "superclassNames": [
+        "Scenes.Layer",
+        "Scenes.IdentifiableObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        }
+      ]
+    },
+    {
+      "kind": "Import",
+      "name": "Igis",
+      "printedName": "Igis",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "Import",
+      "name": "Scenes",
+      "printedName": "Scenes",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "Import",
+      "name": "SwiftOnoneSupport",
+      "printedName": "SwiftOnoneSupport",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "Import",
+      "name": "_Concurrency",
+      "printedName": "_Concurrency",
+      "declKind": "Import",
+      "moduleName": "ScenesShell"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "Painter",
+      "printedName": "Painter",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "frame",
+          "printedName": "frame",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Path",
+              "printedName": "Igis.Path",
+              "usr": "s:4Igis4PathC"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:11ScenesShell7PainterC5frame4Igis4PathCvp",
+          "mangledName": "$s11ScenesShell7PainterC5frame4Igis4PathCvp",
+          "moduleName": "ScenesShell",
+          "declAttributes": [
+            "Final",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 0,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Path",
+                  "printedName": "Igis.Path",
+                  "usr": "s:4Igis4PathC"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC5frame4Igis4PathCvg",
+              "mangledName": "$s11ScenesShell7PainterC5frame4Igis4PathCvg",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent",
+                "Final"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "frameWidth",
+          "printedName": "frameWidth",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Double",
+              "printedName": "Swift.Double",
+              "usr": "s:Sd"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:11ScenesShell7PainterC10frameWidthSdvp",
+          "mangledName": "$s11ScenesShell7PainterC10frameWidthSdvp",
+          "moduleName": "ScenesShell",
+          "declAttributes": [
+            "HasInitialValue",
+            "Final",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 1,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Double",
+                  "printedName": "Swift.Double",
+                  "usr": "s:Sd"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC10frameWidthSdvg",
+              "mangledName": "$s11ScenesShell7PainterC10frameWidthSdvg",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent",
+                "Final"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "frameHeight",
+          "printedName": "frameHeight",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Double",
+              "printedName": "Swift.Double",
+              "usr": "s:Sd"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:11ScenesShell7PainterC11frameHeightSdvp",
+          "mangledName": "$s11ScenesShell7PainterC11frameHeightSdvp",
+          "moduleName": "ScenesShell",
+          "declAttributes": [
+            "HasInitialValue",
+            "Final",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 2,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Double",
+                  "printedName": "Swift.Double",
+                  "usr": "s:Sd"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC11frameHeightSdvg",
+              "mangledName": "$s11ScenesShell7PainterC11frameHeightSdvg",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent",
+                "Final"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "backgroundFillStyle",
+          "printedName": "backgroundFillStyle",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "FillStyle",
+              "printedName": "Igis.FillStyle",
+              "usr": "s:4Igis9FillStyleC"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:11ScenesShell7PainterC19backgroundFillStyle4Igis0eF0Cvp",
+          "mangledName": "$s11ScenesShell7PainterC19backgroundFillStyle4Igis0eF0Cvp",
+          "moduleName": "ScenesShell",
+          "declAttributes": [
+            "HasInitialValue",
+            "Final",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 3,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "FillStyle",
+                  "printedName": "Igis.FillStyle",
+                  "usr": "s:4Igis9FillStyleC"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC19backgroundFillStyle4Igis0eF0Cvg",
+              "mangledName": "$s11ScenesShell7PainterC19backgroundFillStyle4Igis0eF0Cvg",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent",
+                "Final"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "scaleTransform",
+          "printedName": "scaleTransform",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Transform",
+              "printedName": "Igis.Transform",
+              "usr": "s:4Igis9TransformC"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:11ScenesShell7PainterC14scaleTransform4Igis0E0Cvp",
+          "mangledName": "$s11ScenesShell7PainterC14scaleTransform4Igis0E0Cvp",
+          "moduleName": "ScenesShell",
+          "isOpen": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 4,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Transform",
+                  "printedName": "Igis.Transform",
+                  "usr": "s:4Igis9TransformC"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC14scaleTransform4Igis0E0Cvg",
+              "mangledName": "$s11ScenesShell7PainterC14scaleTransform4Igis0E0Cvg",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "isOpen": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Transform",
+                  "printedName": "Igis.Transform",
+                  "usr": "s:4Igis9TransformC"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC14scaleTransform4Igis0E0Cvs",
+              "mangledName": "$s11ScenesShell7PainterC14scaleTransform4Igis0E0Cvs",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "isOpen": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC14scaleTransform4Igis0E0CvM",
+              "mangledName": "$s11ScenesShell7PainterC14scaleTransform4Igis0E0CvM",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "isOpen": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "offsetTransform",
+          "printedName": "offsetTransform",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Transform",
+              "printedName": "Igis.Transform",
+              "usr": "s:4Igis9TransformC"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:11ScenesShell7PainterC15offsetTransform4Igis0E0Cvp",
+          "mangledName": "$s11ScenesShell7PainterC15offsetTransform4Igis0E0Cvp",
+          "moduleName": "ScenesShell",
+          "isOpen": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 5,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Transform",
+                  "printedName": "Igis.Transform",
+                  "usr": "s:4Igis9TransformC"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC15offsetTransform4Igis0E0Cvg",
+              "mangledName": "$s11ScenesShell7PainterC15offsetTransform4Igis0E0Cvg",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "isOpen": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Transform",
+                  "printedName": "Igis.Transform",
+                  "usr": "s:4Igis9TransformC"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC15offsetTransform4Igis0E0Cvs",
+              "mangledName": "$s11ScenesShell7PainterC15offsetTransform4Igis0E0Cvs",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "isOpen": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC15offsetTransform4Igis0E0CvM",
+              "mangledName": "$s11ScenesShell7PainterC15offsetTransform4Igis0E0CvM",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "isOpen": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "windowSize",
+          "printedName": "windowSize",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Igis.Size?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Size",
+                  "printedName": "Igis.Size",
+                  "usr": "s:4Igis4SizeV"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:11ScenesShell7PainterC10windowSize4Igis0E0VSgvp",
+          "mangledName": "$s11ScenesShell7PainterC10windowSize4Igis0E0VSgvp",
+          "moduleName": "ScenesShell",
+          "isOpen": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 6,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Optional",
+                  "printedName": "Igis.Size?",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Size",
+                      "printedName": "Igis.Size",
+                      "usr": "s:4Igis4SizeV"
+                    }
+                  ],
+                  "usr": "s:Sq"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC10windowSize4Igis0E0VSgvg",
+              "mangledName": "$s11ScenesShell7PainterC10windowSize4Igis0E0VSgvg",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "isOpen": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Optional",
+                  "printedName": "Igis.Size?",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Size",
+                      "printedName": "Igis.Size",
+                      "usr": "s:4Igis4SizeV"
+                    }
+                  ],
+                  "usr": "s:Sq"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC10windowSize4Igis0E0VSgvs",
+              "mangledName": "$s11ScenesShell7PainterC10windowSize4Igis0E0VSgvs",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "isOpen": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:11ScenesShell7PainterC10windowSize4Igis0E0VSgvM",
+              "mangledName": "$s11ScenesShell7PainterC10windowSize4Igis0E0VSgvM",
+              "moduleName": "ScenesShell",
+              "implicit": true,
+              "isOpen": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Painter",
+              "printedName": "ScenesShell.Painter",
+              "usr": "s:11ScenesShell7PainterC"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:11ScenesShell7PainterCACycfc",
+          "mangledName": "$s11ScenesShell7PainterCACycfc",
+          "moduleName": "ScenesShell",
+          "overriding": true,
+          "declAttributes": [
+            "Required"
+          ],
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Function",
+          "name": "onWindowResize",
+          "printedName": "onWindowResize(size:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Size",
+              "printedName": "Igis.Size",
+              "usr": "s:4Igis4SizeV"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:11ScenesShell7PainterC14onWindowResize4sizey4Igis4SizeV_tF",
+          "mangledName": "$s11ScenesShell7PainterC14onWindowResize4sizey4Igis4SizeV_tF",
+          "moduleName": "ScenesShell",
+          "overriding": true,
+          "isOpen": true,
+          "declAttributes": [
+            "Override"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "calculateTransforms",
+          "printedName": "calculateTransforms(canvas:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Canvas",
+              "printedName": "Igis.Canvas",
+              "usr": "s:4Igis6CanvasC"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:11ScenesShell7PainterC19calculateTransforms6canvasy4Igis6CanvasC_tF",
+          "mangledName": "$s11ScenesShell7PainterC19calculateTransforms6canvasy4Igis6CanvasC_tF",
+          "moduleName": "ScenesShell",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "render",
+          "printedName": "render(canvas:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Canvas",
+              "printedName": "Igis.Canvas",
+              "usr": "s:4Igis6CanvasC"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:11ScenesShell7PainterC6render6canvasy4Igis6CanvasC_tF",
+          "mangledName": "$s11ScenesShell7PainterC6render6canvasy4Igis6CanvasC_tF",
+          "moduleName": "ScenesShell",
+          "overriding": true,
+          "isOpen": true,
+          "declAttributes": [
+            "Override"
+          ],
+          "funcSelfKind": "NonMutating"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "s:11ScenesShell7PainterC",
+      "mangledName": "$s11ScenesShell7PainterC",
+      "moduleName": "ScenesShell",
+      "isOpen": true,
+      "superclassUsr": "s:4Igis11PainterBaseC",
+      "inheritsConvenienceInitializers": true,
+      "superclassNames": [
+        "Igis.PainterBase"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "PainterProtocol",
+          "printedName": "PainterProtocol",
+          "usr": "s:4Igis15PainterProtocolP",
+          "mangledName": "$s4Igis15PainterProtocolP"
+        }
+      ]
     }
   ],
   "json_format_version": 6

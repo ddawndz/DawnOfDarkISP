@@ -1,0 +1,10 @@
+import Scenes
+
+class LayerBase : Layer {
+    let bglayer = bglayer()
+
+    init() {
+        super.init(name:"bglayer")
+        insert(entity:bglayer, at:.back)
+    }
+}

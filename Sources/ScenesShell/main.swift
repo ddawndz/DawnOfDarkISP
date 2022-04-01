@@ -1,3 +1,4 @@
+import Foundation
 import Igis
 
 /*
@@ -9,8 +10,8 @@ import Igis
 class Painter : PainterBase {
 
     let frame : Path
-    let frameWidth : Double = 1200
-    let frameHeight : Double = 700
+    let frameWidth : Double = 1366
+    let frameHeight : Double = 768
     let backgroundFillStyle = FillStyle(color:Color(.black))
 
     var scaleTransform = Transform()
@@ -39,13 +40,20 @@ class Painter : PainterBase {
                 let offset = (newCanvasWidth - frameWidth * scale) * 0.5
                 offsetTransform = Transform(translate:DoublePoint(x:offset, y:0), mode:.fromIdentity)
                 scaleTransform = Transform(scale:DoublePoint(x:scale, y:scale), mode:.fromCurrent)
-            } /*else {
+            } else {
                 let scale = newCanvasWidth / frameWidth
                 let offset = (newCanvasHeight - frameHeight * scale) * 0.5
                 offsetTransform = Transform(translate:DoublePoint(x:0, y:offset), mode:.fromIdentity)
                 scaleTransform = Transform(scale:DoublePoint(x:scale, y:scale), mode:.fromCurrent)
-            } */
+            }
             windowSize = nil
+        }
+    }
+    func clearCanvas(canvas:Canvas) {
+        if let canvasSize = canvas.canvasSize {
+            let canvasRect = Rect(topLeft:Point(), size:canvasSize)
+            let canvasClearRectangle = Rectangle(rect:canvasRect, fillMode:.clear)
+            canvas.render(canvasClearRectangle)
         }
     }
     override func render(canvas:Canvas) {
@@ -57,8 +65,11 @@ class Painter : PainterBase {
             canvas.render(backgroundFillStyle, canvasRectangle, offsetTransform, scaleTransform, frame)
             // Render everything else
         }
+        clearCanvas(canvas:canvas)
     }
 }
+
+
 
 print("Starting...")
 do {
@@ -67,4 +78,3 @@ do {
 } catch (let error) {
     print("Error: \(error)")
 }
-

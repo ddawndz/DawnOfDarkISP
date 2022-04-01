@@ -1,9 +1,9 @@
 import Scenes
 
 class LayerBase : Layer {
-    let bglayer = bgLayer()
+    let bglayer = bgLayer(backgroundSpeed: 3)
 
-    init() {
+    init(backgroundSpeed: Int) {
         super.init(name:"bgLayer")
         insert(entity:bglayer, at:.back)
     }

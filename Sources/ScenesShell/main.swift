@@ -65,7 +65,6 @@ class Painter : PainterBase {
             canvas.render(backgroundFillStyle, canvasRectangle, offsetTransform, scaleTransform, frame)
             // Render everything else
         }
-        clearCanvas(canvas:canvas)
     }
 }
 

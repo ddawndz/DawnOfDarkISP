@@ -8,6 +8,6 @@ class RobbieBase : Layer {
         super.init(name:"Robbie")
 
         // We insert our RenderableEntities in the constructor
-        insert(entity:robbie, at:.inFrontOf(object:bgLayer))
+        insert(entity:robbie, at:.front)
     }
 }

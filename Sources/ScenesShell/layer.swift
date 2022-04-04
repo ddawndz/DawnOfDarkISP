@@ -19,6 +19,7 @@ class bgLayer : RenderableEntity {
     }
     override func render(canvas: Canvas) {
         if dark.isReady {
+            dark.renderMode = .destinationRect(Rect(topLeft:Point(x:-1, y:-1), size:Size(width:2000, height:1000)))
             canvas.render(dark)
         }
     }

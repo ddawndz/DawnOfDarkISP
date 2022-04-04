@@ -4,8 +4,6 @@ import Igis
 
 class Robbie : RenderableEntity {
     
-    let dark : Image
-    
     func renderRectangle(canvas: Canvas, rect: Rect, color: FillStyle, border: StrokeStyle) {
         let rectangle = Rectangle(rect: rect, fillMode:.fillAndStroke)
         let linewidth = LineWidth(width:1)
@@ -91,24 +89,12 @@ class Robbie : RenderableEntity {
     let g = StrokeStyle(color:Color(.gray))
     
     init() {
-        guard let darkURL = URL(string:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/US-WhiteHouse-Logo.svg/2000px-US-WhiteHouse-Logo.svg.png") else {
-            fatalError("failed to create URL for dark")
-        }
-        dark = Image(sourceURL:darkURL)
-        
         super.init(name:"Robbie")
     }
         
     override func setup(canvasSize:Size, canvas:Canvas) {
-        canvas.setup(dark)
         let rain = Rect(topLeft: Point(x:550, y:300), size:Size(width: 2, height: 2))
         renderPrismaticGrid(canvas:canvas, rect: rain, columns: 100, rows: 100)
     }
 
-    override func render(canvas: Canvas) {
-        if dark.isReady {
-            dark.renderMode = .destinationPoint(Point(x:100, y:200))
-            canvas.render(dark)
-        }
-    }
 }

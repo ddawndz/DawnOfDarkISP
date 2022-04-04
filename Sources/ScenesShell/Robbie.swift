@@ -15,9 +15,9 @@ class Robbie : RenderableEntity {
     func renderPrismaticRectangle(canvas: Canvas, rect: Rect) {
         let rectangle = Rectangle(rect: rect, fillMode:.fill)
         let linewidth = LineWidth(width:1)
-        let choice = Int.random(in: 0..<256)
-        let choice2 = Int.random(in: 0..<256)
-        let choice3 = Int.random(in: 0..<256)
+        let choice = Int.random(in: 45..<70)
+        let choice2 = Int.random(in: 45..<70)
+        let choice3 = Int.random(in: 45..<156)
         let coler = FillStyle(color:Color(red: UInt8(choice), green: UInt8(choice2), blue: UInt8(choice3)))
 
         

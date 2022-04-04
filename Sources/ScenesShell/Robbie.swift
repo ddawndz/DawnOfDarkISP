@@ -16,50 +16,11 @@ class Robbie : RenderableEntity {
     func renderPrismaticRectangle(canvas: Canvas, rect: Rect) {
         let rectangle = Rectangle(rect: rect, fillMode:.fill)
         let linewidth = LineWidth(width:1)
-        let choice = Int.random(in: 1..<15)
-        var coler = FillStyle(color:Color(.red))
-        if choice == 1 {
-            coler = FillStyle(color:Color(.red))
-        }
-        if choice == 2 {
-            coler = FillStyle(color:Color(.orange))
-        }
-        if choice == 3 {
-            coler = FillStyle(color:Color(.yellow))
-        }
-        if choice == 4 {
-            coler = FillStyle(color:Color(.green))
-        }
-        if choice == 5 {
-            coler = FillStyle(color:Color(.blue))
-        }
-        if choice == 6 {
-            coler = FillStyle(color:Color(.purple))
-        }
-        if choice == 7 {
-            coler = FillStyle(color:Color(.black))
-        }
-        if choice == 8 {
-            coler = FillStyle(color:Color(.white))
-        }
-        if choice == 9 {
-            coler = FillStyle(color:Color(.gray))
-        }
-        if choice == 10 {
-            coler = FillStyle(color:Color(.lime))
-        }
-        if choice == 11 {
-            coler = FillStyle(color:Color(.magenta))
-        }
-        if choice == 12 {
-            coler = FillStyle(color:Color(.crimson))
-        }
-        if choice == 13 {
-            coler = FillStyle(color:Color(.azure))
-        }
-        if choice == 14 {
-            coler = FillStyle(color:Color(.teal))
-        }
+        let choice = Int.random(in: 0..<256)
+        let choice2 = Int.random(in: 0..<256)
+        let choice3 = Int.random(in: 0..<256)
+        let coler = FillStyle(color:Color(red: UInt8(choice), green: UInt8(choice2), blue: UInt8(choice3)))
+
         
         canvas.render(coler, linewidth, rectangle)
         
@@ -133,7 +94,7 @@ class Robbie : RenderableEntity {
     }
     
     override func setup(canvasSize:Size, canvas:Canvas) {
-        let rain = Rect(topLeft: Point(x:100, y:100), size:Size(width: 1, height: 1))
+        let rain = Rect(topLeft: Point(x:100, y:100), size:Size(width: 5, height: 5))
         renderPrismaticGrid(canvas:canvas, rect: rain, columns: 100, rows: 100)
     }
     

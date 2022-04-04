@@ -7,7 +7,7 @@ class bgLayer : RenderableEntity {
     let dark : Image
     
     init(backgroundSpeed: Int) {
-        guard let darkURL = URL(string: " ") else {
+        guard let darkURL = URL(string: "https://www.linkpicture.com/q/output-onlinepngtools_26.png") else {
             fatalError("You failed. Now you know.")
         }
         dark = Image(sourceURL: darkURL)

@@ -11,8 +11,6 @@ class Aidan : RenderableEntity {
         canvas.render(fillStyle, rectangle)
     }
     
-    func Hitbox(canvas: Canvas, rect: Rect)
-    
     init() {
         // Using a meaningful name can be helpful for debugging
         super.init(name:"Aidan")

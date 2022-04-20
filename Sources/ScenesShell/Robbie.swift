@@ -15,9 +15,9 @@ class Robbie : RenderableEntity {
     func renderPrismaticRectangle(canvas: Canvas, rect: Rect) {
         let rectangle = Rectangle(rect: rect, fillMode:.fill)
         let linewidth = LineWidth(width:1)
-        let choice = Int.random(in: 0..<256)
-        let choice2 = Int.random(in: 0..<256)
-        let choice3 = Int.random(in: 0..<256)
+        let choice = Int.random(in: 45..<70)
+        let choice2 = Int.random(in: 45..<70)
+        let choice3 = Int.random(in: 45..<156)
         let coler = FillStyle(color:Color(red: UInt8(choice), green: UInt8(choice2), blue: UInt8(choice3)))
 
         
@@ -39,7 +39,7 @@ class Robbie : RenderableEntity {
         var currentRect = rect
 
         for _ in 0..<columns {
-            renderPrismaticRectangle(canvas: canvas, rect: currentRect)
+           renderPrismaticRectangle(canvas: canvas, rect: currentRect)
             currentRect.topLeft.x += currentRect.size.width 
         }
     }
@@ -55,7 +55,7 @@ class Robbie : RenderableEntity {
 
     func renderPrismaticGrid(canvas: Canvas, rect: Rect, columns: Int, rows: Int) {
         var currentRect = rect
-        
+
         for _ in 0..<rows {
             renderPrismaticRow(canvas: canvas, rect: currentRect, columns: columns)
             currentRect.topLeft.y += currentRect.size.height 
@@ -65,7 +65,7 @@ class Robbie : RenderableEntity {
     
     func renderRectangleWall(canvas: Canvas, rect: Rect, columns: Int, rows: Int, color: FillStyle, border: StrokeStyle) {
         var currentRect = rect
-
+        
         var swap = true
 
         for _ in 0..<rows {
@@ -96,5 +96,5 @@ class Robbie : RenderableEntity {
         let rain = Rect(topLeft: Point(x:550, y:300), size:Size(width: 2, height: 2))
         renderPrismaticGrid(canvas:canvas, rect: rain, columns: 100, rows: 100)
     }
-
+    
 }

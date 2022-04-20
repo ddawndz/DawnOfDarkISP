@@ -2,12 +2,11 @@ import Foundation
 import Scenes
 import Igis
 
-class bgLayer : RenderableEntity {
-    
-    let dark : Image
+class bgLayer : RenderableEntity {    
+/*    let dark : Image
     
     init(backgroundSpeed: Int) {
-        guard let darkURL = URL(string: "https://www.linkpicture.com/q/output-onlinepngtools-1_11.png") else {
+        guard let darkURL = URL(string: "
             fatalError("You failed. Now you know.")
         }
         dark = Image(sourceURL: darkURL)
@@ -23,5 +22,6 @@ class bgLayer : RenderableEntity {
             canvas.render(dark)
         }
     }
-    
+}
+ */
 }

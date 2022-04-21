@@ -2,26 +2,31 @@ import Foundation
 import Scenes
 import Igis
 
-class bgLayer : RenderableEntity {    
-/*    let dark : Image
+class bgLayer : RenderableEntity {
+    //VARIABLES:
+    var centerx = 0
+    var centery = 0
     
-    init(backgroundSpeed: Int) {
-        guard let darkURL = URL(string: "
-            fatalError("You failed. Now you know.")
-        }
-        dark = Image(sourceURL: darkURL)
-        
-        super.init(name:"bgLayer")
+    //FUNCTIONS:
+    
+    func renderColorRect(canvas: Canvas, rect: Rect, R: Int, G: Int, B: Int) {
+        let rectangle = Rectangle(rect:rect, fillMode:.fill)
+        let fillStyle = FillStyle(color:Color(red:UInt8(R), green:UInt8(G), blue:UInt8(B)))
+        canvas.render(fillStyle, rectangle)
     }
-    override func setup(canvasSize: Size, canvas: Canvas) {
-        canvas.setup(dark)
+    
+    init() {
+        super.init(name:"layer")
     }
-    override func render(canvas: Canvas) {
-        if dark.isReady {
-            dark.renderMode = .destinationRect(Rect(topLeft:Point(x:-1, y:-1), size:Size(width:2000, height:1000)))
-            canvas.render(dark)
-        }
+    //OVERRIDES:
+    
+    override func setup(canvasSize:Size, canvas:Canvas) {
+        //SETUP
+        centerx = canvasSize.center.x
+        centery = canvasSize.center.y
     }
-}
- */
+
+    override func render(canvas:Canvas) {
+    
+    }
 }

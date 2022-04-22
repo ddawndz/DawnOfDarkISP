@@ -7,7 +7,7 @@ import Igis
  It rarely needs to be altered.
  */
 
-class Painter : PainterBase {
+/*class Painter : PainterBase {
 
     let frame : Path
     let frameWidth : Double = 1366
@@ -68,6 +68,8 @@ class Painter : PainterBase {
     }
 }
 
+
+ */
 
 
 print("Starting...")

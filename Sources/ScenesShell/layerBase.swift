@@ -1,7 +1,7 @@
 import Scenes
 
 class LayerBase : Layer {
-    let bglayer = bgLayer(backgroundSpeed: 3)
+    let bglayer = bgLayer()
 
     init(backgroundSpeed: Int) {
         super.init(name:"bgLayer")

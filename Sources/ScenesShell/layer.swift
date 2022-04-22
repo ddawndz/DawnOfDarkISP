@@ -4,15 +4,16 @@ import Igis
 
 class bgLayer : RenderableEntity {    
 /*    let dark : Image
-    
+   */ 
     init(backgroundSpeed: Int) {
-        guard let darkURL = URL(string: "
+     /*   guard let darkURL = URL(string: "
             fatalError("You failed. Now you know.")
         }
         dark = Image(sourceURL: darkURL)
-        
+       */ 
         super.init(name:"bgLayer")
     }
+    /*
     override func setup(canvasSize: Size, canvas: Canvas) {
         canvas.setup(dark)
     }

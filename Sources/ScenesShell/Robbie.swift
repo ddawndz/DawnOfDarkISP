@@ -93,8 +93,10 @@ class Robbie : RenderableEntity {
     }
         
     override func setup(canvasSize:Size, canvas:Canvas) {
-        let rain = Rect(topLeft: Point(x:550, y:300), size:Size(width: 2, height: 2))
-        renderPrismaticGrid(canvas:canvas, rect: rain, columns: 100, rows: 100)
     }
     
+    override func render(canvas: Canvas) {
+        let rain = Rect(topLeft: Point(x:550, y:300), size:Size(width: 2, height: 2))
+        renderPrismaticGrid(canvas: canvas, rect: rain, columns: 100, rows: 100)
+    }
 }

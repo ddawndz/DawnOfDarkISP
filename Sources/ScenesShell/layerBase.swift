@@ -6,5 +6,5 @@ class LayerBase : Layer {
     init(backgroundSpeed: Int) {
         super.init(name:"bgLayer")
         insert(entity:bglayer, at:.back)
-    }
+    } 
 }

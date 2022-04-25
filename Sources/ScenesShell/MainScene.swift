@@ -16,7 +16,7 @@ class MainScene : Scene {
     let bgLayer = LayerBase(backgroundSpeed: 3)
     let aLayer = AidanBase()
     let rLayer = RobbieBase()
-    let iLayer = InteractionLayerBase()
+    let iLayer = InteractionLayer()
     let sLayer = SpritesLayer()
     
     init() {
@@ -26,9 +26,9 @@ class MainScene : Scene {
         // We insert our Layers in the constructor
         // We place each layer in front of the previous layer
         insert(layer:bgLayer, at:.back)
-        insert(layer:rLayer, at:.inFrontOf(object:bgLayer))
-        insert(layer:aLayer, at:.inFrontOf(object:bgLayer))
-        insert(layer:iLayer, at:.front)
+        insert(layer:rLayer, at:.front)
+        insert(layer:aLayer, at:.front)
         insert(layer:sLayer, at:.front)
+        insert(layer:iLayer, at:.inFrontOf(object:sLayer))
     }
 }

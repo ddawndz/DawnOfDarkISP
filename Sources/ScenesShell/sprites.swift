@@ -5,10 +5,10 @@ import Igis
 /*
  This class is responsible for rendering the background.
  */
-class Background : RenderableEntity {
+class Sprites : RenderableEntity {
 
-    let DevSprites : Image
-    let black : Image
+    let mainSprites : Image
+    //let black : Image
     var count = 0
     var maxCount = 8
     var swap = 0
@@ -23,24 +23,24 @@ class Background : RenderableEntity {
     var current = "down"
 
     init() {
-        guard let DevSpritesURL = URL(string:"https://linkpicture.com/q/RobbieDevSprites.png") else {
+        guard let mainSpritesURL = URL(string:"https://linkpicture.com/q/RobbieDevSprites.png") else {
             fatalError("Failed to create URL for whitehouse")
         }
         // https://linkpicture.com/q/Download8580.png
-        guard let blackURL = URL(string:"https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500.png") else {
-            fatalError("Failed to create URL for black")
-        }
+        //guard let blackURL = URL(string:"https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500.png") else {
+        //    fatalError("Failed to create URL for black")
+        //}
         //
 
-        DevSprites = Image(sourceURL:DevSpritesURL)
-        black = Image(sourceURL:blackURL)
+        mainSprites = Image(sourceURL:mainSpritesURL)
+        //black = Image(sourceURL:blackURL)
         // Using a meaningful name can be helpful for debugging
         super.init(name:"Background")
     }
 
     override func setup(canvasSize:Size, canvas:Canvas) {
-        canvas.setup(DevSprites)
-        canvas.setup(black)
+        canvas.setup(mainSprites)
+        //canvas.setup(black)
         xPos = canvasSize.center.x
         yPos = canvasSize.center.y
         //dispatcher.registerEntityMouseClickHandler(handler:self)
@@ -131,15 +131,17 @@ class Background : RenderableEntity {
         }
 
 
-
+        /*
         if black.isReady {
             let blackRect = Rect(topLeft:Point(x:50, y:50), size: Size(width:50, height: 50))
             let blackdestination = Rect(topLeft:Point(x:0, y:0), size:Size(width: Int.max, height: Int.max))
             black.renderMode = .sourceAndDestination(sourceRect: blackRect, destinationRect: blackdestination)
             canvas.render(black)
-        }
+            }
+            
+         */
 
-        if DevSprites.isReady {
+        if mainSprites.isReady {
             let downRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 11) + (46 * 10)), size:Size(width:56, height:56))
             let upRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 9) + (46 * 8)), size:Size(width:56, height:56))
             let leftRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 10) + (46 * 9)), size:Size(width:56, height:56))
@@ -151,21 +153,21 @@ class Background : RenderableEntity {
             let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:84, height:84))
 
             if current == "down" {
-                DevSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
+                mainSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
             }
             if current == "up" {
-                DevSprites.renderMode = .sourceAndDestination(sourceRect:upRect, destinationRect:destinationRect)
+                mainSprites.renderMode = .sourceAndDestination(sourceRect:upRect, destinationRect:destinationRect)
             }
             if current == "left" {
-                DevSprites.renderMode = .sourceAndDestination(sourceRect:leftRect, destinationRect:destinationRect)
+                mainSprites.renderMode = .sourceAndDestination(sourceRect:leftRect, destinationRect:destinationRect)
             }
             if current == "right" {
-                DevSprites.renderMode = .sourceAndDestination(sourceRect:rightRect, destinationRect:destinationRect)
+                mainSprites.renderMode = .sourceAndDestination(sourceRect:rightRect, destinationRect:destinationRect)
             }
 
 
 
-            canvas.render(DevSprites)
+            canvas.render(mainSprites)
 
         }
     }

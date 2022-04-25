@@ -3,7 +3,7 @@ import Scenes
 import Igis
 
 class Robbie : RenderableEntity {
-    
+    /*
     func renderRectangle(canvas: Canvas, rect: Rect, color: FillStyle, border: StrokeStyle) {
         let rectangle = Rectangle(rect: rect, fillMode:.fillAndStroke)
         let linewidth = LineWidth(width:1)
@@ -87,16 +87,16 @@ class Robbie : RenderableEntity {
      
     let black = FillStyle(color:Color(.black))
     let g = StrokeStyle(color:Color(.gray))
-    
+    */
     init() {
         super.init(name:"Robbie")
     }
-        
+    /*   
     override func setup(canvasSize:Size, canvas:Canvas) {
     }
     
     override func render(canvas: Canvas) {
         let rain = Rect(topLeft: Point(x:550, y:300), size:Size(width: 2, height: 2))
         renderPrismaticGrid(canvas: canvas, rect: rain, columns: 100, rows: 100)
-    }
+    } */
 }

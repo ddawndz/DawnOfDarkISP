@@ -8,6 +8,5 @@ class InteractionLayerBase : Layer {
         super.init(name:"Interaction")
 
         // We insert our RenderableEntities in the constructor
-        insert(entity:Interaction, at:.front)
     }
 }

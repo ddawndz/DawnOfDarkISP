@@ -16,7 +16,7 @@ class MainScene : Scene {
     let bgLayer = LayerBase(backgroundSpeed: 3)
     let aLayer = AidanBase()
     let rLayer = RobbieBase()
-    let iLayer = InteractionBase()
+    let iLayer = InteractionLayerBase()
     
     init() {
         // Using a meaningful name can be helpful for debugging

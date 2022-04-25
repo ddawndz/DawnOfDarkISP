@@ -31,29 +31,43 @@ class InteractionLayer : Layer, KeyDownHandler {
         if key == "ArrowDown" {
             if sprites.restrict == true {
             } else {
-                sprites.downMove = true
                 sprites.restrict = true
+                sprites.downMove = true
             }
         }
         if key == "ArrowUp" {
             if sprites.restrict == true {
             } else {
-                sprites.upMove = true
                 sprites.restrict = true
+                sprites.upMove = true
             }
         }
         if key == "ArrowLeft" {
             if sprites.restrict == true {
             } else {
-                sprites.leftMove = true
                 sprites.restrict == true
+                sprites.leftMove = true
             }
         }
         if key == "ArrowRight" {
             if sprites.restrict == true {
             } else {
-                sprites.rightMove = true
                 sprites.restrict = true
+                sprites.rightMove = true
+            }
+        }
+        if key == "z" {
+            if sprites.restrict == true {
+            } else {
+                sprites.restrict = true
+                sprites.slash = true
+            }
+        }
+        if key == "x" {
+            if sprites.restrict == true {
+            } else {
+                sprites.restrict = true
+                sprites.shield = true
             }
         }
     }

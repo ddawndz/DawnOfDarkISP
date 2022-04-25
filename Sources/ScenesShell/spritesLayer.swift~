@@ -1,0 +1,13 @@
+import Scenes
+
+class SpritesLayer : Layer {
+    let Sprites = Sprites()
+
+    init() {
+        // Using a meaningful name can be helpful for debugging
+        super.init(name:"Sprites")
+
+        // We insert our RenderableEntities in the constructor
+        insert(entity:Sprites, at:.front)
+    }
+}

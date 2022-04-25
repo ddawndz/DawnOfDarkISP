@@ -17,6 +17,7 @@ class MainScene : Scene {
     let aLayer = AidanBase()
     let rLayer = RobbieBase()
     let iLayer = InteractionLayerBase()
+    let sLayer = SpritesLayer()
     
     init() {
         // Using a meaningful name can be helpful for debugging
@@ -28,5 +29,6 @@ class MainScene : Scene {
         insert(layer:rLayer, at:.inFrontOf(object:bgLayer))
         insert(layer:aLayer, at:.inFrontOf(object:bgLayer))
         insert(layer:iLayer, at:.front)
+        insert(layer:sLayer, at:.front)
     }
 }

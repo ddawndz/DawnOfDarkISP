@@ -16,6 +16,7 @@ class MainScene : Scene {
     let bgLayer = LayerBase(backgroundSpeed: 3)
     let aLayer = AidanBase()
     let rLayer = RobbieBase()
+    let iLayer = InteractionBase()
     
     init() {
         // Using a meaningful name can be helpful for debugging
@@ -25,6 +26,7 @@ class MainScene : Scene {
         // We place each layer in front of the previous layer
         insert(layer:bgLayer, at:.back)
         insert(layer:rLayer, at:.inFrontOf(object:bgLayer))
-        insert(layer:aLayer, at:.front)
+        insert(layer:aLayer, at:.inFrontOf(object:bgLayer))
+        insert(layer:iLayer, at:.front)
     }
 }

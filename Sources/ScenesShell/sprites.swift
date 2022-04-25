@@ -43,19 +43,7 @@ class Sprites : RenderableEntity {
         canvas.setup(black)
         xPos = canvasSize.center.x
         yPos = canvasSize.center.y
-        //dispatcher.registerEntityMouseClickHandler(handler:self)
     }
-    /*
-     override func teardown() {
-     dispatcher.unregisterEntityMouseClickHandler(handler:self)
-     }
-
-     func onEntityMouseClick(globalLocation: Point) {
-     if restrict == true {
-
-     }
-
-     */
 
     override func render(canvas:Canvas) {
         if downMove == true {

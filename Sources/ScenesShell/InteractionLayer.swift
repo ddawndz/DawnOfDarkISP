@@ -28,28 +28,28 @@ class InteractionLayer : Layer, KeyDownHandler {
 
     func onKeyDown(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
         print(key)
-        if key == "s" {
+        if key == "ArrowDown" {
             if sprites.restrict == true {
             } else {
                 sprites.downMove = true
                 sprites.restrict = true
             }
         }
-        if key == "w" {
+        if key == "ArrowUp" {
             if sprites.restrict == true {
             } else {
                 sprites.upMove = true
                 sprites.restrict = true
             }
         }
-        if key == "a" {
+        if key == "ArrowLeft" {
             if sprites.restrict == true {
             } else {
                 sprites.leftMove = true
                 sprites.restrict == true
             }
         }
-        if key == "d" {
+        if key == "ArrowRight" {
             if sprites.restrict == true {
             } else {
                 sprites.rightMove = true

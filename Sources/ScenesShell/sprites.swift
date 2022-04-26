@@ -1,4 +1,4 @@
-import Foundation
+//import Foundation
 import Scenes
 import Igis
 
@@ -29,7 +29,7 @@ class Sprites : RenderableEntity {
     var rightBound = false
     
     init() {
-        guard let mainSpritesURL = URL(string:"https://linkpicture.com/q/Download35839.png") else {
+        guard let mainSpritesURL = URL(string:"https://www.linkpicture.com/q/download-1_133.png") else {
             fatalError("Failed to create URL for whitehouse")
         } 
         // https://linkpicture.com/q/Download8580.png
@@ -49,6 +49,7 @@ class Sprites : RenderableEntity {
         canvas.setup(black)
         xPos = canvasSize.center.x
         yPos = canvasSize.center.y
+        print(canvasSize)
     }
 
     override func render(canvas:Canvas) {

@@ -1,4 +1,4 @@
-//import Foundation
+import Foundation
 import Scenes
 import Igis
 
@@ -30,7 +30,7 @@ class Sprites : RenderableEntity {
     var currentSprite = "main"
     
     init() {
-        guard let mainSpritesURL = URL(string:"https://linkpicture.com/q/Download8580.png") else {
+        guard let mainSpritesURL = URL(string:"https://www.linkpicture.com/q/download_381.png") else {
             fatalError("Failed to create URL for whitehouse")
         } 
         // 

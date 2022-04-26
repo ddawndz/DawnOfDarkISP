@@ -6,8 +6,8 @@ import Igis
  This class is responsible for rendering the background.
  */
 class Sprites : RenderableEntity {
-
     let mainSprites : Image
+    let robbieSprites : Image
     let black : Image
     var count = 0
     var maxCount = 8
@@ -27,12 +27,16 @@ class Sprites : RenderableEntity {
     var downBound = false
     var leftBound = false
     var rightBound = false
+    var currentSprite = "main"
     
     init() {
-        guard let mainSpritesURL = URL(string:"https://www.linkpicture.com/q/download-1_133.png") else {
+        guard let mainSpritesURL = URL(string:"https://linkpicture.com/q/Download8580.png") else {
             fatalError("Failed to create URL for whitehouse")
         } 
-        // https://linkpicture.com/q/Download8580.png
+        // 
+        guard let robbieSpritesURL = URL(string:"https://linkpicture.com/q/Download35839.png") else {
+            fatalError("DevSprites Locked...")
+        }
         guard let blackURL = URL(string:"https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500.png") else {
             fatalError("Failed to create URL for black")
         }
@@ -40,6 +44,7 @@ class Sprites : RenderableEntity {
         // 
         mainSprites = Image(sourceURL:mainSpritesURL)
         black = Image(sourceURL:blackURL)
+        robbieSprites = Image(sourceURL:robbieSpritesURL)
         // Using a meaningful name can be helpful for debugging
         super.init(name:"Background")
     }
@@ -47,6 +52,7 @@ class Sprites : RenderableEntity {
     override func setup(canvasSize:Size, canvas:Canvas) {
         canvas.setup(mainSprites)
         canvas.setup(black)
+        canvas.setup(robbieSprites)
         xPos = canvasSize.center.x
         yPos = canvasSize.center.y
         print(canvasSize)
@@ -236,63 +242,123 @@ class Sprites : RenderableEntity {
             }
             
          
-
-        if mainSprites.isReady {
-            let downRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 11) + (46 * 10)), size:Size(width:56, height:56))
-            let upRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 9) + (46 * 8)), size:Size(width:56, height:56))
-            let leftRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 10) + (46 * 9)), size:Size(width:56, height:56))
-            let rightRect = Rect(topLeft:Point(x: (64 * count) + 8, y:(11 * 64) + 7), size:Size(width:56, height:56))
-            let upSlash = Rect(topLeft:Point(x: (64 * count * 3) + 72, y:(22 * 64) + 7), size:Size(width:129, height:56))
-            let leftSlash = Rect(topLeft:Point(x: (64 * count * 3) + 72 - 25, y:(25 * 64) + 7), size:Size(width:129, height:56))
-            let downSlash = Rect(topLeft:Point(x: (64 * count * 3) + 72, y:(28 * 64) + 7), size:Size(width:130, height:60))
-            let rightSlash = Rect(topLeft:Point(x: (64 * count * 3) + 72 - 25, y:(31 * 64) + 7), size:Size(width:130, height:56))
-            let downShield = Rect(topLeft:Point(x:(64 * count) + 8, y: (6 * 64) + 7), size:Size(width:56, height:56))
-            let upShield = Rect(topLeft:Point(x:(64 * count) + 8, y: (4 * 64) + 7), size:Size(width:56, height:56))
-            let leftShield = Rect(topLeft:Point(x:(64 * count) + 8, y:(5 * 64) + 7), size:Size(width:56, height:56))
-            let rightShield = Rect(topLeft:Point(x: (64 * count) + 8, y:(7 * 64) + 7), size:Size(width:56, height:56))
-            
-            let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:84, height:84))
-            let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:84))
-            if current == "down" {
-                mainSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
+        if currentSprite == "main" {
+            if mainSprites.isReady {
+                let downRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 11) + (46 * 10)), size:Size(width:56, height:56))
+                let upRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 9) + (46 * 8)), size:Size(width:56, height:56))
+                let leftRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 10) + (46 * 9)), size:Size(width:56, height:56))
+                let rightRect = Rect(topLeft:Point(x: (64 * count) + 8, y:(11 * 64) + 7), size:Size(width:56, height:56))
+                let upSlash = Rect(topLeft:Point(x: (64 * count * 3) + 72, y:(22 * 64) + 7), size:Size(width:129, height:56))
+                let leftSlash = Rect(topLeft:Point(x: (64 * count * 3) + 72 - 25, y:(25 * 64) + 7), size:Size(width:129, height:56))
+                let downSlash = Rect(topLeft:Point(x: (64 * count * 3) + 72, y:(28 * 64) + 7), size:Size(width:130, height:60))
+                let rightSlash = Rect(topLeft:Point(x: (64 * count * 3) + 72 - 25, y:(31 * 64) + 7), size:Size(width:130, height:56))
+                let downShield = Rect(topLeft:Point(x:(64 * count) + 8, y: (6 * 64) + 7), size:Size(width:56, height:56))
+                let upShield = Rect(topLeft:Point(x:(64 * count) + 8, y: (4 * 64) + 7), size:Size(width:56, height:56))
+                let leftShield = Rect(topLeft:Point(x:(64 * count) + 8, y:(5 * 64) + 7), size:Size(width:56, height:56))
+                let rightShield = Rect(topLeft:Point(x: (64 * count) + 8, y:(7 * 64) + 7), size:Size(width:56, height:56))
+                
+                let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:84, height:84))
+                let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:84))
+                if current == "down" {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
+                }
+                if current == "up" {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:upRect, destinationRect:destinationRect)
+                }
+                if current == "left" {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:leftRect, destinationRect:destinationRect)
+                }
+                if current == "right" {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:rightRect, destinationRect:destinationRect)
+                }
+                if current == "upSlash" {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:upSlash, destinationRect:slashRect)
+                }
+                if current == "leftSlash" {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:leftSlash, destinationRect:slashRect)
+                }
+                if current == "downSlash" {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:downSlash, destinationRect:slashRect)
+                }
+                if current == "rightSlash" {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:rightSlash, destinationRect:slashRect)
+                }
+                if current == "downShield" {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:downShield, destinationRect:destinationRect)
+                }
+                if current == "upShield" {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:upShield, destinationRect:destinationRect)
+                }
+                if current == "leftShield" {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:leftShield, destinationRect:destinationRect)
+                }
+                if current == "rightShield" {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:rightShield, destinationRect:destinationRect)
+                }
+                
+                canvas.render(mainSprites)
+                
             }
-            if current == "up" {
-                mainSprites.renderMode = .sourceAndDestination(sourceRect:upRect, destinationRect:destinationRect)
-            }
-            if current == "left" {
-                mainSprites.renderMode = .sourceAndDestination(sourceRect:leftRect, destinationRect:destinationRect)
-            }
-            if current == "right" {
-                mainSprites.renderMode = .sourceAndDestination(sourceRect:rightRect, destinationRect:destinationRect)
-            }
-            if current == "upSlash" {
-                mainSprites.renderMode = .sourceAndDestination(sourceRect:upSlash, destinationRect:slashRect)
-            }
-            if current == "leftSlash" {
-                mainSprites.renderMode = .sourceAndDestination(sourceRect:leftSlash, destinationRect:slashRect)
-            }
-            if current == "downSlash" {
-                mainSprites.renderMode = .sourceAndDestination(sourceRect:downSlash, destinationRect:slashRect)
-            }
-            if current == "rightSlash" {
-                mainSprites.renderMode = .sourceAndDestination(sourceRect:rightSlash, destinationRect:slashRect)
-            }
-            if current == "downShield" {
-                mainSprites.renderMode = .sourceAndDestination(sourceRect:downShield, destinationRect:destinationRect)
-            }
-            if current == "upShield" {
-                mainSprites.renderMode = .sourceAndDestination(sourceRect:upShield, destinationRect:destinationRect)
-            }
-            if current == "leftShield" {
-                mainSprites.renderMode = .sourceAndDestination(sourceRect:leftShield, destinationRect:destinationRect)
-            }
-            if current == "rightShield" {
-                mainSprites.renderMode = .sourceAndDestination(sourceRect:rightShield, destinationRect:destinationRect)
-            }
-            
-            canvas.render(mainSprites)
-            
         }
+        if currentSprite == "robbie" {
+            if robbieSprites.isReady {
+                let downRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 11) + (46 * 10)), size:Size(width:56, height:56))
+                let upRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 9) + (46 * 8)), size:Size(width:56, height:56))
+                let leftRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 10) + (46 * 9)), size:Size(width:56, height:56))
+                let rightRect = Rect(topLeft:Point(x: (64 * count) + 8, y:(11 * 64) + 7), size:Size(width:56, height:56))
+                let upSlash = Rect(topLeft:Point(x: (64 * count * 3) + 72, y:(22 * 64) + 7), size:Size(width:129, height:56))
+                let leftSlash = Rect(topLeft:Point(x: (64 * count * 3) + 72 - 25, y:(25 * 64) + 7), size:Size(width:129, height:56))
+                let downSlash = Rect(topLeft:Point(x: (64 * count * 3) + 72, y:(28 * 64) + 7), size:Size(width:130, height:60))
+                let rightSlash = Rect(topLeft:Point(x: (64 * count * 3) + 72 - 25, y:(31 * 64) + 7), size:Size(width:130, height:56))
+                let downShield = Rect(topLeft:Point(x:(64 * count) + 8, y: (6 * 64) + 7), size:Size(width:56, height:56))
+                let upShield = Rect(topLeft:Point(x:(64 * count) + 8, y: (4 * 64) + 7), size:Size(width:56, height:56))
+                let leftShield = Rect(topLeft:Point(x:(64 * count) + 8, y:(5 * 64) + 7), size:Size(width:56, height:56))
+                let rightShield = Rect(topLeft:Point(x: (64 * count) + 8, y:(7 * 64) + 7), size:Size(width:56, height:56))
+                
+                let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:84, height:84))
+                let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:84))
+                if current == "down" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
+                }
+                if current == "up" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:upRect, destinationRect:destinationRect)
+                }
+                if current == "left" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:leftRect, destinationRect:destinationRect)
+                }
+                if current == "right" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:rightRect, destinationRect:destinationRect)
+                }
+                if current == "upSlash" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:upSlash, destinationRect:slashRect)
+                }
+                if current == "leftSlash" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:leftSlash, destinationRect:slashRect)
+                }
+                if current == "downSlash" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:downSlash, destinationRect:slashRect)
+                }
+                if current == "rightSlash" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:rightSlash, destinationRect:slashRect)
+                }
+                if current == "downShield" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:downShield, destinationRect:destinationRect)
+                }
+                if current == "upShield" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:upShield, destinationRect:destinationRect)
+                }
+                if current == "leftShield" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:leftShield, destinationRect:destinationRect)
+                }
+                if current == "rightShield" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:rightShield, destinationRect:destinationRect)
+                }
+                
+                canvas.render(robbieSprites)
+                
+            }
+        }
+        
     }
 
     override func calculate(canvasSize: Size) {

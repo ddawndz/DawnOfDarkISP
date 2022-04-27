@@ -67,11 +67,7 @@ import Igis
         }
     }
 }
-
-
- */
-
-
+*/
 print("Starting...")
 do {
     let igis = Igis()

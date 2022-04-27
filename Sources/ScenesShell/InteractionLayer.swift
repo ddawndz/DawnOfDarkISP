@@ -71,6 +71,16 @@ class InteractionLayer : Layer, KeyDownHandler {
                 sprites.shield = true
             }
         }
+        if key == "c" {
+            if sprites.restrict == true {
+            } else if sprites.currentSprite == "robbie" {
+                sprites.restrict = true
+                sprites.cast = true
+                sprites.fireball = true
+                sprites.fxPos = sprites.xPos
+                sprites.fyPos = sprites.yPos
+            }
+        }
         if key == "p" && devCount == 0 {
             devCount += 1
         }
@@ -92,6 +102,7 @@ class InteractionLayer : Layer, KeyDownHandler {
         if key == "a" && devCount == 8 {
             sprites.currentSprite = "robbie"
         }
+        
         
             
             

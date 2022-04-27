@@ -31,35 +31,35 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
 
     func onKeyDown(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
         print(key)
-        if key == "ArrowDown" && sprites.slash == false && sprites.cast == false {
+        if key == "ArrowDown" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
                 sprites.downMove = true
             //}
         }
-        if key == "ArrowUp" && sprites.slash == false && sprites.cast == false {
+        if key == "ArrowUp" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
                 sprites.upMove = true
             //}
         }
-        if key == "ArrowLeft" && sprites.slash == false && sprites.cast == false {
+        if key == "ArrowLeft" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict == true
                 sprites.leftMove = true
             //}
         }
-        if key == "ArrowRight" && sprites.slash == false && sprites.cast == false {
+        if key == "ArrowRight" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
                 sprites.rightMove = true
             //}
         }
-        if key == "z" && sprites.cast == false{
+        if key == "z" && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
@@ -73,7 +73,7 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
                 sprites.shield = true
             //}
         }
-        if key == "c" && sprites.slash == false {
+        if key == "c" && sprites.slash == false && sprites.shield == false {
             //if sprites.restrict == true {
             if sprites.currentSprite == "robbie" {
                 //sprites.restrict = true

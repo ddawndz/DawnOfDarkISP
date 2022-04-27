@@ -2,7 +2,7 @@ import Foundation
 import Scenes
 import Igis
 
-class Robbie : RenderableEntity {
+class Robbie : RenderableEntity  {
     /*
     func renderRectangle(canvas: Canvas, rect: Rect, color: FillStyle, border: StrokeStyle) {
         let rectangle = Rectangle(rect: rect, fillMode:.fillAndStroke)
@@ -91,7 +91,7 @@ class Robbie : RenderableEntity {
     init() {
         super.init(name:"Robbie")
     }
-    /*   
+      /* 
     override func setup(canvasSize:Size, canvas:Canvas) {
     }
     

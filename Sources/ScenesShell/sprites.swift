@@ -9,6 +9,11 @@ class Sprites : RenderableEntity {
     let mainSprites : Image
     let robbieSprites : Image
     let fireSprites: Image
+    let skelSprites: Image
+
+
+
+
     var count = 0
     var count2 = 0
     var maxCount = 8
@@ -21,7 +26,6 @@ class Sprites : RenderableEntity {
     var upMove = false
     var leftMove = false
     var rightMove = false
-//    var restrict = false
     var swap2 = 0
     var swap3 = 0
     var count3 = 0
@@ -44,11 +48,15 @@ class Sprites : RenderableEntity {
             fatalError("Failed to create URL for whitehouse")
         } 
         // 
+        
         guard let robbieSpritesURL = URL(string:"https://linkpicture.com/q/Download35839.png") else {
             fatalError("DevSprites Locked...")
         }
         guard let fireSpritesURL = URL(string:"https://linkpicture.com/q/images-removebg-preview_13.png") else {
             fatalError("Fireball exploded...")
+        }
+        guard let skelSpritesURL = URL(string:"https://linkpicture.com/q/Download75802.png") else {
+            fatalError("Skeleton collapsed...")
         }
         
         //https://linkpicture.com/q/RobbieDevSprites.png
@@ -56,6 +64,7 @@ class Sprites : RenderableEntity {
         mainSprites = Image(sourceURL:mainSpritesURL)
         robbieSprites = Image(sourceURL:robbieSpritesURL)
         fireSprites = Image(sourceURL:fireSpritesURL)
+        skelSprites = Image(sourceURL:skelSpritesURL)
         // Using a meaningful name can be helpful for debugging
         super.init(name:"Background")
     }
@@ -64,6 +73,7 @@ class Sprites : RenderableEntity {
         canvas.setup(mainSprites)
         canvas.setup(robbieSprites)
         canvas.setup(fireSprites)
+        canvas.setup(skelSprites)
         xPos = canvasSize.center.x
         yPos = canvasSize.center.y
         fxPos = xPos
@@ -74,7 +84,6 @@ class Sprites : RenderableEntity {
         if downMove == true {
             current = "down"
             swap += 1
-            //swap2 += 1
             if swap > 1 {
                 swap = 0
                 count += 1
@@ -83,12 +92,6 @@ class Sprites : RenderableEntity {
                     yPos += 15
                 }
             }
-            //if swap2 > 11 {
-            //    downMove = false
-            //    restrict = false
-            //    swap2 = 0
-            //    count = 0
-            //}
             if count > 8 {
                 count = 0
             }

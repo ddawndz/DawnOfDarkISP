@@ -354,19 +354,16 @@ class Sprites : RenderableEntity {
         }
 
         
-<<<<<<< HEAD
-        /*if black.isReady {
+        if black.isReady {
             let blackRect = Rect(topLeft:Point(x:50, y:50), size: Size(width:50, height: 50))
             let blackdestination = Rect(topLeft:Point(x:0, y:0), size:Size(width: Int.max, height: Int.max))
             black.renderMode = .sourceAndDestination(sourceRect: blackRect, destinationRect: blackdestination)
-=======
         if black.isReady {
-            //let blackRect = Rect(topLeft:Point(x:50, y:50), size: Size(width:50, height: 50))
-            //let blackdestination = Rect(topLeft:Point(x:0, y:0), size:Size(width: Int.max, height: Int.max))
-            //black.renderMode = .sourceAndDestination(sourceRect: blackRect, destinationRect: blackdestination)
->>>>>>> 066d5b6810b7c003e7874ea902eccb903a6fda82
+            let blackRect = Rect(topLeft:Point(x:50, y:50), size: Size(width:50, height: 50))
+            let blackdestination = Rect(topLeft:Point(x:0, y:0), size:Size(width: Int.max, height: Int.max))
+            black.renderMode = .sourceAndDestination(sourceRect: blackRect, destinationRect: blackdestination)
             canvas.render(black)
-            }*/
+            }
             
          
         if currentSprite == "main" {
@@ -561,4 +558,4 @@ class Sprites : RenderableEntity {
         }
     }
 }
-   
+}

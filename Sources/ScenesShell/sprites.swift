@@ -373,7 +373,7 @@ class Sprites : RenderableEntity {
                 let leftShield = Rect(topLeft:Point(x:(64 * count) + 8, y:(5 * 64) + 7), size:Size(width:56, height:56))
                 let rightShield = Rect(topLeft:Point(x: (64 * count) + 8, y:(7 * 64) + 7), size:Size(width:56, height:56))
                 
-                let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:84, height:84))
+                let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:64, height:64))
                 let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:84))
                 if current == "down" {
                     mainSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
@@ -437,7 +437,7 @@ class Sprites : RenderableEntity {
                 let rightCast = Rect(topLeft:Point(x: (64 * count) + 8, y:(3 * 64) + 7), size:Size(width:56, height:56))
                 let fireCast = Rect(topLeft:Point(x: 45 * count2 + 10, y: 45 * count4 + 11), size:Size(width:35, height: 35))
                 
-                let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:84, height:84))
+                let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:64, height:64))
                 let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:84))
                 let fireRect = Rect(topLeft:Point(x:fxPos, y:fyPos), size:Size(width:fireSize, height: fireSize))
                 
@@ -494,11 +494,12 @@ class Sprites : RenderableEntity {
                 if fireball == true {
                     fireSprites.renderMode = .sourceAndDestination(sourceRect:fireCast, destinationRect:fireRect)
                 }
-                
-                canvas.render(robbieSprites)
                 if fireball == true {
                     canvas.render(fireSprites)
                 }
+                canvas.render(robbieSprites)
+                
+                
             }
         }
     }

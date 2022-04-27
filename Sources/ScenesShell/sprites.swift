@@ -165,7 +165,7 @@ class Sprites : RenderableEntity {
                 count = 0
             }
         }
-
+    
         if slash == true {
             switch (current) {
             case "right":
@@ -366,13 +366,9 @@ class Sprites : RenderableEntity {
 
         
         if black.isReady {
-            let blackRect = Rect(topLeft:Point(x:50, y:50), size: Size(width:50, height: 50))
-            let blackdestination = Rect(topLeft:Point(x:0, y:0), size:Size(width: Int.max, height: Int.max))
-            black.renderMode = .sourceAndDestination(sourceRect: blackRect, destinationRect: blackdestination)
-        if black.isReady {
-            let blackRect = Rect(topLeft:Point(x:50, y:50), size: Size(width:50, height: 50))
-            let blackdestination = Rect(topLeft:Point(x:0, y:0), size:Size(width: Int.max, height: Int.max))
-            black.renderMode = .sourceAndDestination(sourceRect: blackRect, destinationRect: blackdestination)
+        //    let blackRect = Rect(topLeft:Point(x:50, y:50), size: Size(width:50, height: 50))
+        //    let blackdestination = Rect(topLeft:Point(x:0, y:0), size:Size(width: Int.max, height: Int.max))
+        //    black.renderMode = .sourceAndDestination(sourceRect: blackRect, destinationRect: blackdestination)
             canvas.render(black)
             }
             
@@ -435,6 +431,7 @@ class Sprites : RenderableEntity {
                 
             }
         }
+        
         if currentSprite == "robbie" {
             if robbieSprites.isReady {
                 let downRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 11) + (46 * 10)), size:Size(width:56, height:56))
@@ -519,8 +516,10 @@ class Sprites : RenderableEntity {
                 }
             }
         }
-        
     }
+        
+        
+    
 
     override func calculate(canvasSize: Size) {
         let canvasBoundingRect = Rect(size:canvasSize)
@@ -569,4 +568,4 @@ class Sprites : RenderableEntity {
         }
     }
 }
-}
+

@@ -322,7 +322,7 @@ class Sprites : RenderableEntity {
             }
             if current2 == "right" {
 
-                if count3 > 40 {
+                if count3 > 30 {
                     fxPos += 7
                 }
                 fyPos -= 1
@@ -330,7 +330,7 @@ class Sprites : RenderableEntity {
                 count3 += 1
             }
             if current2 == "left" {
-                if count3 > 40 {
+                if count3 > 30 {
                     fxPos -= 7
                 }
                     fireSize += 2
@@ -339,14 +339,14 @@ class Sprites : RenderableEntity {
             }
             if current2 == "up" {
                 fireSize += 2
-                if count3 > 40 {
+                if count3 > 30 {
                     fyPos -= 7
                 }            
                 fxPos -= 1
                 count3 += 1
             }
             if current2 == "down" {
-                if count3 > 40 {
+                if count3 > 30 {
                     fyPos += 7
                 }
                 fireSize += 2

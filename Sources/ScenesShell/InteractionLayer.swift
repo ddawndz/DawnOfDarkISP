@@ -79,9 +79,29 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
                 //sprites.restrict = true
                 sprites.cast = true
                 sprites.fireball = true
+                sprites.fireSize = 10
                 sprites.fxPos = sprites.xPos
                 sprites.fyPos = sprites.yPos
-                sprites.fireSize = 10
+                switch sprites.current {
+                case "up":
+                    sprites.fyPos -= 20
+                    sprites.fxPos += 25
+                case "left":
+                    sprites.fxPos -= 15
+                    sprites.fyPos += 42
+                case "right":
+                    sprites.fxPos += 84
+                    sprites.fyPos += 42
+                case "down":
+                    sprites.fyPos += 99
+                    sprites.fyPos += 25
+                default:
+                    sprites.fxPos += 99
+                    sprites.fyPos += 5
+                }
+                    
+                    
+                
             }
         }
         if key == "p" && devCount == 0 {

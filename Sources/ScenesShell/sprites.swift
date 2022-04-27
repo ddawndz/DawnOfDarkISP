@@ -11,6 +11,7 @@ class Sprites : RenderableEntity {
     let fireSprites: Image
     let black : Image
     var count = 0
+    var count2 = 0
     var maxCount = 8
     var swap = 0
     var xPos = 0
@@ -21,8 +22,11 @@ class Sprites : RenderableEntity {
     var upMove = false
     var leftMove = false
     var rightMove = false
-    var restrict = false
+//    var restrict = false
     var swap2 = 0
+    var swap3 = 0
+    var count3 = 0
+    var count4 = 0
     var current = "down"
     var current2 = "down"
     var slash = false
@@ -35,7 +39,7 @@ class Sprites : RenderableEntity {
     var currentSprite = "main"
     var fireball = false
     var fireSize = 10
-    
+
     init() {
         guard let mainSpritesURL = URL(string:"https://www.linkpicture.com/q/download_381.png") else {
             fatalError("Failed to create URL for whitehouse")
@@ -70,14 +74,13 @@ class Sprites : RenderableEntity {
         yPos = canvasSize.center.y
         fxPos = xPos
         fyPos = yPos
-        //print(canvasSize)
     }
 
     override func render(canvas:Canvas) {
         if downMove == true {
             current = "down"
             swap += 1
-            swap2 += 1
+            //swap2 += 1
             if swap > 1 {
                 swap = 0
                 count += 1
@@ -86,12 +89,12 @@ class Sprites : RenderableEntity {
                     yPos += 15
                 }
             }
-            if swap2 > 11 {
-                downMove = false
-                restrict = false
-                swap2 = 0
-                count = 0
-            }
+            //if swap2 > 11 {
+            //    downMove = false
+            //    restrict = false
+            //    swap2 = 0
+            //    count = 0
+            //}
             if count > 8 {
                 count = 0
             }
@@ -99,7 +102,7 @@ class Sprites : RenderableEntity {
         if upMove == true {
             current = "up"
             swap += 1
-            swap2 += 1
+            //swap2 += 1
             if swap > 1 {
                 swap = 0
                 count += 1
@@ -108,12 +111,12 @@ class Sprites : RenderableEntity {
                     yPos -= 15
                 }
             }
-            if swap2 > 11 {
-                upMove = false
-                restrict = false
-                swap2 = 0
-                count = 0
-            }
+            //if swap2 > 11 {
+            //    upMove = false
+            //    restrict = false
+            //    swap2 = 0
+            //    count = 0
+            //}
             if count > 8 {
                 count = 0
             }
@@ -121,7 +124,7 @@ class Sprites : RenderableEntity {
         if leftMove == true {
             current = "left"
             swap += 1
-            swap2 += 1
+            //swap2 += 1
             if swap > 1 {
                 swap = 0
                 count += 1
@@ -130,12 +133,12 @@ class Sprites : RenderableEntity {
                     xPos -= 15
                 }
             }
-            if swap2 > 11 {
-                leftMove = false
-                restrict = false
-                swap2 = 0
-                count = 0
-            }
+            //if swap2 > 11 {
+            //    leftMove = false
+            //    restrict = false
+            //    swap2 = 0
+            //    count = 0
+            //}
             if count > 8 {
                 count = 0
             }
@@ -143,7 +146,7 @@ class Sprites : RenderableEntity {
         if rightMove == true {
             current = "right"
             swap += 1
-            swap2 += 1
+            //swap2 += 1
             if swap > 1 {
                 swap = 0
                 count += 1
@@ -152,40 +155,36 @@ class Sprites : RenderableEntity {
                     xPos += 15
                 }
             }
-            if swap2 > 11 {
-                rightMove = false
-                restrict = false
-                swap2 = 0
-                count = 0
-            }
+            //if swap2 > 11 {
+            //    rightMove = false
+            //    restrict = false
+            //    swap2 = 0
+            //    count = 0
+            //}
             if count > 8 {
                 count = 0
             }
         }
 
         if slash == true {
-            if current == "right" {
+            switch (current) {
+            case "right":
                 current = "rightSlash"
-            }
-            if current == "left" {
+            case "left":
                 current = "leftSlash"
-            }
-            if current == "up" {
+            case "up": 
                 current = "upSlash"
-            }
-            if current == "down" {
+            case "down": 
                 current = "downSlash"
-            }
-            if current == "rightShield" {
+            case "rightShield":
                 current = "rightSlash"
-            }
-            if current == "leftShield" {
+            case "leftShield" :
                 current = "leftSlash"
-            }
-            if current == "upShield" {
+            case "upShield":
                 current = "upSlash"
-            }
-            if current == "downShield" {
+            case "downShield":
+                current = "downSlash"
+            default :
                 current = "downSlash"
             }
 
@@ -197,7 +196,7 @@ class Sprites : RenderableEntity {
             }
             if swap2 > 11 {
                 slash = false
-                restrict = false
+            //    restrict = false
                 swap2 = 0
                 count = 0
             }
@@ -232,30 +231,27 @@ class Sprites : RenderableEntity {
             }
 
             swap += 1
-            swap2 += 1
+            //swap2 += 1
             if swap > 1 {
                 swap = 0
                 count += 1
             }
-            if swap2 > 11 {
-                shield = false
-                restrict = false
-                swap2 = 0
-                count = 6
-            }
+            //if swap2 > 11 {
+            //    shield = false
+            //    restrict = false
+            //    swap2 = 0
+            //    count = 6
+            //}
             if count > 6 {
                 count = 6
             }
         }
         if cast == true && currentSprite == "robbie" {
-            
             if current == "right" {
                 current = "rightCast"
-                
             }
             if current == "left" {
                 current = "leftCast"
-                
             }
             if current == "up" {
                 current = "upCast"
@@ -308,48 +304,63 @@ class Sprites : RenderableEntity {
             }
             if swap2 > 105 {
                 cast = false
-                restrict = false
+                //restrict = false
                 swap2 = 0
                 count = 0
             }
-            if count > 7 {
+            if count > 6 {
                 count = 0
             }
         }
 
 
         if fireball == true {
-            restrict = true
-            swap += 1
-            swap2 += 1
-            if swap > 6 {
-                swap = 0
-                count += 1
+            swap3 += 1
+            if swap3 > 2 {
+                swap3 = 0
+                count2 += 1
             }
             if current2 == "right" {
-                fxPos += 10
-                fyPos -= 7 / 2
-                fireSize += 7
+
+                if count3 > 40 {
+                    fxPos += 7
+                }
+                fyPos -= 1
+                fireSize += 2
+                count3 += 1
             }
             if current2 == "left" {
-                fxPos -= 10
-                fireSize += 7
-                fyPos -= 7 / 2
+                if count3 > 40 {
+                    fxPos -= 7
+                }
+                    fireSize += 2
+                    fyPos -= 1
+                    count3 += 1
             }
             if current2 == "up" {
-                fireSize += 10
-                fyPos -= 4
-                fxPos -= 7 / 2
+                fireSize += 2
+                if count3 > 40 {
+                    fyPos -= 7
+                }            
+                fxPos -= 1
+                count3 += 1
             }
             if current2 == "down" {
-                fyPos += 10
-                fireSize += 7
-                fxPos -= 7 / 2
+                if count3 > 40 {
+                    fyPos += 7
+                }
+                fireSize += 2
+                fxPos -= 1
+                count3 += 1
                 
             }
             
-            if count > 6 {
-                count = 0
+            if count2 > 5 {
+                count2 =  0
+                count4 += 1
+            }
+            if count4 > 3 {
+                count4 = 0
             }
         }
 
@@ -438,7 +449,7 @@ class Sprites : RenderableEntity {
                 let upCast = Rect(topLeft:Point(x:(64 * count) + 8, y: (0 * 64) + 7), size:Size(width:56, height:56))
                 let leftCast = Rect(topLeft:Point(x:(64 * count) + 8, y:(1 * 64) + 7), size:Size(width:56, height:56))
                 let rightCast = Rect(topLeft:Point(x: (64 * count) + 8, y:(3 * 64) + 7), size:Size(width:56, height:56))
-                let fireCast = Rect(topLeft:Point(x: 10, y: 11), size:Size(width:35, height: 35))
+                let fireCast = Rect(topLeft:Point(x: 45 * count2 + 10, y: 45 * count4 + 11), size:Size(width:35, height: 35))
                 
                 let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:84, height:84))
                 let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:84))
@@ -522,7 +533,7 @@ class Sprites : RenderableEntity {
         }
         if !containment2.intersection([ .beyondRight]).isEmpty {
             fireball = false
-            restrict = false
+            count3 = 0
         }
         
         if !containment.intersection([.overlapsLeft, .beyondLeft]).isEmpty {
@@ -532,7 +543,7 @@ class Sprites : RenderableEntity {
         }
         if !containment2.intersection([ .beyondLeft]).isEmpty {
             fireball = false
-            restrict = false
+            count3 = 0
         }
         if !containment.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
             downBound = true
@@ -541,7 +552,7 @@ class Sprites : RenderableEntity {
         }
         if !containment2.intersection([ .beyondBottom]).isEmpty {
             fireball = false
-            restrict = false
+            count3 = 0
         }
         if !containment.intersection([.overlapsTop, .beyondTop]).isEmpty {
             upBound = true
@@ -550,7 +561,7 @@ class Sprites : RenderableEntity {
         }
         if !containment2.intersection([ .beyondTop]).isEmpty {
             fireball = false
-            restrict = false
+            count3 = 0
         }
     }
 }

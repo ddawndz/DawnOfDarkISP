@@ -7,7 +7,7 @@ import Igis
  */
 
 
-class InteractionLayer : Layer, KeyDownHandler {
+class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler { 
     let sprites = Sprites()
     var devCount = 0
     
@@ -21,64 +21,67 @@ class InteractionLayer : Layer, KeyDownHandler {
 
     override func preSetup(canvasSize: Size, canvas: Canvas) {
         dispatcher.registerKeyDownHandler(handler: self)
+        dispatcher.registerKeyUpHandler(handler: self)
     }
 
     override func postTeardown() {
         dispatcher.unregisterKeyDownHandler(handler: self)
+        dispatcher.unregisterKeyUpHandler(handler: self)
     }
 
     func onKeyDown(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
         print(key)
-        if key == "ArrowDown" {
-            if sprites.restrict == true {
-            } else {
-                sprites.restrict = true
+        if key == "ArrowDown" && sprites.slash == false && sprites.cast == false {
+            //if sprites.restrict == true {
+            //} else {
+            //    sprites.restrict = true
                 sprites.downMove = true
-            }
+            //}
         }
-        if key == "ArrowUp" {
-            if sprites.restrict == true {
-            } else {
-                sprites.restrict = true
+        if key == "ArrowUp" && sprites.slash == false && sprites.cast == false {
+            //if sprites.restrict == true {
+            //} else {
+            //    sprites.restrict = true
                 sprites.upMove = true
-            }
+            //}
         }
-        if key == "ArrowLeft" {
-            if sprites.restrict == true {
-            } else {
-                sprites.restrict == true
+        if key == "ArrowLeft" && sprites.slash == false && sprites.cast == false {
+            //if sprites.restrict == true {
+            //} else {
+            //    sprites.restrict == true
                 sprites.leftMove = true
-            }
+            //}
         }
-        if key == "ArrowRight" {
-            if sprites.restrict == true {
-            } else {
-                sprites.restrict = true
+        if key == "ArrowRight" && sprites.slash == false && sprites.cast == false {
+            //if sprites.restrict == true {
+            //} else {
+            //    sprites.restrict = true
                 sprites.rightMove = true
-            }
+            //}
         }
-        if key == "z" {
-            if sprites.restrict == true {
-            } else {
-                sprites.restrict = true
+        if key == "z" && sprites.cast == false{
+            //if sprites.restrict == true {
+            //} else {
+            //    sprites.restrict = true
                 sprites.slash = true
-            }
+            //}
         }
-        if key == "x" {
-            if sprites.restrict == true {
-            } else {
-                sprites.restrict = true
+        if key == "x" && sprites.cast == false && sprites.slash == false {
+            //if sprites.restrict == true {
+            //} else {
+            //    sprites.restrict = true
                 sprites.shield = true
-            }
+            //}
         }
-        if key == "c" {
-            if sprites.restrict == true {
-            } else if sprites.currentSprite == "robbie" {
-                sprites.restrict = true
+        if key == "c" && sprites.slash == false {
+            //if sprites.restrict == true {
+            if sprites.currentSprite == "robbie" {
+                //sprites.restrict = true
                 sprites.cast = true
                 sprites.fireball = true
                 sprites.fxPos = sprites.xPos
                 sprites.fyPos = sprites.yPos
+                sprites.fireSize = 10
             }
         }
         if key == "p" && devCount == 0 {
@@ -102,10 +105,25 @@ class InteractionLayer : Layer, KeyDownHandler {
         if key == "a" && devCount == 8 {
             sprites.currentSprite = "robbie"
         }
-        
-        
+    }
+    func onKeyUp(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
+            if key == "ArrowUp" {
+                sprites.upMove = false
+            }
+            if key == "ArrowLeft" {
+                sprites.leftMove = false
+            }
+            if key == "ArrowRight" {
+                sprites.rightMove = false
+            }
+            if key == "ArrowDown" {
+                sprites.downMove = false
+            }
             
-            
+            if key == "x" {
+                sprites.shield = false
+            }
     }
 }
+
  

@@ -8,12 +8,15 @@ import Igis
 class Sprites : RenderableEntity {
     let mainSprites : Image
     let robbieSprites : Image
+    let fireSprites: Image
     let black : Image
     var count = 0
     var maxCount = 8
     var swap = 0
     var xPos = 0
     var yPos = 0
+    var fxPos = 0
+    var fyPos = 0
     var downMove = false
     var upMove = false
     var leftMove = false
@@ -21,13 +24,17 @@ class Sprites : RenderableEntity {
     var restrict = false
     var swap2 = 0
     var current = "down"
+    var current2 = "down"
     var slash = false
     var shield = false
+    var cast = false
     var upBound = false
     var downBound = false
     var leftBound = false
     var rightBound = false
     var currentSprite = "main"
+    var fireball = false
+    var fireSize = 10
     
     init() {
         guard let mainSpritesURL = URL(string:"https://www.linkpicture.com/q/download_381.png") else {
@@ -37,6 +44,10 @@ class Sprites : RenderableEntity {
         guard let robbieSpritesURL = URL(string:"https://linkpicture.com/q/Download35839.png") else {
             fatalError("DevSprites Locked...")
         }
+        guard let fireSpritesURL = URL(string:"https://linkpicture.com/q/images-removebg-preview_13.png") else {
+            fatalError("Fireball exploded...")
+        }
+        
         guard let blackURL = URL(string:"https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500.png") else {
             fatalError("Failed to create URL for black")
         }
@@ -45,6 +56,7 @@ class Sprites : RenderableEntity {
         mainSprites = Image(sourceURL:mainSpritesURL)
         black = Image(sourceURL:blackURL)
         robbieSprites = Image(sourceURL:robbieSpritesURL)
+        fireSprites = Image(sourceURL:fireSpritesURL)
         // Using a meaningful name can be helpful for debugging
         super.init(name:"Background")
     }
@@ -53,9 +65,12 @@ class Sprites : RenderableEntity {
         canvas.setup(mainSprites)
         canvas.setup(black)
         canvas.setup(robbieSprites)
+        canvas.setup(fireSprites)
         xPos = canvasSize.center.x
         yPos = canvasSize.center.y
-        print(canvasSize)
+        fxPos = xPos
+        fyPos = yPos
+        //print(canvasSize)
     }
 
     override func render(canvas:Canvas) {
@@ -68,7 +83,7 @@ class Sprites : RenderableEntity {
                 count += 1
                 if downBound == true {
                 } else {
-                    yPos += 10
+                    yPos += 15
                 }
             }
             if swap2 > 11 {
@@ -90,7 +105,7 @@ class Sprites : RenderableEntity {
                 count += 1
                 if upBound == true {
                 } else {
-                    yPos -= 10
+                    yPos -= 15
                 }
             }
             if swap2 > 11 {
@@ -112,7 +127,7 @@ class Sprites : RenderableEntity {
                 count += 1
                 if leftBound == true {
                 } else {
-                    xPos -= 10
+                    xPos -= 15
                 }
             }
             if swap2 > 11 {
@@ -134,7 +149,7 @@ class Sprites : RenderableEntity {
                 count += 1
                 if rightBound == true {
                 } else {
-                    xPos += 10
+                    xPos += 15
                 }
             }
             if swap2 > 11 {
@@ -232,12 +247,117 @@ class Sprites : RenderableEntity {
                 count = 6
             }
         }
+        if cast == true && currentSprite == "robbie" {
+            
+            if current == "right" {
+                current = "rightCast"
+                
+            }
+            if current == "left" {
+                current = "leftCast"
+                
+            }
+            if current == "up" {
+                current = "upCast"
+            }
+            if current == "down" {
+                current = "downCast"
+            }
+            if current == "rightSlash" {
+                current = "rightCast"
+            }
+            if current == "leftSlash" {
+                current = "leftCast"
+            }
+            if current == "upSlash" {
+                current = "upCast"
+            }
+            if current == "downSlash" {
+                current = "downCast"
+            }
+            if current == "rightShield" {
+                current = "rightCast"
+            }
+            if current == "leftShield" {
+                current = "leftCast"
+            }
+            if current == "upShield" {
+                current = "upCast"
+            }
+            if current == "downShield" {
+                current = "downCast"
+            }
+            if current == "downCast" {
+                current2 = "down"
+            }
+            if current == "upCast" {
+                current2 = "up"
+            }
+            if current == "leftCast" {
+                 current2 = "left"
+            }
+            if current == "rightCast" {
+                current2 = "right"
+            }
+            
+            swap += 1
+            swap2 += 1
+            if swap > 15 {
+                swap = 0
+                count += 1
+            }
+            if swap2 > 105 {
+                cast = false
+                restrict = false
+                swap2 = 0
+                count = 0
+            }
+            if count > 7 {
+                count = 0
+            }
+        }
+
+
+        if fireball == true {
+            restrict = true
+            swap += 1
+            swap2 += 1
+            if swap > 6 {
+                swap = 0
+                count += 1
+            }
+            if current2 == "right" {
+                fxPos += 10
+                fyPos -= 7 / 2
+                fireSize += 7
+            }
+            if current2 == "left" {
+                fxPos -= 10
+                fireSize += 7
+                fyPos -= 7 / 2
+            }
+            if current2 == "up" {
+                fireSize += 10
+                fyPos -= 4
+                fxPos -= 7 / 2
+            }
+            if current2 == "down" {
+                fyPos += 10
+                fireSize += 7
+                fxPos -= 7 / 2
+                
+            }
+            
+            if count > 6 {
+                count = 0
+            }
+        }
 
         
         if black.isReady {
-            let blackRect = Rect(topLeft:Point(x:50, y:50), size: Size(width:50, height: 50))
-            let blackdestination = Rect(topLeft:Point(x:0, y:0), size:Size(width: Int.max, height: Int.max))
-            black.renderMode = .sourceAndDestination(sourceRect: blackRect, destinationRect: blackdestination)
+            //let blackRect = Rect(topLeft:Point(x:50, y:50), size: Size(width:50, height: 50))
+            //let blackdestination = Rect(topLeft:Point(x:0, y:0), size:Size(width: Int.max, height: Int.max))
+            //black.renderMode = .sourceAndDestination(sourceRect: blackRect, destinationRect: blackdestination)
             canvas.render(black)
             }
             
@@ -314,9 +434,16 @@ class Sprites : RenderableEntity {
                 let upShield = Rect(topLeft:Point(x:(64 * count) + 8, y: (4 * 64) + 7), size:Size(width:56, height:56))
                 let leftShield = Rect(topLeft:Point(x:(64 * count) + 8, y:(5 * 64) + 7), size:Size(width:56, height:56))
                 let rightShield = Rect(topLeft:Point(x: (64 * count) + 8, y:(7 * 64) + 7), size:Size(width:56, height:56))
+                let downCast = Rect(topLeft:Point(x:(64 * count) + 8, y: (2 * 64) + 7), size:Size(width:56, height:56))
+                let upCast = Rect(topLeft:Point(x:(64 * count) + 8, y: (0 * 64) + 7), size:Size(width:56, height:56))
+                let leftCast = Rect(topLeft:Point(x:(64 * count) + 8, y:(1 * 64) + 7), size:Size(width:56, height:56))
+                let rightCast = Rect(topLeft:Point(x: (64 * count) + 8, y:(3 * 64) + 7), size:Size(width:56, height:56))
+                let fireCast = Rect(topLeft:Point(x: 10, y: 11), size:Size(width:35, height: 35))
                 
                 let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:84, height:84))
                 let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:84))
+                let fireRect = Rect(topLeft:Point(x:fxPos, y:fyPos), size:Size(width:fireSize, height: fireSize))
+                
                 if current == "down" {
                     robbieSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
                 }
@@ -353,9 +480,28 @@ class Sprites : RenderableEntity {
                 if current == "rightShield" {
                     robbieSprites.renderMode = .sourceAndDestination(sourceRect:rightShield, destinationRect:destinationRect)
                 }
+                if current == "downCast" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:downCast, destinationRect:destinationRect)
+                                        
+                }
+                if current == "upCast" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:upCast, destinationRect:destinationRect)
+                }
+                if current == "leftCast" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:leftCast, destinationRect:destinationRect)
+                }
+                if current == "rightCast" {
+                    robbieSprites.renderMode = .sourceAndDestination(sourceRect:rightCast, destinationRect:destinationRect)
+                }
+
+                if fireball == true {
+                    fireSprites.renderMode = .sourceAndDestination(sourceRect:fireCast, destinationRect:fireRect)
+                }
                 
                 canvas.render(robbieSprites)
-                
+                if fireball == true {
+                    canvas.render(fireSprites)
+                }
             }
         }
         
@@ -365,27 +511,46 @@ class Sprites : RenderableEntity {
         let canvasBoundingRect = Rect(size:canvasSize)
         let mainCharacter = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:84, height:84))
         let containment = canvasBoundingRect.containment(target: mainCharacter)
-
+        let firebla = Rect(topLeft:Point(x:fxPos, y:yPos), size:Size(width:fireSize, height:fireSize))
+        let containment2 = canvasBoundingRect.containment(target: firebla)
+        
         // Bounce horizontally
         if !containment.intersection([.overlapsRight, .beyondRight]).isEmpty {
             rightBound = true
         } else {
             rightBound = false
         }
+        if !containment2.intersection([ .beyondRight]).isEmpty {
+            fireball = false
+            restrict = false
+        }
+        
         if !containment.intersection([.overlapsLeft, .beyondLeft]).isEmpty {
             leftBound = true
         } else {
             leftBound = false
+        }
+        if !containment2.intersection([ .beyondLeft]).isEmpty {
+            fireball = false
+            restrict = false
         }
         if !containment.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
             downBound = true
         } else {
             downBound = false
         }
+        if !containment2.intersection([ .beyondBottom]).isEmpty {
+            fireball = false
+            restrict = false
+        }
         if !containment.intersection([.overlapsTop, .beyondTop]).isEmpty {
             upBound = true
         } else {
             upBound = false
+        }
+        if !containment2.intersection([ .beyondTop]).isEmpty {
+            fireball = false
+            restrict = false
         }
     }
 }

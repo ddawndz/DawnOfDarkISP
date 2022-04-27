@@ -6,7 +6,7 @@ class bgLayer : RenderableEntity {
     let ground : Image
 
     init() {
-        guard let groundURL = URL(string:"https://www.linkpicture.com/view.php?img=LPic6269a9c9d2d8c1923236124") else {
+        guard let groundURL = URL(string:"https://www.linkpicture.com/q/download-2_48.png") else {
             fatalError("Failed to create URL for ground")
         }
         ground = Image(sourceURL:groundURL)

@@ -22,6 +22,7 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
     override func preSetup(canvasSize: Size, canvas: Canvas) {
         dispatcher.registerKeyDownHandler(handler: self)
         dispatcher.registerKeyUpHandler(handler: self)
+        print(canvasSize)
     }
 
     override func postTeardown() {

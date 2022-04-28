@@ -6,8 +6,6 @@ import Igis
  This class is responsible for rendering the background.
  */
 class Sprites : RenderableEntity {
-    let bg = bgLayer()
-    let ground : Image
     let mainSprites : Image
     let robbieSprites : Image
     let fireSprites: Image
@@ -49,10 +47,6 @@ class Sprites : RenderableEntity {
         guard let robbieSpritesURL = URL(string:"https://linkpicture.com/q/Download35839.png") else {
             fatalError("DevSprites Locked...")
         }
-        guard let groundURL = URL(string:"https://www.linkpicture.com/q/download-2_48.png") else {
-            fatalError("Failed to create URL for ground")
-        }
-        
         guard let fireSpritesURL = URL(string:"https://linkpicture.com/q/images-removebg-preview_13.png") else {
             fatalError("Fireball exploded...")
         }
@@ -65,7 +59,6 @@ class Sprites : RenderableEntity {
         robbieSprites = Image(sourceURL:robbieSpritesURL)
         fireSprites = Image(sourceURL:fireSpritesURL)
         skelSprites = Image(sourceURL:skelSpritesURL)
-        ground = Image(sourceURL:groundURL)
         // Using a meaningful name can be helpful for debugging
         super.init(name:"Background")
     }
@@ -75,7 +68,6 @@ class Sprites : RenderableEntity {
         canvas.setup(robbieSprites)
         canvas.setup(fireSprites)
         canvas.setup(skelSprites)
-        canvas.setup(ground)
         xPos = canvasSize.center.x
         yPos = canvasSize.center.y
         fxPos = xPos
@@ -361,10 +353,8 @@ class Sprites : RenderableEntity {
                 count4 = 0
             }
         }
-        if ground.isReady {
-            ground.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y:0), size:Size(width:64, height:64)))
-            bg.grid(canvas:canvas, obj: ground, columns: 21, rows: 11)
-        }
+
+       
         if currentSprite == "main" {
             if mainSprites.isReady {
                 let downRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 11) + (46 * 10)), size:Size(width:56, height:56))
@@ -424,6 +414,7 @@ class Sprites : RenderableEntity {
             }
         }
         
+        
         if currentSprite == "robbie" {
             if robbieSprites.isReady {
                 let downRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 11) + (46 * 10)), size:Size(width:56, height:56))
@@ -442,7 +433,7 @@ class Sprites : RenderableEntity {
                 let upCast = Rect(topLeft:Point(x:(64 * count) + 8, y: (0 * 64) + 7), size:Size(width:56, height:56))
                 let leftCast = Rect(topLeft:Point(x:(64 * count) + 8, y:(1 * 64) + 7), size:Size(width:56, height:56))
                 let rightCast = Rect(topLeft:Point(x: (64 * count) + 8, y:(3 * 64) + 7), size:Size(width:56, height:56))
-                let fireCast = Rect(topLeft:Point(x: 45 * count2 + 10, y: 45 * count4 + 11), size:Size(width:35, height: 35))
+                let fireCast = Rect(topLeft:Point(x: 91 / 2 * count2 + 10, y:11), size:Size(width:35, height: 35))
                 
                 let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:64, height:64))
                 let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:84))

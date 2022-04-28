@@ -42,7 +42,7 @@ class bgLayer : RenderableEntity {
         if ground.isReady {
             ground.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y:0), size:Size(width:64, height:64)))
 
-//            grid(canvas:canvas, obj: ground, columns: 21, rows: 11)
+            grid(canvas:canvas, obj: ground, columns: 21, rows: 11)
         }
     }
 }

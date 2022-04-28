@@ -7,20 +7,19 @@ class bgLayer : RenderableEntity {
     var csx = 0
     var csy = 0
     var ys = 0
-    var xs = 0 
-    
+    var xs = 0
     func row(canvas:Canvas, obj: Image, columns: Int) {
-        for i in 0 ... columns {
+        for i in 0 ... columns {            
+            obj.renderMode = .destinationRect(Rect(topLeft:Point(x:i * csx / 21, y:ys), size:Size(width:csx / 21 + 2, height:csy / 11 + 2)))
             canvas.render(obj)
-            obj.renderMode = .destinationRect(Rect(topLeft:Point(x:i * 64, y:ys), size:Size(width:64, height:64)))
-            xs = i * 64
+            xs = i * csx / 21
         }
     }
     func grid(canvas:Canvas, obj: Image, columns: Int, rows: Int) {
         for i in 0 ... rows {
             row(canvas:canvas, obj:obj, columns:columns)
-            obj.renderMode = .destinationRect(Rect(topLeft:Point(x:xs, y:i * 64), size:Size(width:64, height:64)))
-            ys = i * 64
+            obj.renderMode = .destinationRect(Rect(topLeft:Point(x:xs, y:i * csy / 11), size:Size(width:csx / 21, height:csy / 11)))
+            ys = i * csy / 11
         }
     }
     
@@ -40,7 +39,7 @@ class bgLayer : RenderableEntity {
     }
     override func render(canvas:Canvas) {
         if ground.isReady {
-            ground.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y:0), size:Size(width:64, height:64)))
+            ground.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y:0), size:Size(width:csx / 21, height:csy / 1)))
 
             grid(canvas:canvas, obj: ground, columns: 21, rows: 11)
         }

@@ -7,11 +7,11 @@ import Igis
  It rarely needs to be altered.
  */
 
-class Painter : PainterBase {
+/*class Painter : PainterBase {
 
     let frame : Path
-    let frameWidth : Double = 1366
-    let frameHeight : Double = 768
+    let frameWidth : Double = 1362
+    let frameHeight : Double = 954
     let backgroundFillStyle = FillStyle(color:Color(.black))
 
     var scaleTransform = Transform()
@@ -67,7 +67,7 @@ class Painter : PainterBase {
         }
     }
 }
-
+*/
 print("Starting...")
 do {
     let igis = Igis()

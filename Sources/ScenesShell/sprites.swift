@@ -353,8 +353,9 @@ class Sprites : RenderableEntity {
                 count4 = 0
             }
         }
-
-       
+        
+        
+        
         if currentSprite == "main" {
             if mainSprites.isReady {
                 let downRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 11) + (46 * 10)), size:Size(width:56, height:56))

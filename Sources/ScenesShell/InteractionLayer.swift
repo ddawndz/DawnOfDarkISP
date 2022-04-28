@@ -7,10 +7,10 @@ import Igis
  */
 
 
-class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler { 
+class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
     let sprites = Sprites()
     var devCount = 0
-    
+
     init() {
         // Using a meaningful name can be helpful for debugging
         super.init(name:"Interaction")
@@ -36,42 +36,42 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
-                sprites.downMove = true
+            sprites.downMove = true
             //}
         }
         if key == "ArrowUp" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
-                sprites.upMove = true
+            sprites.upMove = true
             //}
         }
         if key == "ArrowLeft" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict == true
-                sprites.leftMove = true
+            sprites.leftMove = true
             //}
         }
         if key == "ArrowRight" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
-                sprites.rightMove = true
+            sprites.rightMove = true
             //}
         }
         if key == "z" && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
-                sprites.slash = true
+            sprites.slash = true
             //}
         }
         if key == "x" && sprites.cast == false && sprites.slash == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
-                sprites.shield = true
+            sprites.shield = true
             //}
         }
         if key == "c" && sprites.slash == false && sprites.shield == false {
@@ -100,9 +100,9 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
                     sprites.fxPos += 99
                     sprites.fyPos += 5
                 }
-                    
-                    
-                
+
+
+
             }
         }
         if key == "p" && devCount == 0 {
@@ -128,23 +128,21 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
         }
     }
     func onKeyUp(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
-            if key == "ArrowUp" {
-                sprites.upMove = false
-            }
-            if key == "ArrowLeft" {
-                sprites.leftMove = false
-            }
-            if key == "ArrowRight" {
-                sprites.rightMove = false
-            }
-            if key == "ArrowDown" {
-                sprites.downMove = false
-            }
-            
-            if key == "x" {
-                sprites.shield = false
-            }
+        if key == "ArrowUp" {
+            sprites.upMove = false
+        }
+        if key == "ArrowLeft" {
+            sprites.leftMove = false
+        }
+        if key == "ArrowRight" {
+            sprites.rightMove = false
+        }
+        if key == "ArrowDown" {
+            sprites.downMove = false
+        }
+
+        if key == "x" {
+            sprites.shield = false
+        }
     }
 }
-
- 

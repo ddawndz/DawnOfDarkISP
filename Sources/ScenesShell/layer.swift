@@ -10,7 +10,7 @@ class bgLayer : RenderableEntity {
     var xs = 0
     func row(canvas:Canvas, obj: Image, columns: Int) {
         for i in 0 ... columns {            
-            obj.renderMode = .destinationRect(Rect(topLeft:Point(x:i * csx / 21, y:ys), size:Size(width:csx / 21 + 2, height:csy / 11 + 2)))
+            obj.renderMode = .destinationRect(Rect(topLeft:Point(x:i * csx / 21, y:ys), size:Size(width:csx / 21 + 1, height:csy / 11 + 1)))
             canvas.render(obj)
             xs = i * csx / 21
         }

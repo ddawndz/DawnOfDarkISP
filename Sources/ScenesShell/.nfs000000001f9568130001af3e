@@ -9,6 +9,7 @@ class Sprites : RenderableEntity {
     let mainSprites : Image
     let robbieSprites : Image
     let fireSprites: Image
+    let skelSprites: Image
     var count = 0
     var count2 = 0
     var maxCount = 8
@@ -21,7 +22,6 @@ class Sprites : RenderableEntity {
     var upMove = false
     var leftMove = false
     var rightMove = false
-//    var restrict = false
     var swap2 = 0
     var swap3 = 0
     var count3 = 0
@@ -50,12 +50,15 @@ class Sprites : RenderableEntity {
         guard let fireSpritesURL = URL(string:"https://linkpicture.com/q/images-removebg-preview_13.png") else {
             fatalError("Fireball exploded...")
         }
-        
+        guard let skelSpritesURL = URL(string:"https://linkpicture.com/q/Download75802.png") else {
+            fatalError("Skeleton collapsed...")
+        }
         //https://linkpicture.com/q/RobbieDevSprites.png
         // 
         mainSprites = Image(sourceURL:mainSpritesURL)
         robbieSprites = Image(sourceURL:robbieSpritesURL)
         fireSprites = Image(sourceURL:fireSpritesURL)
+        skelSprites = Image(sourceURL:skelSpritesURL)
         // Using a meaningful name can be helpful for debugging
         super.init(name:"Background")
     }
@@ -64,17 +67,18 @@ class Sprites : RenderableEntity {
         canvas.setup(mainSprites)
         canvas.setup(robbieSprites)
         canvas.setup(fireSprites)
+        canvas.setup(skelSprites)
         xPos = canvasSize.center.x
         yPos = canvasSize.center.y
         fxPos = xPos
         fyPos = yPos
+        print(canvasSize)
     }
 
     override func render(canvas:Canvas) {
         if downMove == true {
             current = "down"
             swap += 1
-            //swap2 += 1
             if swap > 1 {
                 swap = 0
                 count += 1
@@ -83,12 +87,6 @@ class Sprites : RenderableEntity {
                     yPos += 15
                 }
             }
-            //if swap2 > 11 {
-            //    downMove = false
-            //    restrict = false
-            //    swap2 = 0
-            //    count = 0
-            //}
             if count > 8 {
                 count = 0
             }
@@ -190,7 +188,6 @@ class Sprites : RenderableEntity {
             }
             if swap2 > 11 {
                 slash = false
-            //    restrict = false
                 swap2 = 0
                 count = 0
             }
@@ -298,8 +295,7 @@ class Sprites : RenderableEntity {
             }
             if swap2 > 105 {
                 cast = false
-                //restrict = false
-                swap2 = 0
+                 swap2 = 0
                 count = 0
             }
             if count > 6 {
@@ -357,7 +353,8 @@ class Sprites : RenderableEntity {
                 count4 = 0
             }
         }
-        
+
+       
         if currentSprite == "main" {
             if mainSprites.isReady {
                 let downRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 11) + (46 * 10)), size:Size(width:56, height:56))
@@ -417,6 +414,7 @@ class Sprites : RenderableEntity {
             }
         }
         
+        
         if currentSprite == "robbie" {
             if robbieSprites.isReady {
                 let downRect = Rect(topLeft:Point(x:(64 * count) + 8, y:(17 * 11) + (46 * 10)), size:Size(width:56, height:56))
@@ -435,7 +433,7 @@ class Sprites : RenderableEntity {
                 let upCast = Rect(topLeft:Point(x:(64 * count) + 8, y: (0 * 64) + 7), size:Size(width:56, height:56))
                 let leftCast = Rect(topLeft:Point(x:(64 * count) + 8, y:(1 * 64) + 7), size:Size(width:56, height:56))
                 let rightCast = Rect(topLeft:Point(x: (64 * count) + 8, y:(3 * 64) + 7), size:Size(width:56, height:56))
-                let fireCast = Rect(topLeft:Point(x: 45 * count2 + 10, y: 45 * count4 + 11), size:Size(width:35, height: 35))
+                let fireCast = Rect(topLeft:Point(x: 91 / 2 * count2 + 10, y:11), size:Size(width:35, height: 35))
                 
                 let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:64, height:64))
                 let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:84))

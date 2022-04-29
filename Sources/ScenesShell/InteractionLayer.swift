@@ -153,21 +153,20 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
             sprites.shield = false
         }
         /*if key == "ArrowUp" {
-            sprites.upMove = false
-        }
-        if key == "ArrowLeft" {
-            sprites.leftMove = false
-        }
-        if key == "ArrowRight" {
-            sprites.rightMove = false
-        }
-        if key == "ArrowDown" {
-            sprites.downMove = false
-        }
-
-        if key == "x" {
-            sprites.shield = false
-        }
-        */
+          sprites.upMove = false
+          }
+          if key == "ArrowLeft" {
+          sprites.leftMove = false
+          }
+          if key == "ArrowRight" {
+          sprites.rightMove = false
+          }
+          if key == "ArrowDown" {
+          sprites.downMove = false
+          }
+          if key == "x" {
+          sprites.shield = false
+          }
+         */
     }
 }

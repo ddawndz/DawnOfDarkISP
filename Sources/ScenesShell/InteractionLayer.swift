@@ -32,77 +32,86 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
 
     func onKeyDown(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
         print(key)
-        if key == "ArrowDown" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
+        if key == "s" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
                 sprites.downMove = true
             //}
         }
-        if key == "ArrowUp" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
+        if key == "w" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
                 sprites.upMove = true
             //}
         }
-        if key == "ArrowLeft" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
+        if key == "d" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict == true
-                sprites.leftMove = true
-            //}
-        }
-        if key == "ArrowRight" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
-            //if sprites.restrict == true {
-            //} else {
-            //    sprites.restrict = true
                 sprites.rightMove = true
             //}
         }
-        if key == "z" && sprites.cast == false && sprites.shield == false {
+        if key == "a" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
+            //if sprites.restrict == true {
+            //} else {
+            //    sprites.restrict = true
+                sprites.leftMove = true
+            //}
+        }
+        if key == "n" && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
                 sprites.slash = true
             //}
         }
-        if key == "x" && sprites.cast == false && sprites.slash == false {
+        if key == "m" && sprites.cast == false && sprites.slash == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
                 sprites.shield = true
             //}
         }
-        if key == "c" && sprites.slash == false && sprites.shield == false {
-            //if sprites.restrict == true {
+        if key == "," && sprites.slash == false && sprites.shield == false {
             if sprites.currentSprite == "robbie" {
-                //sprites.restrict = true
+                sprites.fireball = false
                 sprites.cast = true
                 sprites.fireball = true
                 sprites.fireSize = 10
+                sprites.count3 = 0
                 sprites.fxPos = sprites.xPos
                 sprites.fyPos = sprites.yPos
                 switch sprites.current {
                 case "up":
-                    sprites.fyPos -= 20
-                    sprites.fxPos += 25
+                    sprites.fyPos -= 5
+                    sprites.fxPos += 32
                 case "left":
-                    sprites.fxPos -= 15
+                    sprites.fxPos -= 5
                     sprites.fyPos += 42
                 case "right":
-                    sprites.fxPos += 84
+                    sprites.fxPos += 69
                     sprites.fyPos += 42
                 case "down":
-                    sprites.fyPos += 99
-                    sprites.fyPos += 25
+                    sprites.fxPos += 32
+                    sprites.fyPos += 69
+                case "upCast":
+                    sprites.fyPos -= 5
+                    sprites.fxPos += 32
+                case "leftCast":
+                    sprites.fxPos -= 5
+                    sprites.fyPos += 42
+                case "rightCast":
+                    sprites.fxPos += 69
+                    sprites.fyPos += 42
+                case "downCast":
+                    sprites.fxPos += 32
+                    sprites.fyPos += 69
                 default:
-                    sprites.fxPos += 99
+                    sprites.fxPos += 69
                     sprites.fyPos += 5
                 }
-                    
-                    
-                
             }
         }
         if key == "p" && devCount == 0 {
@@ -128,20 +137,20 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
         }
     }
     func onKeyUp(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
-            if key == "ArrowUp" {
+            if key == "w" {
                 sprites.upMove = false
             }
-            if key == "ArrowLeft" {
+            if key == "a" {
                 sprites.leftMove = false
             }
-            if key == "ArrowRight" {
+            if key == "d" {
                 sprites.rightMove = false
             }
-            if key == "ArrowDown" {
+            if key == "s" {
                 sprites.downMove = false
             }
             
-            if key == "x" {
+            if key == "m" {
                 sprites.shield = false
             }
     }

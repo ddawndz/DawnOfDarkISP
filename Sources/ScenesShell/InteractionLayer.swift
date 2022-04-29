@@ -136,39 +136,6 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
         }
     }
     func onKeyUp(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
-<<<<<<< HEAD
-        if key == "w" {
-            sprites.upMove = false
-        }
-        if key == "a" {
-            sprites.leftMove = false
-        }
-        if key == "d" {
-            sprites.rightMove = false
-        }
-        if key == "s" {
-            sprites.downMove = false
-        }
-        if key == "m" {
-            sprites.shield = false
-        }
-        /*if key == "ArrowUp" {
-          sprites.upMove = false
-          }
-          if key == "ArrowLeft" {
-          sprites.leftMove = false
-          }
-          if key == "ArrowRight" {
-          sprites.rightMove = false
-          }
-          if key == "ArrowDown" {
-          sprites.downMove = false
-          }
-          if key == "x" {
-          sprites.shield = false
-          }
-         */
-=======
 
             if key == "w" {
                 sprites.upMove = false
@@ -188,6 +155,5 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
             }
 
       
->>>>>>> 31beab8024458d8c9ed9678fb3ee024948a80592
     }
 }

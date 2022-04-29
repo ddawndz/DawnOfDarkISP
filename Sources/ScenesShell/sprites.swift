@@ -6,7 +6,7 @@ import Igis
  This class is responsible for rendering the background.
  */
 class Sprites : RenderableEntity {
-    let mainSprites : Image
+    let boySprites : Image
     let robbieSprites : Image
     let fireSprites: Image
     let skelSprites: Image
@@ -50,10 +50,11 @@ class Sprites : RenderableEntity {
     
     init() {
                
-        guard let mainSpritesURL = URL(string:"https://www.linkpicture.com/q/download_381.png") else {
+        guard let boySpritesURL = URL(string:"https://www.linkpicture.com/q/download-1_133.png") else {
             fatalError("Failed to create URL for whitehouse")
-        } 
-        // 
+        }
+       
+        // https://www.linkpicture.com/q/download_381.png
         guard let robbieSpritesURL = URL(string:"https://linkpicture.com/q/Download35839.png") else {
             fatalError("DevSprites Locked...")
         }
@@ -65,7 +66,7 @@ class Sprites : RenderableEntity {
         }
         //https://linkpicture.com/q/RobbieDevSprites.png
         // 
-        mainSprites = Image(sourceURL:mainSpritesURL)
+        boySprites = Image(sourceURL:boySpritesURL)
         robbieSprites = Image(sourceURL:robbieSpritesURL)
         fireSprites = Image(sourceURL:fireSpritesURL)
         skelSprites = Image(sourceURL:skelSpritesURL)
@@ -74,7 +75,7 @@ class Sprites : RenderableEntity {
     }
 
     override func setup(canvasSize:Size, canvas:Canvas) {
-        canvas.setup(mainSprites)
+        canvas.setup(boySprites)
         canvas.setup(robbieSprites)
         canvas.setup(fireSprites)
         canvas.setup(skelSprites)
@@ -466,7 +467,7 @@ class Sprites : RenderableEntity {
 
         
         if currentSprite == "main" {
-            if mainSprites.isReady {
+            if boySprites.isReady  {
 
                 if lives < 0 {
                     count = 5
@@ -490,45 +491,45 @@ class Sprites : RenderableEntity {
                 let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:149, height:84))
                 
                 if current == "down" {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
                 }
                 if current == "up" {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:upRect, destinationRect:destinationRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:upRect, destinationRect:destinationRect)
                 }
                 if current == "left" {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:leftRect, destinationRect:destinationRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:leftRect, destinationRect:destinationRect)
                 }
                 if current == "right" {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:rightRect, destinationRect:destinationRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:rightRect, destinationRect:destinationRect)
                 }
                 if current == "upSlash" {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:upSlash, destinationRect:slashRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:upSlash, destinationRect:slashRect)
                 }
                 if current == "leftSlash" {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:leftSlash, destinationRect:slashRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:leftSlash, destinationRect:slashRect)
                 }
                 if current == "downSlash" {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:downSlash, destinationRect:slashRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:downSlash, destinationRect:slashRect)
                 }
                 if current == "rightSlash" {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:rightSlash, destinationRect:slashRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:rightSlash, destinationRect:slashRect)
                 }
                 if current == "downShield" {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:downShield, destinationRect:destinationRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:downShield, destinationRect:destinationRect)
                 }
                 if current == "upShield" {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:upShield, destinationRect:destinationRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:upShield, destinationRect:destinationRect)
                 }
                 if current == "leftShield" {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:leftShield, destinationRect:destinationRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:leftShield, destinationRect:destinationRect)
                 }
                 if current == "rightShield" {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:rightShield, destinationRect:destinationRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:rightShield, destinationRect:destinationRect)
                 }
                 if lives < 0 {
-                    mainSprites.renderMode = .sourceAndDestination(sourceRect:deadRect, destinationRect:destinationRect)
+                    boySprites.renderMode = .sourceAndDestination(sourceRect:deadRect, destinationRect:destinationRect)
                 }
-                canvas.render(mainSprites)
+                canvas.render(boySprites)
                 
             }
         }

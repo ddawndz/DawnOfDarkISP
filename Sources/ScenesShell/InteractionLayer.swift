@@ -136,7 +136,6 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
         }
     }
     func onKeyUp(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
-<<<<<<< HEAD
         if key == "w" {
             sprites.upMove = false
         }
@@ -168,7 +167,6 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
           sprites.shield = false
           }
          */
-=======
 
             if key == "w" {
                 sprites.upMove = false
@@ -187,7 +185,5 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
                 sprites.shield = false
             }
 
-      
->>>>>>> 31beab8024458d8c9ed9678fb3ee024948a80592
     }
 }

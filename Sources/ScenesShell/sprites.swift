@@ -380,25 +380,27 @@ class Sprites : RenderableEntity {
         
         
         if skelSprites.isReady {
-            swap4 += 1
-            if swap4 > 3 {
-                swap4 = 0
-                count4 += 1
-                count5 += 1
-            }
-
-            if count4 > 8 {
-                count4 = 0
-                
-            }
-            
-            if count5 > 10 {
-                let chance = Int.random(in:1...10)
-                if chance == 4 {
-                    direction = Int.random(in:1...4)
-                    count5 = 0
+            if skelDead == false && count != 5 {
+                swap4 += 1
+                if swap4 > 3 {
+                    swap4 = 0
+                    count4 += 1
+                    count5 += 1
                 }
-            }
+                
+                if count4 > 8 {
+                    count4 = 0
+                    
+                }
+            }    
+                
+                if count5 > 10 {
+                    let chance = Int.random(in:1...10)
+                    if chance == 4 {
+                        direction = Int.random(in:1...4)
+                        count5 = 0
+                    }
+                }
             
                 let downRect = Rect(topLeft:Point(x:(64 * count4) + 8, y:(10 * 64) + 7), size:Size(width:56, height:56))
                 let upRect = Rect(topLeft:Point(x:(64 * count4) + 8, y:(8 * 64) + 7), size:Size(width:56, height:56))
@@ -548,7 +550,7 @@ class Sprites : RenderableEntity {
                 let fireCast = Rect(topLeft:Point(x: 91 / 2 * count2 + 10, y:11), size:Size(width:35, height: 35))
                 
                 let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:64, height:64))
-                let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:84))
+                let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:64))
                 let fireRect = Rect(topLeft:Point(x:fxPos, y:fyPos), size:Size(width:fireSize, height: fireSize))
                 
                 if current == "down" {

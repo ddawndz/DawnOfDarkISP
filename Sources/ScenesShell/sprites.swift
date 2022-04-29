@@ -39,13 +39,13 @@ class Sprites : RenderableEntity {
     var currentSprite = "main"
     var fireball = false
     var fireSize = 10
-    var health = 3
+    var lives = 39
     var sxPos = 0
     var syPos = 0
     var swap4 = 4
     var direction = 1
     var count5 = 0
-    var skelDead = false
+    var skelLives = 30
     
     init() {
         guard let mainSpritesURL = URL(string:"https://www.linkpicture.com/q/download_381.png") else {
@@ -58,7 +58,7 @@ class Sprites : RenderableEntity {
         guard let fireSpritesURL = URL(string:"https://linkpicture.com/q/images-removebg-preview_13.png") else {
             fatalError("Fireball exploded...")
         }
-        guard let skelSpritesURL = URL(string:"https://linkpicture.com/q/Download75802.png") else {
+        guard let skelSpritesURL = URL(string:"https://linkpicture.com/q/Download74503.png") else {
             fatalError("Skeleton collapsed...")
         }
         //https://linkpicture.com/q/RobbieDevSprites.png
@@ -80,7 +80,7 @@ class Sprites : RenderableEntity {
         yPos = canvasSize.center.y
         fxPos = xPos
         fyPos = yPos
-        sxPos = xPos
+        sxPos = xPos + 200
         syPos = yPos
         var direction = Int.random(in:1...4)
         print(canvasSize)
@@ -193,11 +193,13 @@ class Sprites : RenderableEntity {
 
             swap += 1
             swap2 += 1
-            if swap > 1 {
+            
+            if swap > 2  {
                 swap = 0
                 count += 1
             }
-            if swap2 > 11 {
+            
+            if swap2 > 15 {
                 slash = false
                 swap2 = 0
                 count = 0
@@ -378,7 +380,8 @@ class Sprites : RenderableEntity {
         
         
         if skelSprites.isReady {
-            if skelDead == false && count != 5 {
+            if skelLives < 0 && count4 == 5 {
+            } else {
                 swap4 += 1
                 if swap4 > 3 {
                     swap4 = 0
@@ -392,6 +395,7 @@ class Sprites : RenderableEntity {
                 }
             }    
                 
+
                 if count5 > 10 {
                     let chance = Int.random(in:1...10)
                     if chance == 4 {
@@ -404,15 +408,18 @@ class Sprites : RenderableEntity {
                 let upRect = Rect(topLeft:Point(x:(64 * count4) + 8, y:(8 * 64) + 7), size:Size(width:56, height:56))
                 let leftRect = Rect(topLeft:Point(x:(64 * count4) + 8, y:(9 * 64) + 7), size:Size(width:56, height:56))
                 let rightRect = Rect(topLeft:Point(x: (64 * count4) + 8, y:(11 * 64) + 7), size:Size(width:56, height:56))
+                //let slashRect = 
                 let deadRect = Rect(topLeft:Point(x: (64 * count4) + 8, y:(20 * 64) + 7), size:Size(width:56, height: 56))
-                let destinationRect = Rect(topLeft:Point(x:sxPos, y:syPos), size:Size(width:84, height:84))
-                if skelDead == true {
+                let destinationRect = Rect(topLeft:Point(x:sxPos, y:syPos), size:Size(width:64, height:64))
+                if skelLives < 0 {
                     direction = 100
                     if count4 > 5 {
                         count4 = 5
                     }
                     skelSprites.renderMode = .sourceAndDestination(sourceRect:deadRect, destinationRect:destinationRect)
                 }
+
+                //if sSlash == false { 
                 switch direction {
                 case 1:
                     
@@ -450,21 +457,11 @@ class Sprites : RenderableEntity {
                 default:
                     break
                     
-                } 
+                }
+//        } 
                                     
                 canvas.render(skelSprites)
             }
-        
-            
-            
-            
-
-
-
-
-
-
-
 
 
                 if currentSprite == "main" {
@@ -481,9 +478,13 @@ class Sprites : RenderableEntity {
                 let upShield = Rect(topLeft:Point(x:(64 * count) + 8, y: (4 * 64) + 7), size:Size(width:56, height:56))
                 let leftShield = Rect(topLeft:Point(x:(64 * count) + 8, y:(5 * 64) + 7), size:Size(width:56, height:56))
                 let rightShield = Rect(topLeft:Point(x: (64 * count) + 8, y:(7 * 64) + 7), size:Size(width:56, height:56))
-                
+                let deadRect = Rect(topLeft:Point(x: (64 * count) + 8, y:(20 * 64) + 7), size:Size(width:56, height: 56))
+
                 let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:64, height:64))
-                let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:84))
+                let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:149, height:84))
+                if lives < 0 {
+                    mainSprites.renderMode = .sourceAndDestination(sourceRect:deadRect, destinationRect:destinationRect)
+                }
                 if current == "down" {
                     mainSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
                 }
@@ -548,7 +549,7 @@ class Sprites : RenderableEntity {
                 let fireCast = Rect(topLeft:Point(x: 91 / 2 * count2 + 10, y:11), size:Size(width:35, height: 35))
                 
                 let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:64, height:64))
-                let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:194, height:64))
+                let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:149, height:64))
                 let fireRect = Rect(topLeft:Point(x:fxPos, y:fyPos), size:Size(width:fireSize, height: fireSize))
                 
                 if current == "down" {
@@ -623,9 +624,9 @@ class Sprites : RenderableEntity {
         let containment = canvasBoundingRect.containment(target: mainCharacter)
         let firebla = Rect(topLeft:Point(x:fxPos, y:fyPos), size:Size(width:fireSize, height:fireSize))
         let containment2 = canvasBoundingRect.containment(target: firebla)
-        let skely = Rect(topLeft:Point(x:sxPos, y:syPos), size:Size(width:84, height: 84))
+        let skely = Rect(topLeft:Point(x:sxPos, y:syPos), size:Size(width:64, height:64 ))
         let containment3 = canvasBoundingRect.containment(target: skely)
-        let see = Rect(topLeft:Point(x:sxPos - (84 * 4), y:syPos - (84 * 4)), size:Size(width:84 * 9, height:84 * 9))
+        let see = Rect(topLeft:Point(x:sxPos - (84 * 2), y:syPos - (84 * 2)), size:Size(width:84 * 5, height:84 * 5))
         let containment4 = see.containment(target: mainCharacter)
         let containment5 = skely.containment(target: mainCharacter)
         let firedeath = Rect(topLeft:Point(x:fxPos + 5, y:fyPos + 5), size:Size(width:fireSize * 3 / 4, height:fireSize * 3 / 4))
@@ -636,7 +637,7 @@ class Sprites : RenderableEntity {
         } else {
             rightBound = false
         }
-        if !containment4.intersection([.contact]).isEmpty && skelDead == false {
+        if !containment4.intersection([.contact]).isEmpty && skelLives >= 0 {
             if !containment5.intersection([.beyondRight]).isEmpty {
                 direction = 4 
                 sxPos += 1
@@ -651,12 +652,33 @@ class Sprites : RenderableEntity {
                 syPos -= 1
             }
         }
-        if !containment5.intersection([.contact]).isEmpty && slash == true {
-            skelDead = true
+        if !containment5.intersection([.contact]).isEmpty && count == 5 && slash == true {
+            
+            switch current {
+            case "upSlash":
+                syPos -= 100
+            case "downSlash":
+                syPos += 100
+            case "leftSlash":
+                sxPos -= 100
+            case "rightSlash":
+                sxPos += 100
+            default:
+                break
+            }
+            skelLives -= 1
+                 
+                
         }
         if !containfire.intersection([.contact]).isEmpty && fireball == true {
-            skelDead = true
+            skelLives -= 1
         }
+//        if !containment5.intersection([.contact]).isEmpty && slash == false && skelDead == false {
+//            lives -= 1
+//            xPos -= 20
+//            yPos -= 20
+//        }
+            
                 
         if !containment2.intersection([ .beyondRight]).isEmpty {
             fireball = false

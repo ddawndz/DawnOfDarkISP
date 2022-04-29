@@ -46,7 +46,8 @@ class Sprites : RenderableEntity {
     var direction = 1
     var count5 = 0
     var skelLives = 3
-//    var sSlash = false
+    var sSlash = false
+    var slashCount = 22
     
     init() {
                
@@ -391,40 +392,46 @@ class Sprites : RenderableEntity {
                     count4 += 1
                     count5 += 1
                 }
-                
                 if count4 > 8 {
                     count4 = 0
                     
                 }
             }    
-                
-
-                if count5 > 10 {
-                    let chance = Int.random(in:1...10)
-                    if chance == 4 {
-                        direction = Int.random(in:1...4)
-                        count5 = 0
-                    }
-                }
             
-                let downRect = Rect(topLeft:Point(x:(64 * count4) + 8, y:(10 * 64) + 7), size:Size(width:56, height:56))
-                let upRect = Rect(topLeft:Point(x:(64 * count4) + 8, y:(8 * 64) + 7), size:Size(width:56, height:56))
-                let leftRect = Rect(topLeft:Point(x:(64 * count4) + 8, y:(9 * 64) + 7), size:Size(width:56, height:56))
-                let rightRect = Rect(topLeft:Point(x: (64 * count4) + 8, y:(11 * 64) + 7), size:Size(width:56, height:56))
-                //let slashRect = 
-                let deadRect = Rect(topLeft:Point(x: (64 * count4) + 8, y:(20 * 64) + 7), size:Size(width:56, height: 56))
-                let destinationRect = Rect(topLeft:Point(x:sxPos, y:syPos), size:Size(width:64, height:64))
-                if skelLives < 0 {
-                    direction = 100
-                    if count4 > 5 {
-                        count4 = 5
-                    }
-                    skelSprites.renderMode = .sourceAndDestination(sourceRect:deadRect, destinationRect:destinationRect)
+            if count5 > 10 {
+                let chance = Int.random(in:1...10)
+                if chance == 4 {
+                    direction = Int.random(in:1...4)
+                    count5 = 0
                 }
+            }
 
-                //if sSlash == false { 
+            
+            
+            let downRect = Rect(topLeft:Point(x:(64 * count4) + 8, y:(10 * 64) + 7), size:Size(width:56, height:56))
+            let upRect = Rect(topLeft:Point(x:(64 * count4) + 8, y:(8 * 64) + 7), size:Size(width:56, height:56))
+            let leftRect = Rect(topLeft:Point(x:(64 * count4) + 8, y:(9 * 64) + 7), size:Size(width:56, height:56))
+            let rightRect = Rect(topLeft:Point(x: (64 * count4) + 8, y:(11 * 64) + 7), size:Size(width:56, height:56))
+            //let upSlash = Rect(topLeft:Point(x: (64 * count4 * 3) + 72, y:(22 * 64) + 7), size:Size(width:129, height:56))
+            //let leftSlash = Rect(topLeft:Point(x: (64 * count4 * 3) + 72 - 25, y:(25 * 64) + 7), size:Size(width:129, height:56))
+            //let downSlash = Rect(topLeft:Point(x: (64 * count4 * 3) + 72, y:(28 * 64) + 7), size:Size(width:130, height:60))
+            //let rightSlash = Rect(topLeft:Point(x: (64 * count4 * 3) + 72 - 25, y:(31 * 64) + 7), size:Size(width:130, height:56))
+            let slasher = Rect(topLeft:Point(x: (64 * 4 * 3) + 72, y: (slashCount * 64) + 7), size:Size(width:130, height:60))
+            
+            let deadRect = Rect(topLeft:Point(x: (64 * count4) + 8, y:(20 * 64) + 7), size:Size(width:56, height: 56))
+            let slashRect = Rect(topLeft:Point(x:sxPos - 25, y:syPos), size:Size(width:149, height:64))
+            let destinationRect = Rect(topLeft:Point(x:sxPos, y:syPos), size:Size(width:64, height:64))
+            if skelLives < 0 {
+                direction = 100
+                if count4 > 5 {
+                    count4 = 5
+                }
+                skelSprites.renderMode = .sourceAndDestination(sourceRect:deadRect, destinationRect:destinationRect)
+            }
+            if sSlash == false {
                 switch direction {
                 case 1:
+                    //if !sSlash {
                     skelSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
                     if bound == false {
                         syPos += 3
@@ -432,7 +439,12 @@ class Sprites : RenderableEntity {
                         direction = 2
                         syPos -= 3
                     }
+                    //} else {
+                    //    skelSprites.renderMode = .sourceAndDestination(sourceRect:downSlash, destinationRect: slashRect)
+                    //}
+                
                 case 2:
+                    //if !sSlash {
                     skelSprites.renderMode = .sourceAndDestination(sourceRect:upRect, destinationRect:destinationRect)
                     if bound == false {
                         syPos -= 3
@@ -440,7 +452,11 @@ class Sprites : RenderableEntity {
                         direction = 1
                         syPos += 3
                     }
+                    //} else {
+                    //    skelSprites.renderMode = .sourceAndDestination(sourceRect:upSlash, destinationRect:slashRect)
+                    //}
                 case 3:
+                    //if !sSlash {
                     skelSprites.renderMode = .sourceAndDestination(sourceRect:leftRect, destinationRect:destinationRect)
                     if bound == false {
                         sxPos -= 3
@@ -448,7 +464,11 @@ class Sprites : RenderableEntity {
                         direction = 4
                         sxPos += 3
                     }
+                    //} else {
+                    //    skelSprites.renderMode = .sourceAndDestination(sourceRect:leftSlash, destinationRect:slashRect)
+                    //}
                 case 4:
+                    //if !sSlash {
                     skelSprites.renderMode = .sourceAndDestination(sourceRect:rightRect, destinationRect:destinationRect)
                     if bound == false {
                         sxPos += 3
@@ -456,11 +476,24 @@ class Sprites : RenderableEntity {
                         direction = 3
                         sxPos -= 3
                     }
+                    // } else {
+                    //     skelSprites.renderMode = .sourceAndDestination(sourceRect:rightSlash, destinationRect:slashRect)
+                    // }
                 default:
                     break
+                }
+            }
+                if sSlash == true {
+                    if slashCount > 31 {
+                        sSlash = false
+                        slashCount = 22
+                        count4 = 0
+                    }
+                    skelSprites.renderMode = .sourceAndDestination(sourceRect:slasher, destinationRect:slashRect)
+                    slashCount += 3
                     
                 }
-//        } 
+                    
                                     
                 canvas.render(skelSprites)
             }
@@ -645,7 +678,20 @@ class Sprites : RenderableEntity {
             rightBound = false
         }
         if !containment4.intersection([.contact]).isEmpty && skelLives >= 0 {
-            if !containment5.intersection([.beyondRight]).isEmpty {
+            if !containment5.intersection([.beyondRight, .containedVertically]).isEmpty {
+                direction = 4
+                sxPos += 1
+            } else if !containment5.intersection([.beyondLeft, .containedVertically]).isEmpty {
+                    direction = 3
+                    sxPos -= 1
+                }
+        } else if !containment5.intersection([.beyondBottom, .containedHorizontally]).isEmpty {
+            direction = 1
+            syPos += 1
+        } else if !containment5.intersection([.beyondTop, .containedHorizontally]).isEmpty {
+            direction = 2
+            syPos -= 1
+        } else if !containment5.intersection([.beyondRight]).isEmpty {
                 direction = 4 
                 sxPos += 1
             } else if !containment5.intersection([.beyondLeft]).isEmpty {
@@ -658,8 +704,13 @@ class Sprites : RenderableEntity {
                 direction = 2
                 syPos -= 1
             }
-        }
+        
 
+        if !containment5.intersection([.contact]).isEmpty && lives >= 0 && sSlash == false && skelLives >= 0 {
+            sSlash = true
+            count4 = 0
+        }
+        
         if !containment5.intersection([.contact]).isEmpty && count == 5 && slash == true {
             
             switch current {
@@ -675,32 +726,27 @@ class Sprites : RenderableEntity {
                 break
             }
             skelLives -= 1
-                 
-                
         }
-        //if sSlash == true && count4 > 4 {
-        //    skelLives -= 1
-        //}
-
-        //if 
-        //    sSlash = true
-        //}
         
-        if !containment5.intersection([.contact]).isEmpty && slash != true && lives >= 0 && skelLives >= 0 {
+        if !containment5.intersection([.contact]).isEmpty && sSlash == true {
             lives -= 1
             switch direction {
             case 1:
-                yPos -= 75
+                yPos -= 100
             case 2:
-                yPos += 75
+                yPos += 100
             case 3:
-                xPos -= 75
+                xPos -= 100
             case 4:
-                xPos += 75
+                xPos += 100
             default:
                 break
             }
+            
         }
+
+        
+        
         if !containfire.intersection([.containedFully]).isEmpty {
             skelLives -= 1
         }

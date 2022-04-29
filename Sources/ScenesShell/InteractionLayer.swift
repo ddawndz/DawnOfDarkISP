@@ -32,49 +32,48 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
 
     func onKeyDown(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
         print(key)
-        if key == "s" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
+        if key == "s" && sprites.slash == false && sprites.cast == false && sprites.shield == false && sprites.lives >= 0 {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
             sprites.downMove = true
             //}
         }
-        if key == "w" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
+        if key == "w" && sprites.slash == false && sprites.cast == false && sprites.shield == false && sprites.lives >= 0 {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
             sprites.upMove = true
             //}
         }
-        if key == "d" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
+        if key == "d" && sprites.slash == false && sprites.cast == false && sprites.shield == false && sprites.lives >= 0 {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict == true
-            //}
-            sprites.rightMove = true
+                sprites.rightMove = true
+
         }
-        if key == "a" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
+        if key == "a" && sprites.slash == false && sprites.cast == false && sprites.shield == false && sprites.lives >= 0 {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
-            //}
-            sprites.leftMove = true
+                sprites.leftMove = true
         }
-        if key == "n" && sprites.cast == false && sprites.shield == false {
+        if key == "n" && sprites.cast == false && sprites.shield == false && sprites.lives >= 0 {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
             sprites.slash = true
             //}
         }
-        if key == "m" && sprites.cast == false && sprites.slash == false {
+        if key == "m" && sprites.cast == false && sprites.slash == false && sprites.lives >= 0 {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
             sprites.shield = true
             //}
         }
-        if key == "," && sprites.slash == false && sprites.shield == false {
+        if key == "," && sprites.slash == false && sprites.shield == false && sprites.lives >= 0 {
             if sprites.currentSprite == "robbie" {
                 sprites.fireball = false
                 sprites.cast = true
@@ -137,6 +136,7 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
         }
     }
     func onKeyUp(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
+<<<<<<< HEAD
         if key == "w" {
             sprites.upMove = false
         }
@@ -168,5 +168,26 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
           sprites.shield = false
           }
          */
+=======
+
+            if key == "w" {
+                sprites.upMove = false
+            }
+            if key == "a" {
+                sprites.leftMove = false
+           }
+            if key == "d" {
+                sprites.rightMove = false
+            }
+            if key == "s" {
+                sprites.downMove = false
+            }
+            
+            if key == "m" {
+                sprites.shield = false
+            }
+
+      
+>>>>>>> 31beab8024458d8c9ed9678fb3ee024948a80592
     }
 }

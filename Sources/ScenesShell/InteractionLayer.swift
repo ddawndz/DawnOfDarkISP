@@ -50,23 +50,15 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict == true
-<<<<<<< HEAD
-                sprites.rightMove = true
-=======
-            sprites.leftMove = true
->>>>>>> 8e725a2acceac0202bdf88b6f5393b1d5921616e
             //}
+            sprites.rightMove = true
         }
         if key == "a" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
-<<<<<<< HEAD
-                sprites.leftMove = true
-=======
-            sprites.rightMove = true
->>>>>>> 8e725a2acceac0202bdf88b6f5393b1d5921616e
             //}
+            sprites.leftMove = true
         }
         if key == "n" && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
@@ -120,12 +112,6 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
                     sprites.fxPos += 69
                     sprites.fyPos += 5
                 }
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 8e725a2acceac0202bdf88b6f5393b1d5921616e
             }
         }
         if key == "p" && devCount == 0 {
@@ -151,25 +137,22 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
         }
     }
     func onKeyUp(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
-<<<<<<< HEAD
-            if key == "w" {
-                sprites.upMove = false
-            }
-            if key == "a" {
-                sprites.leftMove = false
-            }
-            if key == "d" {
-                sprites.rightMove = false
-            }
-            if key == "s" {
-                sprites.downMove = false
-            }
-            
-            if key == "m" {
-                sprites.shield = false
-            }
-=======
-        if key == "ArrowUp" {
+        if key == "w" {
+            sprites.upMove = false
+        }
+        if key == "a" {
+            sprites.leftMove = false
+        }
+        if key == "d" {
+            sprites.rightMove = false
+        }
+        if key == "s" {
+            sprites.downMove = false
+        }
+        if key == "m" {
+            sprites.shield = false
+        }
+        /*if key == "ArrowUp" {
             sprites.upMove = false
         }
         if key == "ArrowLeft" {
@@ -185,6 +168,6 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
         if key == "x" {
             sprites.shield = false
         }
->>>>>>> 8e725a2acceac0202bdf88b6f5393b1d5921616e
+        */
     }
 }

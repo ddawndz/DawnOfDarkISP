@@ -50,17 +50,25 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict == true
+<<<<<<< HEAD
 
                 sprites.rightMove = true
 
+=======
+>>>>>>> be3f65b44682db6fcfd33116447b6d01b51bea31
             //}
+            sprites.rightMove = true
         }
         if key == "a" && sprites.slash == false && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
+<<<<<<< HEAD
                 sprites.leftMove = true
+=======
+>>>>>>> be3f65b44682db6fcfd33116447b6d01b51bea31
             //}
+            sprites.leftMove = true
         }
         if key == "n" && sprites.cast == false && sprites.shield == false {
             //if sprites.restrict == true {
@@ -139,6 +147,7 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
         }
     }
     func onKeyUp(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
+<<<<<<< HEAD
 
             if key == "w" {
                 sprites.upMove = false
@@ -158,6 +167,24 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
             }
 
         if key == "ArrowUp" {
+=======
+        if key == "w" {
+            sprites.upMove = false
+        }
+        if key == "a" {
+            sprites.leftMove = false
+        }
+        if key == "d" {
+            sprites.rightMove = false
+        }
+        if key == "s" {
+            sprites.downMove = false
+        }
+        if key == "m" {
+            sprites.shield = false
+        }
+        /*if key == "ArrowUp" {
+>>>>>>> be3f65b44682db6fcfd33116447b6d01b51bea31
             sprites.upMove = false
         }
         if key == "ArrowLeft" {
@@ -173,6 +200,10 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
         if key == "x" {
             sprites.shield = false
         }
+<<<<<<< HEAD
 
+=======
+        */
+>>>>>>> be3f65b44682db6fcfd33116447b6d01b51bea31
     }
 }

@@ -752,9 +752,9 @@ class Sprites : RenderableEntity {
 
         
         
-        if !containfire.intersection([.contact]).isEmpty {
-            skelLives -= 1
-        }
+        //if !containfire.intersection([.contact]).isEmpty {
+        //    skelLives -= 1
+        //}
             
                 
         if !containment2.intersection([ .beyondRight]).isEmpty {

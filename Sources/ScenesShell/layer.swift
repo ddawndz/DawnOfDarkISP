@@ -75,6 +75,7 @@ class bgLayer : RenderableEntity {
     }
 
     func rS2(canvas: Canvas) {
+        
     }
 
     func rS3(canvas: Canvas) {

@@ -6,6 +6,7 @@ class bgLayer : RenderableEntity {
     let ground : Image
     let grass : Image
     let rock : Image
+    let entrance : Image
     var csx = 0
     var csy = 0
     var ys = 0
@@ -57,10 +58,20 @@ class bgLayer : RenderableEntity {
         gGrid(canvas:canvas, obj: grass, columns: 2, xt: 8, yt: 8, rows: 0)
         gGrid(canvas:canvas, obj: grass, columns: 2, xt: 13, yt: 3, rows: 0)
         gGrid(canvas:canvas, obj: grass, columns: 2, xt: 8, yt: 2, rows: 0)
+        gGrid(canvas:canvas, obj: grass, columns: 2, xt: 8, yt: 4, rows: 0)
+        gGrid(canvas:canvas, obj: grass, columns: 0, xt: 8, yt: 5, rows: 0)
+        gGrid(canvas:canvas, obj: grass, columns: 0, xt: 10, yt: 5, rows: 0) 
+
+        entrance.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y:0), size:Size(width: csx / 21, height: csy / 11)))
+
+        gGrid(canvas:canvas, obj: entrance, columns: 2, xt: 3, yt: 3, rows: 0)
 
         rock.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y:0), size:Size(width: csx / 21, height: csy / 11)))
 
         gGrid(canvas:canvas, obj: rock, columns: 1, xt: 3, yt: 1, rows: 0)
+        gGrid(canvas:canvas, obj: rock, columns: 3, xt: 2, yt: 2, rows: 0)
+        gGrid(canvas:canvas, obj: rock, columns: 2, xt: 1, yt: 3, rows: 0)
+        gGrid(canvas:canvas, obj: rock, columns: 0, xt: 5, yt: 3, rows: 0)
     }
 
     func rS2(canvas: Canvas) {
@@ -101,6 +112,10 @@ class bgLayer : RenderableEntity {
             fatalError("Failed to create URL for ROCK")
         }
         rock = Image(sourceURL:rockURL)
+        guard let entranceURL = URL(string:"https://www.linkpicture.com/q/download-4_26.png") else{
+                fatalError("Failed to create URL for ENTRANCE")
+        }
+        entrance = Image(sourceURL:entranceURL)
         
         // Using a meaningful name can be helpful for debugging
         super.init(name:"bgLayer")
@@ -109,6 +124,7 @@ class bgLayer : RenderableEntity {
         canvas.setup(ground)
         canvas.setup(grass)
         canvas.setup(rock)
+        canvas.setup(entrance)
         csx = canvasSize.width
         csy = canvasSize.height
     }

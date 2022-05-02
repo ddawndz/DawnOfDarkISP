@@ -96,8 +96,7 @@ class bgLayer : RenderableEntity {
     }
 
     func rS9(canvas: Canvas) {
-    }
-    
+    }    
     init() {
         guard let groundURL = URL(string:"https://www.linkpicture.com/q/download-2_48.png") else {
             fatalError("Failed to create URL for GROUND")
@@ -158,20 +157,5 @@ class bgLayer : RenderableEntity {
                 rS9(canvas:canvas)
             }
         }
-        /*if ground.isReady {
-            ground.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y: 0), size:Size(width:csx / 21, height:csy / 11)))
-
-            gGrid(canvas:canvas, obj: ground, columns: 21, xt: 0, yt: 0, rows: 11)
-
-            
-        }
-        if grass.isReady {
-            grass.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y:0), size:Size(width: csx / 21, height:csy / 11)))
-
-            gGrid(canvas:canvas, obj: grass, columns: 21, xt: 0, yt: 0, rows: 0)
-            gGrid(canvas:canvas, obj: grass, columns: 0, xt: 0, yt: 0, rows: 10)
-            gGrid(canvas:canvas, obj: grass, columns: 21, xt: 0, yt: 10, rows: 0)
-            gGrid(canvas:canvas, obj: grass, columns: 0, xt: 20, yt: 0, rows: 10)
-        }*/
     }
 }

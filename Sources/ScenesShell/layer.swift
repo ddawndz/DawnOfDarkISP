@@ -5,6 +5,7 @@ import Igis
 class bgLayer : RenderableEntity {
     let ground : Image
     let grass : Image
+    let rock : Image
     var csx = 0
     var csy = 0
     var ys = 0
@@ -37,8 +38,8 @@ class bgLayer : RenderableEntity {
 
     func rS1(canvas: Canvas) {
         ground.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y: 0), size:Size(width:csx / 21, height:csy / 11)))
-        gGrid(canvas:canvas, obj: ground, columns: 21, xt: 0, yt: 0, rows: 11)
 
+        gGrid(canvas:canvas, obj: ground, columns: 21, xt: 0, yt: 0, rows: 11)
 
         grass.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y:0), size:Size(width: csx / 21, height:csy / 11)))
 
@@ -49,6 +50,17 @@ class bgLayer : RenderableEntity {
         gGrid(canvas:canvas, obj: grass, columns: 0, xt: 20, yt: 0, rows: 2)
         gGrid(canvas:canvas, obj: grass, columns: 0, xt: 20, yt: 5, rows: 1)
         gGrid(canvas:canvas, obj: grass, columns: 0, xt: 20, yt: 9, rows: 1)
+        gGrid(canvas:canvas, obj: grass, columns: 2, xt: 3, yt: 5, rows: 0)
+        gGrid(canvas:canvas, obj: grass, columns: 2, xt: 3, yt: 7, rows: 0)
+        gGrid(canvas:canvas, obj: grass, columns: 2, xt: 13, yt: 5, rows: 0)
+        gGrid(canvas:canvas, obj: grass, columns: 2, xt: 13, yt: 7, rows: 0)
+        gGrid(canvas:canvas, obj: grass, columns: 2, xt: 8, yt: 8, rows: 0)
+        gGrid(canvas:canvas, obj: grass, columns: 2, xt: 13, yt: 3, rows: 0)
+        gGrid(canvas:canvas, obj: grass, columns: 2, xt: 8, yt: 2, rows: 0)
+
+        rock.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y:0), size:Size(width: csx / 21, height: csy / 11)))
+
+        gGrid(canvas:canvas, obj: rock, columns: 1, xt: 3, yt: 1, rows: 0)
     }
 
     func rS2(canvas: Canvas) {
@@ -85,6 +97,10 @@ class bgLayer : RenderableEntity {
             fatalError("Failed to create URL for GRASS")
         }
         grass = Image(sourceURL:grassURL)
+        guard let rockURL = URL(string:"https://www.linkpicture.com/q/download_125.jpeg") else{
+            fatalError("Failed to create URL for ROCK")
+        }
+        rock = Image(sourceURL:rockURL)
         
         // Using a meaningful name can be helpful for debugging
         super.init(name:"bgLayer")
@@ -92,11 +108,12 @@ class bgLayer : RenderableEntity {
     override func setup(canvasSize:Size, canvas:Canvas) {
         canvas.setup(ground)
         canvas.setup(grass)
+        canvas.setup(rock)
         csx = canvasSize.width
         csy = canvasSize.height
     }
     override func render(canvas:Canvas) {
-        if ground.isReady && grass.isReady {
+        if ground.isReady && grass.isReady && rock.isReady{
             if screen == 1 {
                 rS1(canvas:canvas)
             }

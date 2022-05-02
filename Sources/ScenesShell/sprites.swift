@@ -675,11 +675,11 @@ class Sprites : RenderableEntity {
         let firedeath = Rect(topLeft:Point(x:fxPos + 5, y:fyPos + 5), size:Size(width:fireSize * 3 / 4, height:fireSize * 3 / 4))
         let containfire = firedeath.containment(target:skely)
         
-        //if !containment.intersection([.overlapsRight, .beyondRight]).isEmpty {
-        //    rightBound = true
-        //} else {
-        //    rightBound = false
-       // }
+        if !containment.intersection([.overlapsRight, .beyondRight]).isEmpty {
+            rightBound = true
+        } else {
+            rightBound = false
+        }
 
         if !containment4.intersection([.contact]).isEmpty && skelLives >= 0 {
             if !containment5.intersection([.beyondRight, .containedVertically]).isEmpty {
@@ -753,7 +753,7 @@ class Sprites : RenderableEntity {
         
         
         if !containfire.intersection([.contact]).isEmpty {
-//            skelLives -= 1
+            skelLives -= 1
         }
             
                 
@@ -762,11 +762,11 @@ class Sprites : RenderableEntity {
             count3 = 0
         }
         
-//        if !containment.intersection([.overlapsLeft, .beyondLeft]).isEmpty {
-//            leftBound = true
-//        } else {
-//            leftBound = false
-//        }
+        if !containment.intersection([.overlapsLeft, .beyondLeft]).isEmpty {
+            leftBound = true
+        } else {
+            leftBound = false
+        }
         if !containment3.intersection([.overlapsLeft, .beyondLeft]).isEmpty || !containment3.intersection([.overlapsRight, .beyondRight]).isEmpty || !containment3.intersection([.overlapsTop, .beyondTop]).isEmpty || !containment3.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
             bound = true
         } else {
@@ -776,11 +776,11 @@ class Sprites : RenderableEntity {
             fireball = false
             count3 = 0
         }
-        //if !containment.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
-        //    downBound = true
-        //} else {
-        //    downBound = false
-        //}
+        if !containment.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
+            downBound = true
+        } else {
+            downBound = false
+        }
         if !containment2.intersection([ .beyondBottom]).isEmpty {
             fireball = false
             count3 = 0

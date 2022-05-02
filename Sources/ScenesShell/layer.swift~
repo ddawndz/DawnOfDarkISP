@@ -1,9 +1,0 @@
-import Scenes
-import Igis
-
-class layer : RenderableEntity {
-    init() {
-        // Using a meaningful name can be helpful for debugging
-        super.init(name:"bglayer")
-    }
-}

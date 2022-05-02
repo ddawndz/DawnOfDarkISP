@@ -39,7 +39,7 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
             sprites.downMove = true
             //}
         }
-        if key == "w" && sprites.slash == false && sprites.cast == false && sprites.shield == false && sprites.lives >=  0 {
+        if key == "w" && sprites.slash == false && sprites.cast == false && sprites.shield == false && sprites.lives >= 0 {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true

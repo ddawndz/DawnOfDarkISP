@@ -13,8 +13,8 @@ class bgLayer : RenderableEntity {
     var xtot = 0
     var time = 0
     var xt = 0
-    var didRender = false
     var screen = 1
+    var inf = true
     
     func gRow(canvas:Canvas, obj: Image, columns: Int, xt: Int) {
         for i in 0 ... columns {
@@ -37,12 +37,10 @@ class bgLayer : RenderableEntity {
 
     func rS1(canvas: Canvas) {
         ground.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y: 0), size:Size(width:csx / 21, height:csy / 11)))
-        print(csx / 21)
         gGrid(canvas:canvas, obj: ground, columns: 21, xt: 0, yt: 0, rows: 11)
 
 
         grass.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y:0), size:Size(width: csx / 21, height:csy / 11)))
-        print(csx / 21)
 
         gGrid(canvas:canvas, obj: grass, columns: 21, xt: 0, yt: 0, rows: 0)
         gGrid(canvas:canvas, obj: grass, columns: 0, xt: 0, yt: 0, rows: 10)
@@ -99,35 +97,32 @@ class bgLayer : RenderableEntity {
     }
     override func render(canvas:Canvas) {
         if ground.isReady && grass.isReady {
-            if let canvasSize = canvas.canvasSize, !didRender {
-                    // Clear the entire canvas
-                let clearRect = Rect(topLeft:Point(x:0, y:0), size:canvasSize)
-                let clearRectangle = Rectangle(rect:clearRect, fillMode:.clear)
-                canvas.render(clearRectangle)
-    
-                switch (screen) {
-                case 1:
-                    rS1(canvas:canvas)
-                case 2:
-                    rS2(canvas:canvas)
-                case 3:
-                    rS3(canvas:canvas)
-                case 4:
-                    rS4(canvas:canvas)
-                case 5:
-                    rS5(canvas:canvas)
-                case 6:
-                    rS6(canvas:canvas)
-                case 7:
-                    rS7(canvas:canvas)
-                case 8:
-                    rS8(canvas:canvas)
-                case 9:
-                    rS9(canvas:canvas)
-                default:
-                    fatalError("Unexpected pattern: \(screen)")
-                }
-                didRender = true
+            if screen == 1 {
+                rS1(canvas:canvas)
+            }
+            if screen == 2 {
+                rS2(canvas:canvas)
+            }
+            if screen == 3 {
+                rS3(canvas:canvas)
+            }
+            if screen == 4 {
+                rS4(canvas:canvas)
+            }
+            if screen == 5 {
+                rS5(canvas:canvas)
+            }
+            if screen == 6 {
+                rS6(canvas:canvas)
+            }
+            if screen == 7 {
+                rS7(canvas:canvas)
+            }
+            if screen == 8 {
+                rS8(canvas:canvas)
+            }
+            if screen == 9 {
+                rS9(canvas:canvas)
             }
         }
         /*if ground.isReady {

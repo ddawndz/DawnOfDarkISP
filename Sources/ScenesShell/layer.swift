@@ -17,6 +17,7 @@ class bgLayer : RenderableEntity {
     var xt = 0
     var screen = 1
     var inf = true
+    let sprites = Sprites()
     
     func gRow(canvas:Canvas, obj: Image, columns: Int, xt: Int) {
         for i in 0 ... columns {
@@ -127,6 +128,24 @@ class bgLayer : RenderableEntity {
         canvas.setup(entrance)
         csx = canvasSize.width
         csy = canvasSize.height
+    }
+    override func calculate(canvasSize: Size) {
+        let canvasBoundingRect = Rect(size:canvasSize) 
+        let mainCharacter = Rect(topLeft:Point(x:sprites.xPos, y:sprites.yPos), size:Size(width:84, height:84))
+        let containment = canvasBoundingRect.containment(target: mainCharacter)
+        if containment.intersection([.overlapsTop, .beyondTop]).isEmpty {
+            screen -= 3
+        }
+        if containment.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
+            screen += 3
+        }
+        if containment.intersection([.overlapsLeft, .beyondLeft]).isEmpty {
+            screen -= 1
+        }
+        if containment.intersection([.overlapsRight, .beyondRight]).isEmpty {
+            screen += 1
+        }
+        print(screen)
     }
     override func render(canvas:Canvas) {
         if ground.isReady && grass.isReady && rock.isReady{

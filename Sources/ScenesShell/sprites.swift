@@ -48,7 +48,7 @@ class Sprites : RenderableEntity {
     var skelLives = 3
     var sSlash = false
     var slashCount = 22
-    
+        
     init() {
                
         guard let boySpritesURL = URL(string:"https://www.linkpicture.com/q/download-1_133.png") else {
@@ -71,7 +71,7 @@ class Sprites : RenderableEntity {
         robbieSprites = Image(sourceURL:robbieSpritesURL)
         fireSprites = Image(sourceURL:fireSpritesURL)
         skelSprites = Image(sourceURL:skelSpritesURL)
-        // Using a meaningful name can be helpful for debugging
+
         super.init(name:"Background")
     }
 
@@ -109,7 +109,6 @@ class Sprites : RenderableEntity {
         if upMove == true {
             current = "up"
             swap += 1
-            //swap2 += 1
             if swap > 1 {
                 swap = 0
                 count += 1
@@ -118,12 +117,6 @@ class Sprites : RenderableEntity {
                     yPos -= 15
                 }
             }
-            //if swap2 > 11 {
-            //    upMove = false
-            //    restrict = false
-            //    swap2 = 0
-            //    count = 0
-            //}
             if count > 8 {
                 count = 0
             }
@@ -131,7 +124,6 @@ class Sprites : RenderableEntity {
         if leftMove == true {
             current = "left"
             swap += 1
-            //swap2 += 1
             if swap > 1 {
                 swap = 0
                 count += 1
@@ -140,12 +132,6 @@ class Sprites : RenderableEntity {
                     xPos -= 15
                 }
             }
-            //if swap2 > 11 {
-            //    leftMove = false
-            //    restrict = false
-            //    swap2 = 0
-            //    count = 0
-            //}
             if count > 8 {
                 count = 0
             }
@@ -162,12 +148,6 @@ class Sprites : RenderableEntity {
                     xPos += 15
                 }
             }
-            //if swap2 > 11 {
-            //    rightMove = false
-            //    restrict = false
-            //    swap2 = 0
-            //    count = 0
-            //}
             if count > 8 {
                 count = 0
             }
@@ -239,17 +219,10 @@ class Sprites : RenderableEntity {
             }
 
             swap += 1
-            //swap2 += 1
             if swap > 1 {
                 swap = 0
                 count += 1
             }
-            //if swap2 > 11 {
-            //    shield = false
-            //    restrict = false
-            //    swap2 = 0
-            //    count = 6
-            //}
             if count > 6 {
                 count = 6
             }
@@ -395,6 +368,7 @@ class Sprites : RenderableEntity {
                         slashCount += 3
                     }
                 }
+
                 if count4 > 8 {
                     count4 = 0
                     
@@ -415,10 +389,6 @@ class Sprites : RenderableEntity {
             let upRect = Rect(topLeft:Point(x:(64 * count4) + 8, y:(8 * 64) + 7), size:Size(width:56, height:56))
             let leftRect = Rect(topLeft:Point(x:(64 * count4) + 8, y:(9 * 64) + 7), size:Size(width:56, height:56))
             let rightRect = Rect(topLeft:Point(x: (64 * count4) + 8, y:(11 * 64) + 7), size:Size(width:56, height:56))
-            //let upSlash = Rect(topLeft:Point(x: (64 * count4 * 3) + 72, y:(22 * 64) + 7), size:Size(width:129, height:56))
-            //let leftSlash = Rect(topLeft:Point(x: (64 * count4 * 3) + 72 - 25, y:(25 * 64) + 7), size:Size(width:129, height:56))
-            //let downSlash = Rect(topLeft:Point(x: (64 * count4 * 3) + 72, y:(28 * 64) + 7), size:Size(width:130, height:60))
-            //let rightSlash = Rect(topLeft:Point(x: (64 * count4 * 3) + 72 - 25, y:(31 * 64) + 7), size:Size(width:130, height:56))
             let slasher = Rect(topLeft:Point(x: (64 * 4 * 3) + 72, y: (slashCount * 64) + 7), size:Size(width:130, height:60))
             
             let deadRect = Rect(topLeft:Point(x: (64 * count4) + 8, y:(20 * 64) + 7), size:Size(width:56, height: 56))
@@ -434,7 +404,6 @@ class Sprites : RenderableEntity {
             if sSlash == false {
                 switch direction {
                 case 1:
-                    //if !sSlash {
                     skelSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
                     if bound == false {
                         syPos += 3
@@ -442,12 +411,7 @@ class Sprites : RenderableEntity {
                         direction = 2
                         syPos -= 3
                     }
-                    //} else {
-                    //    skelSprites.renderMode = .sourceAndDestination(sourceRect:downSlash, destinationRect: slashRect)
-                    //}
-                
                 case 2:
-                    //if !sSlash {
                     skelSprites.renderMode = .sourceAndDestination(sourceRect:upRect, destinationRect:destinationRect)
                     if bound == false {
                         syPos -= 3
@@ -455,11 +419,7 @@ class Sprites : RenderableEntity {
                         direction = 1
                         syPos += 3
                     }
-                    //} else {
-                    //    skelSprites.renderMode = .sourceAndDestination(sourceRect:upSlash, destinationRect:slashRect)
-                    //}
                 case 3:
-                    //if !sSlash {
                     skelSprites.renderMode = .sourceAndDestination(sourceRect:leftRect, destinationRect:destinationRect)
                     if bound == false {
                         sxPos -= 3
@@ -467,11 +427,7 @@ class Sprites : RenderableEntity {
                         direction = 4
                         sxPos += 3
                     }
-                    //} else {
-                    //    skelSprites.renderMode = .sourceAndDestination(sourceRect:leftSlash, destinationRect:slashRect)
-                    //}
                 case 4:
-                    //if !sSlash {
                     skelSprites.renderMode = .sourceAndDestination(sourceRect:rightRect, destinationRect:destinationRect)
                     if bound == false {
                         sxPos += 3
@@ -479,9 +435,6 @@ class Sprites : RenderableEntity {
                         direction = 3
                         sxPos -= 3
                     }
-                    // } else {
-                    //     skelSprites.renderMode = .sourceAndDestination(sourceRect:rightSlash, destinationRect:slashRect)
-                    // }
                 default:
                     break
                 }
@@ -670,43 +623,53 @@ class Sprites : RenderableEntity {
         let skely = Rect(topLeft:Point(x:sxPos, y:syPos), size:Size(width:64, height:64 ))
         let containment3 = canvasBoundingRect.containment(target: skely)
         let see = Rect(topLeft:Point(x:sxPos - (84 * 2), y:syPos - (84 * 2)), size:Size(width:84 * 5, height:84 * 5))
+        let skelyAlign = Rect(topLeft:Point(x:sxPos + 28, y:syPos + 28), size:Size(width:1, height:1))
         let containment4 = see.containment(target: mainCharacter)
         let containment5 = skely.containment(target: mainCharacter)
         let firedeath = Rect(topLeft:Point(x:fxPos + 5, y:fyPos + 5), size:Size(width:fireSize * 3 / 4, height:fireSize * 3 / 4))
         let containfire = firedeath.containment(target:skely)
+        let characterAlign = Rect(topLeft:Point(x: xPos + 28, y: yPos + 28), size:Size(width:1, height:1))
+        let containment6 = skelyAlign.containment(target:characterAlign)
         
         if !containment.intersection([.overlapsRight, .beyondRight]).isEmpty {
             rightBound = true
         } else {
             rightBound = false
         }
-
+    
         if !containment4.intersection([.contact]).isEmpty && skelLives >= 0 {
-            if !containment5.intersection([.beyondRight, .containedVertically]).isEmpty {
-                direction = 4
-                sxPos += 1
-            } else if !containment5.intersection([.beyondLeft, .containedVertically]).isEmpty {
+            if !containment5.intersection([.beyondRight]).isEmpty && direction == 4 {
+                
+                sxPos += 2
+                if !containment6.intersection([.beyondBottom]).isEmpty {
+                    syPos += 2
+                } else if !containment6.intersection([.beyondTop]).isEmpty {
+                    syPos -= 2
+                }
+            } else if !containment5.intersection([.beyondLeft]).isEmpty && direction == 3 {
                 direction = 3
- 
-               sxPos -= 1
-            } else if !containment5.intersection([.beyondBottom, .containedHorizontally]).isEmpty {
+                sxPos -= 2
+                if !containment6.intersection([.beyondBottom]).isEmpty {
+                    syPos += 2
+                } else if !containment6.intersection([.beyondTop]).isEmpty {
+                    syPos -= 2
+                } 
+            } else if !containment5.intersection([.beyondBottom]).isEmpty && direction == 1{
                 direction = 1
-                syPos += 1
-            } else if !containment5.intersection([.beyondTop, .containedHorizontally]).isEmpty {
+                syPos += 2
+                if !containment6.intersection([.beyondRight]).isEmpty {
+                    sxPos += 2
+                } else if !containment6.intersection([.beyondLeft]).isEmpty {
+                    sxPos -= 2
+                }
+            } else if !containment5.intersection([.beyondTop]).isEmpty && direction == 2 {
                 direction = 2
-                syPos -= 1
-            } else if !containment5.intersection([.beyondRight]).isEmpty {
-                direction = 4 
-                sxPos += 1
-            } else if !containment5.intersection([.beyondLeft]).isEmpty {
-                direction = 3
-                sxPos -= 1
-            } else if !containment5.intersection([.beyondBottom]).isEmpty {
-                direction = 1
-                syPos += 1
-            } else if !containment5.intersection([.beyondTop]).isEmpty {
-                direction = 2
-                syPos -= 1
+                syPos -= 2
+                if !containment6.intersection([.beyondRight]).isEmpty {
+                    syPos += 2
+                } else if !containment6.intersection([.beyondLeft]).isEmpty {
+                    syPos -= 2
+                }
             }
         }
         
@@ -757,7 +720,7 @@ class Sprites : RenderableEntity {
         //}
             
                 
-        if !containment2.intersection([ .beyondRight]).isEmpty {
+        if !containment2.intersection([.beyondRight]).isEmpty {
             fireball = false
             count3 = 0
         }

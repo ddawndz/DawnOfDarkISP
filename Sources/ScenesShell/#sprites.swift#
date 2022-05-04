@@ -91,6 +91,16 @@ class Sprites : RenderableEntity {
         syPos = yPos
         var direction = Int.random(in:1...4)
         print(canvasSize)
+        let fromPoint = rectangle.rect.topLeft
+        let toPoint = Point(x:canvasSize.width - 200, y:rectangle.rect.topLeft.y)
+        let tween = Tween(from:fromPoint, to:toPoint, duration:3, ease:ease, update: {self.rectangle.rect.topLeft = $0})
+        tween.repeatStyle = .forever
+        tween.direction = .alternate
+        animationController.register(animation: tween)
+        tween.play()
+        }
+    override func render(canvas:Canvas) {
+    canvas.render(fillStyle, rectangle, text)
     }
 
     override func render(canvas:Canvas) {        

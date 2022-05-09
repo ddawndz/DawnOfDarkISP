@@ -11,6 +11,7 @@ class Sprites : RenderableEntity {
     let robbieSprites : Image
     let fireSprites: Image
     let skelSprites: Image
+    let archerSprites: Image
     var count = 0
     var count2 = 0
     var maxCount = 8
@@ -27,6 +28,7 @@ class Sprites : RenderableEntity {
     var swap3 = 0
     var count3 = 0
     var count4 = 0
+    var count42 = 0
     var current = "down"
     var current2 = "down"
     var slash = false
@@ -37,27 +39,42 @@ class Sprites : RenderableEntity {
     var leftBound = false
     var rightBound = false
     var bound = false
+    var bound2 = false
     var currentSprite = "main"
     var fireball = false
     var fireSize = 10
     var lives = 5
     var sxPos = 0
+    var sxPos2 = 0
     var syPos = 0
+    var syPos2 = 0
     var swap4 = 4
+    var swap42 = 4
     var direction = 1
+    var direction2 = 2
     var count5 = 0
-    var skelLives = 3
+    var count52 = 0
+    var skelLives = 4
+    var skelLives2 = 4
     var sSlash = false
+    var sSlash2 = false
     var slashCount = 22
+    var slashCount2 = 22
     var seen = false
+    var seen2 = false
     var wait = 0
+    var wait2 = 0
    
     init() {
                
         guard let boySpritesURL = URL(string:"https://www.linkpicture.com/q/download-1_133.png") else {
             fatalError("Failed to create URL for whitehouse")
         }
-       
+
+        guard let archerSpritesURL = URL(string:"https://linkpicture.com/q/archer.png") else {
+            fatalError("Archer shot itself...")
+        }
+        
         // https://www.linkpicture.com/q/download_381.png
         guard let robbieSpritesURL = URL(string:"https://linkpicture.com/q/Download35839.png") else {
             fatalError("DevSprites Locked...")
@@ -71,15 +88,19 @@ class Sprites : RenderableEntity {
         //https://linkpicture.com/q/RobbieDevSprites.png
         // 
         boySprites = Image(sourceURL:boySpritesURL)
+        archerSprites = Image(sourceURL:archerSpritesURL)
         robbieSprites = Image(sourceURL:robbieSpritesURL)
         fireSprites = Image(sourceURL:fireSpritesURL)
         skelSprites = Image(sourceURL:skelSpritesURL)
 
         super.init(name:"Background")
     }
+    
+        
 
     override func setup(canvasSize:Size, canvas:Canvas) {
         canvas.setup(boySprites)
+        canvas.setup(archerSprites)
         canvas.setup(robbieSprites)
         canvas.setup(fireSprites)
         canvas.setup(skelSprites)
@@ -89,11 +110,164 @@ class Sprites : RenderableEntity {
         fyPos = yPos
         sxPos = xPos + 200
         syPos = yPos
-        var direction = Int.random(in:1...4)
+        sxPos2 = xPos
+        syPos2 = yPos + 200
         print(canvasSize)
     }
 
     override func render(canvas:Canvas) {        
+
+        func funco(skelLives: inout Int, countfour: inout Int, swapfour: inout Int, countfive: inout Int, slashone: inout Int, seenone: inout Bool, sSlashone: inout Bool, waitone: inout Int, boundone: inout Bool, directionone: inout Int, sxPosone: inout Int, syPosone: inout Int) {
+            
+            if skelSprites.isReady {
+            if skelLives < 0 && countfour == 5 {
+            } else {
+                swapfour += 1
+                if swapfour > 3 {
+                    swapfour = 0
+                    countfour += 1
+                    countfive += 1
+                    if sSlashone == true {
+                        slashone += 3
+                    }
+                }
+
+                if countfour > 8 {
+                    countfour = 0
+                    
+                }
+            }    
+            
+            if countfive > 20 && seenone == false {
+                let chance = Int.random(in:1...10)
+                if chance == 4 && waitone < 1 {
+                    waitone = 30
+                //    direction = Int.random(in:1...4)
+                    countfive = 0
+                }
+                
+            }
+
+            
+            
+            let downRect = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(10 * 64) + 7), size:Size(width:56, height:56))
+            let upRect = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(8 * 64) + 7), size:Size(width:56, height:56))
+            let leftRect = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(9 * 64) + 7), size:Size(width:56, height:56))
+            let rightRect = Rect(topLeft:Point(x: (64 * countfour) + 8, y:(11 * 64) + 7), size:Size(width:56, height:56))
+            let slasher = Rect(topLeft:Point(x: (64 * 4 * 3) + 72, y: (slashone * 64) + 7), size:Size(width:130, height:60))
+            
+            let deadRect = Rect(topLeft:Point(x: (64 * countfour) + 8, y:(20 * 64) + 7), size:Size(width:56, height: 56))
+            let slashRect = Rect(topLeft:Point(x:sxPosone - 25, y:syPosone), size:Size(width:149, height:64))
+            let destinationRect = Rect(topLeft:Point(x:sxPosone, y:syPosone), size:Size(width:64, height:64))
+            if skelLives < 0 {
+                directionone = 100
+                if countfour > 5 {
+                    countfour = 5
+                }
+                skelSprites.renderMode = .sourceAndDestination(sourceRect:deadRect, destinationRect:destinationRect)
+            }
+            if sSlashone == false {
+                switch directionone {
+                case 1:
+                    skelSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
+                    if waitone < 1 {
+                    if boundone == false {
+                        syPosone += 2
+                    } else {
+                        directionone = 2
+                        syPosone -= 2
+                    }
+                    }
+                case 2:
+                    skelSprites.renderMode = .sourceAndDestination(sourceRect:upRect, destinationRect:destinationRect)
+                    if waitone < 1 {
+                    if boundone == false {
+                        syPosone -= 2
+                    } else {
+                        directionone = 1
+                        syPosone += 2
+                    }
+                    }
+                case 3:
+                    skelSprites.renderMode = .sourceAndDestination(sourceRect:leftRect, destinationRect:destinationRect)
+                    if waitone < 1 {
+                    if boundone == false {
+                        sxPosone -= 2
+                    } else {
+                        directionone = 4
+                        sxPosone += 2
+                    }
+                    }
+                case 4:
+                    skelSprites.renderMode = .sourceAndDestination(sourceRect:rightRect, destinationRect:destinationRect)
+                    if waitone < 1 {
+                    if boundone == false {
+                        sxPosone += 2
+                    } else {
+                        direction = 3
+                        sxPosone -= 2
+                    }
+                }
+                default:
+                    break
+                }
+            }
+            
+            if waitone > 0 {
+                waitone -= 1
+                if waitone == 29 {
+                    switch directionone {
+                    case 1:
+                        directionone = 3
+                    case 2:
+                        directionone = 4
+                    case 3:
+                        directionone = 1
+                    case 4:
+                        directionone = 2
+                    default:
+                        break
+                    }
+                } else if waitone == 15  {
+                    switch directionone {
+                    case 3:
+                        directionone = 4
+                    case 4:
+                        directionone = 3
+                    case 1:
+                        directionone = 2
+                    case 2:
+                        directionone = 1
+                    default:
+                        break
+                    }
+                } else if waitone == 1 {
+                    directionone = Int.random(in: 1...4)
+                }
+                
+            }
+                        
+                        
+                
+                
+            
+                if sSlashone == true {
+                    if slashone > 31 {
+                        sSlashone = false
+                        slashone = 22
+                        countfour = 0
+                    }                                       
+                    skelSprites.renderMode = .sourceAndDestination(sourceRect:slasher, destinationRect:slashRect)
+                    
+                    
+                }
+                
+                
+                canvas.render(skelSprites)
+            }
+        }
+        
+        
         if downMove == true {
             current = "down"
             swap += 1
@@ -358,7 +532,10 @@ class Sprites : RenderableEntity {
         }
         
         
-        
+        funco(skelLives: &skelLives, countfour: &count4, swapfour: &swap4, countfive: &count5, slashone: &slashCount, seenone: &seen, sSlashone: &sSlash,  waitone: &wait, boundone: &bound, directionone: &direction, sxPosone: &sxPos, syPosone: &syPos)
+
+        funco(skelLives: &skelLives2, countfour: &count42, swapfour: &swap42, countfive: &count52, slashone: &slashCount2, seenone: &seen2, sSlashone: &sSlash2,  waitone: &wait2, boundone: &bound2, directionone: &direction2, sxPosone: &sxPos2, syPosone: &syPos2)
+        /*
         if skelSprites.isReady {
             if skelLives < 0 && count4 == 5 {
             } else {
@@ -504,7 +681,8 @@ class Sprites : RenderableEntity {
                     
                                     
                 canvas.render(skelSprites)
-            }
+        }
+        */
 
         
         if currentSprite == "main" {
@@ -673,11 +851,14 @@ class Sprites : RenderableEntity {
         let containment = canvasBoundingRect.containment(target: mainCharacter)
         let firebla = Rect(topLeft:Point(x:fxPos, y:fyPos), size:Size(width:fireSize, height:fireSize))
         let containment2 = canvasBoundingRect.containment(target: firebla)
+
+
         let skely = Rect(topLeft:Point(x:sxPos, y:syPos), size:Size(width:64, height:64 ))
         let containment3 = canvasBoundingRect.containment(target: skely)
         let seeHorizontal = Rect(topLeft:Point(x:sxPos - (84 * 2), y:syPos - (84)), size:Size(width:84 * 5, height:84 * 3))
         let seeVertical = Rect(topLeft:Point(x:sxPos - (84), y:syPos - (84 * 2)), size:Size(width:84 * 3, height:84 * 5))
         let skelyAlign = Rect(topLeft:Point(x:sxPos + 28, y:syPos + 28), size:Size(width:1, height:1))
+        let seeAll = Rect(topLeft:Point(x:sxPos - 84 * 2, y:syPos - 84 * 2), size:Size(width:84 * 5, height: 84 * 5))
         let containment7 = seeVertical.containment(target: mainCharacter)
         let containment4 = seeHorizontal.containment(target: mainCharacter)
         let containment5 = skely.containment(target: mainCharacter)
@@ -686,32 +867,74 @@ class Sprites : RenderableEntity {
         let characterAlign = Rect(topLeft:Point(x: xPos + 28, y: yPos + 28), size:Size(width:1, height:1))
         let containment6 = skelyAlign.containment(target:characterAlign)
         let containment8 = slashBox.containment(target:skely)
+        let containment9 = skelyAlign.containment(target:mainCharacter)
+        let containment10 = seeAll.containment(target:mainCharacter)
+
         if !containment.intersection([.overlapsRight, .beyondRight]).isEmpty {
             rightBound = true
         } else {
             rightBound = false
         }
 
+        if !containment2.intersection([.beyondRight]).isEmpty {
+            fireball = false
+            count3 = 0
+        }
+        
+        if !containment.intersection([.overlapsLeft, .beyondLeft]).isEmpty {
+            leftBound = true
+        } else {
+            leftBound = false
+        }
+        if !containment2.intersection([ .beyondLeft]).isEmpty {
+            fireball = false
+            count3 = 0
+        }
+        if !containment.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
+            downBound = true
+        } else {
+            downBound = false
+        }
+        if !containment2.intersection([ .beyondBottom]).isEmpty {
+            fireball = false
+            count3 = 0
+        }
+        if !containment.intersection([.overlapsTop, .beyondTop]).isEmpty {
+            upBound = true
+        } else {
+            upBound = false
+        }
+        if !containment2.intersection([ .beyondTop]).isEmpty {
+            fireball = false
+            count3 = 0
+        }
+
+        if !containfire.intersection([.contact]).isEmpty && fireball == true {
+            skelLives -= 1
+        }
+        
+
+          
         if (!containment4.intersection([.contact]).isEmpty || !containment7.intersection([.contact]).isEmpty) && skelLives >= 0 {
-            if !containment7.intersection([.beyondRight]).isEmpty && direction == 4 {
+            if !containment4.intersection([.contact]).isEmpty && direction == 4 {
                 seen = true
             }
-            if !containment7.intersection([.beyondLeft]).isEmpty && direction == 3 {
+            if !containment4.intersection([.contact]).isEmpty && direction == 3 {
                 seen = true
             }
-            if !containment4.intersection([.beyondBottom]).isEmpty && direction == 1{
+            if !containment7.intersection([.contact]).isEmpty && direction == 1{
                 seen = true
             }
-            if !containment4.intersection([.beyondTop]).isEmpty && direction == 2 {
+            if !containment7.intersection([.contact]).isEmpty && direction == 2 {
                 seen = true
             }
         }
         
         
-        if (!containment4.intersection([.contact]).isEmpty || !containment7.intersection([.contact]).isEmpty) && skelLives >= 0 && seen == true {
+        if (!containment10.intersection([.contact]).isEmpty) && skelLives >= 0 && seen == true {
             if !containment5.intersection([.beyondRight]).isEmpty {
                 direction = 4
-                sxPos += 2
+                sxPos += 3
                 if !containment6.intersection([.beyondBottom]).isEmpty {
                     syPos += 3
                 } else if !containment6.intersection([.beyondTop]).isEmpty {
@@ -720,7 +943,7 @@ class Sprites : RenderableEntity {
             }
             if !containment5.intersection([.beyondLeft]).isEmpty {
                 direction = 3
-                sxPos -= 2
+                sxPos -= 3
                 if !containment6.intersection([.beyondBottom]).isEmpty {
                     syPos += 3
                 } else if !containment6.intersection([.beyondTop]).isEmpty {
@@ -729,7 +952,7 @@ class Sprites : RenderableEntity {
             }
             if !containment5.intersection([.beyondBottom]).isEmpty {
                 direction = 1
-                syPos += 2
+                syPos += 3
                 if !containment6.intersection([.beyondRight]).isEmpty {
                     sxPos += 3
                 } else if !containment6.intersection([.beyondLeft]).isEmpty {
@@ -738,7 +961,7 @@ class Sprites : RenderableEntity {
             }
             if !containment5.intersection([.beyondTop]).isEmpty {
                 direction = 2
-                syPos -= 2
+                syPos -= 3
                 if !containment6.intersection([.beyondRight]).isEmpty {
                     syPos += 3
                 } else if !containment6.intersection([.beyondLeft]).isEmpty {
@@ -750,7 +973,7 @@ class Sprites : RenderableEntity {
         }
         
 
-        if !containment5.intersection([.contact]).isEmpty && lives >= 0 && sSlash == false && skelLives >= 0 {
+        if !containment9.intersection([.contact]).isEmpty && lives >= 0 && sSlash == false && skelLives >= 0 {
             sSlash = true
             count4 = 0
         }
@@ -784,27 +1007,27 @@ class Sprites : RenderableEntity {
         if !containment5.intersection([.contact]).isEmpty && shield == true && count > 4 {
             switch current {
             case "upSlash":
-                syPos -= 50
+                syPos -= 75
             case "upShield":
-                syPos -= 50
+                syPos -= 75
             case "downSlash":
-                syPos += 50
+                syPos += 75
             case "downShield":
-                syPos += 50
+                syPos += 75
             case "leftSlash":
-                sxPos -= 50
+                sxPos -= 75
             case "leftShield":
-                sxPos -= 50
+                sxPos -= 75
             case "rightSlash":
-                sxPos += 50
+                sxPos += 75
             case "rightShield":
-                sxPos += 50
+                sxPos += 75
             default:
                 break
             }
         }
         
-        if !containment5.intersection([.contact]).isEmpty && sSlash == true && slashCount > 25 && shield == false && count < 4 {
+        if !containment5.intersection([.contact]).isEmpty && sSlash == true && slashCount > 25 && shield == false {
             lives -= 1
             switch direction {
             case 1:
@@ -823,48 +1046,19 @@ class Sprites : RenderableEntity {
 
         
         
-        //if !containfire.intersection([.contact]).isEmpty {
-        //    skelLives -= 1
-        //}
+        
             
                 
-        if !containment2.intersection([.beyondRight]).isEmpty {
-            fireball = false
-            count3 = 0
-        }
         
-        if !containment.intersection([.overlapsLeft, .beyondLeft]).isEmpty {
-            leftBound = true
-        } else {
-            leftBound = false
-        }
         if !containment3.intersection([.overlapsLeft, .beyondLeft]).isEmpty || !containment3.intersection([.overlapsRight, .beyondRight]).isEmpty || !containment3.intersection([.overlapsTop, .beyondTop]).isEmpty || !containment3.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
             bound = true
         } else {
             bound = false
         }
-        if !containment2.intersection([ .beyondLeft]).isEmpty {
-            fireball = false
-            count3 = 0
-        }
-        if !containment.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
-            downBound = true
-        } else {
-            downBound = false
-        }
-        if !containment2.intersection([ .beyondBottom]).isEmpty {
-            fireball = false
-            count3 = 0
-        }
-        if !containment.intersection([.overlapsTop, .beyondTop]).isEmpty {
-            upBound = true
-        } else {
-            upBound = false
-        }
-        if !containment2.intersection([ .beyondTop]).isEmpty {
-            fireball = false
-            count3 = 0
-        }
+
+
+
+        
     }
 }
 

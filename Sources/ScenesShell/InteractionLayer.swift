@@ -190,6 +190,5 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler{
             sprites.gamestart = false
             bglayer.gamestart = true
         }
-        print(sprites.gamestart, bglayer.gamestart)
     }
 }

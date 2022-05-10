@@ -22,12 +22,20 @@ class bgLayer : RenderableEntity, EntityMouseClickHandler {
     var inf = true
     var radians = 0.0
     var gamestart = false
+//    var ctn = 1
     var mbbr = Rect(size:Size(width: 1, height: 1))
     let sprites = Sprites()
     
     func gRow(canvas:Canvas, obj: Image, columns: Int, xt: Int) {
         for i in 0 ... columns {
             obj.renderMode = .destinationRect(Rect(topLeft:Point(x:csx / 21 * i + xt * csx / 21,y: ytot), size:Size(width:csx / 21 + 1, height:csy / 11 + 1)))
+
+/*            let objbr = Rect(topLeft:Point(x:csx / 21 * i + xt * csx / 21, y: ytot), size:Size(width:csx / 21 + 1, height: csy / 11 + 1))
+
+            let containment = objbr.containment(target: sprites.skely, sprites.skely)
+
+            if !containment.intersection([overlapsRight, .beyondRight, overlapsLeft, .beyondLeft, overlapsTop, .beyondTop, overlapsBottom, .beyondBottom]).isEmpty {
+            }*/
             
             xtot = csx / 21 * i + xt * csx / 21
             canvas.render(obj)

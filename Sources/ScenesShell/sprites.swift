@@ -121,7 +121,13 @@ class Sprites : RenderableEntity {
     }
 
     override func render(canvas:Canvas) {        
-        // Easy rendering of skeletons. With this miraculous function, we can make unlimited skeletons, although this might not be a good idea. Yes, I did name the function funco.
+
+        // Easy rendering of skeletons. With this miraculous function, we can make unlimited skeletons, although this might not be a good idea. Yes, I did name the function funco
+
+
+        guard let layer = layer as? InteractionLayer else {
+            fatalError("Your fool")
+        }
         func funco(skelLives: inout Int, countfour: inout Int, swapfour: inout Int, countfive: inout Int, slashone: inout Int, seenone: inout Bool, sSlashone: inout Bool, waitone: inout Int, boundone: inout Bool, directionone: inout Int, sxPosone: inout Int, syPosone: inout Int) {
             
             if skelSprites.isReady {

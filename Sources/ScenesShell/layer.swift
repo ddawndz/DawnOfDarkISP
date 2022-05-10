@@ -22,6 +22,7 @@ class bgLayer : RenderableEntity, EntityMouseClickHandler {
     var inf = true
     var radians = 0.0
     var gamestart = false
+    var mbbr = Rect(size:Size(width: 1, height: 1))
     let sprites = Sprites()
     
     func gRow(canvas:Canvas, obj: Image, columns: Int, xt: Int) {

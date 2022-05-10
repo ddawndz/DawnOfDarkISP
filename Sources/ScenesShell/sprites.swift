@@ -62,11 +62,8 @@ class Sprites : RenderableEntity {
     var seen = false
     var seen2 = false
     var wait = 0
-<<<<<<< HEAD
     var gamestart = false
-=======
     var wait2 = 0
->>>>>>> 1ffbba529c9b6f46469639d1f616371c96a46247
    
     init() {
                
@@ -114,14 +111,13 @@ class Sprites : RenderableEntity {
         fyPos = yPos
         sxPos = xPos + 200
         syPos = yPos
-<<<<<<< HEAD
         var direction = Int.random(in:1...4)
-=======
+
         sxPos2 = xPos
         syPos2 = yPos + 200
         // each time a new sprite is introduced, x and y coordinates are needed.
         
->>>>>>> 1ffbba529c9b6f46469639d1f616371c96a46247
+
     }
 
     override func render(canvas:Canvas) {        
@@ -688,18 +684,16 @@ class Sprites : RenderableEntity {
                     
                     
                 }
-<<<<<<< HEAD
+
                 if gamestart == true {
                     canvas.render(skelSprites)
                 }
             }
-=======
-                    
                                     
                 canvas.render(skelSprites)
         }
         */
->>>>>>> 1ffbba529c9b6f46469639d1f616371c96a46247
+
 
         
         if currentSprite == "main" {

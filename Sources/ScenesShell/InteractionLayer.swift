@@ -189,23 +189,6 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler, EntityMouseClickHa
           sprites.shield = false
           }
          */
-
-            if key == "w" {
-                sprites.upMove = false
-            }
-            if key == "a" {
-                sprites.leftMove = false
-           }
-            if key == "d" {
-                sprites.rightMove = false
-            }
-            if key == "s" {
-                sprites.downMove = false
-            }
-            
-            if key == "m" {
-                sprites.shield = false
-            }
     }
 
     override func preCalculate(canvas: Canvas) {

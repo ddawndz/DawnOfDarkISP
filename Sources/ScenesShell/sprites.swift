@@ -1,7 +1,6 @@
 import Foundation
 import Scenes
 import Igis
-import ScenesAnimations
 
 /*
  This class is responsible for rendering the background.
@@ -51,6 +50,7 @@ class Sprites : RenderableEntity {
     var slashCount = 22
     var seen = false
     var wait = 0
+    var gamestart = false
    
     init() {
                
@@ -90,7 +90,6 @@ class Sprites : RenderableEntity {
         sxPos = xPos + 200
         syPos = yPos
         var direction = Int.random(in:1...4)
-        print(canvasSize)
     }
 
     override func render(canvas:Canvas) {        
@@ -501,9 +500,9 @@ class Sprites : RenderableEntity {
                     
                     
                 }
-                    
-                                    
-                canvas.render(skelSprites)
+                if gamestart == true {
+                    canvas.render(skelSprites)
+                }
             }
 
         
@@ -570,8 +569,9 @@ class Sprites : RenderableEntity {
                 if lives < 0 {
                     boySprites.renderMode = .sourceAndDestination(sourceRect:deadRect, destinationRect:destinationRect)
                 }
-                canvas.render(boySprites)
-                
+                if gamestart == true {
+                    canvas.render(boySprites)
+                }
             }
         }
         
@@ -653,12 +653,12 @@ class Sprites : RenderableEntity {
                 if fireball == true {
                     fireSprites.renderMode = .sourceAndDestination(sourceRect:fireCast, destinationRect:fireRect)
                 }
-                if fireball == true {
-                    canvas.render(fireSprites)
-                }
-                canvas.render(robbieSprites)
-                
-                
+                if gamestart == true {
+                    if fireball == true {
+                        canvas.render(fireSprites)
+                    }
+                    canvas.render(robbieSprites)
+                }                
             }
         }
     }

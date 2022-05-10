@@ -7,9 +7,17 @@ import Igis
  */
 
 
-class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
+class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler, EntityMouseClickHandler {
     let sprites = Sprites()
+    let bglayer = bgLayer()
     var devCount = 0
+    var mbbr = Rect(topLeft:(size:Size(width: 1, height: 1)))
+    var gamestart = false
+
+    func onEntityMouseClick(globalLocation:Point) {
+        mbbr.topLeft.x = globalLocation.x
+        mbbr.topLeft.y = globalLocation.y
+    }
 
     init() {
         // Using a meaningful name can be helpful for debugging
@@ -22,12 +30,13 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
     override func preSetup(canvasSize: Size, canvas: Canvas) {
         dispatcher.registerKeyDownHandler(handler: self)
         dispatcher.registerKeyUpHandler(handler: self)
-        print(canvasSize)
+        dispatcher.registerEntityMouseHandler(handler: self)
     }
 
     override func postTeardown() {
         dispatcher.unregisterKeyDownHandler(handler: self)
         dispatcher.unregisterKeyUpHandler(handler: self)
+        dispatcher.unregisterMouseClickHandler(handler: self)
     }
 
     func onKeyDown(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
@@ -185,7 +194,24 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler {
             if key == "m" {
                 sprites.shield = false
             }
+    }
 
+    override func preCalculate(canvas: Canvas) {
+        let gmb1br = Rect(topLeft:Point(x: csx / 2 - csx / 6 / 2, y: csy / 2 - csy / 13 / 2 + 60), size:Size(width:csx / 6, height: csy / 14))
 
+        let containment = mbbr.containment(target: gmb1br)
+
+        if !containment.intersection([.overlapsFully]).isEmpty {
+            gamestart = true
+        }
+
+        if gamestart == true {
+            sprites.gamestart = true
+            bglayer.gamestart = true
+        } else {
+            sprites.gamestart = false
+            bglayer.gamestart = true
+        }
+        print(sprites.gamestart, bglayer.gamestart)
     }
 }

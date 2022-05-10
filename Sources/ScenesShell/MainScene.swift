@@ -13,7 +13,7 @@ class MainScene : Scene {
        One for the background, one for interaction,
        and one for the foreground.
      */
-    let bgLayer = LayerBase(backgroundSpeed: 3)
+    let bgLayer = LayerBase()
     let aLayer = AidanBase()
     let rLayer = RobbieBase()
     let iLayer = InteractionLayer()

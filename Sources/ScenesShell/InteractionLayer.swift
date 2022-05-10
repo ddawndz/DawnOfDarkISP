@@ -46,6 +46,9 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler, EntityMouseClickHa
             //} else {
             //    sprites.restrict = true
             sprites.downMove = true
+            sprites.leftMove = false
+            sprites.rightMove = false
+            sprites.upMove = false
             //}
         }
         if key == "w" && sprites.slash == false && sprites.cast == false && sprites.shield == false && sprites.lives >= 0 {
@@ -53,20 +56,29 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler, EntityMouseClickHa
             //} else {
             //    sprites.restrict = true
             sprites.upMove = true
+            sprites.downMove = false
+            sprites.leftMove = false
+            sprites.downMove = false
             //}
         }
         if key == "d" && sprites.slash == false && sprites.cast == false && sprites.shield == false && sprites.lives >= 0 {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict == true
-                sprites.rightMove = true
+            sprites.rightMove = true
+            sprites.leftMove = false
+            sprites.downMove = false
+            sprites.upMove = false
 
         }
         if key == "a" && sprites.slash == false && sprites.cast == false && sprites.shield == false && sprites.lives >= 0 {
             //if sprites.restrict == true {
             //} else {
             //    sprites.restrict = true
-                sprites.leftMove = true
+            sprites.leftMove = true
+            sprites.rightMove = false
+            sprites.downMove = false
+            sprites.upMove = false
         }
         if key == "n" && sprites.cast == false && sprites.shield == false && sprites.lives >= 0 {
             //if sprites.restrict == true {
@@ -214,4 +226,5 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler, EntityMouseClickHa
         }
         print(sprites.gamestart, bglayer.gamestart)
     }
+        
 }

@@ -10,6 +10,7 @@ class Sprites : RenderableEntity {
     let robbieSprites : Image
     let fireSprites: Image
     let skelSprites: Image
+    let archerSprites: Image
     var count = 0
     var count2 = 0
     var maxCount = 8
@@ -26,6 +27,7 @@ class Sprites : RenderableEntity {
     var swap3 = 0
     var count3 = 0
     var count4 = 0
+    var count42 = 0
     var current = "down"
     var current2 = "down"
     var slash = false
@@ -36,28 +38,46 @@ class Sprites : RenderableEntity {
     var leftBound = false
     var rightBound = false
     var bound = false
+    var bound2 = false
     var currentSprite = "main"
     var fireball = false
     var fireSize = 10
     var lives = 5
     var sxPos = 0
+    var sxPos2 = 0
     var syPos = 0
+    var syPos2 = 0
     var swap4 = 4
+    var swap42 = 4
     var direction = 1
+    var direction2 = 2
     var count5 = 0
-    var skelLives = 3
+    var count52 = 0
+    var skelLives = 4
+    var skelLives2 = 4
     var sSlash = false
+    var sSlash2 = false
     var slashCount = 22
+    var slashCount2 = 22
     var seen = false
+    var seen2 = false
     var wait = 0
+<<<<<<< HEAD
     var gamestart = false
+=======
+    var wait2 = 0
+>>>>>>> 1ffbba529c9b6f46469639d1f616371c96a46247
    
     init() {
                
         guard let boySpritesURL = URL(string:"https://www.linkpicture.com/q/download-1_133.png") else {
             fatalError("Failed to create URL for whitehouse")
         }
-       
+
+        guard let archerSpritesURL = URL(string:"https://linkpicture.com/q/archer.png") else {
+            fatalError("Archer shot itself...")
+        }
+        
         // https://www.linkpicture.com/q/download_381.png
         guard let robbieSpritesURL = URL(string:"https://linkpicture.com/q/Download35839.png") else {
             fatalError("DevSprites Locked...")
@@ -68,18 +88,23 @@ class Sprites : RenderableEntity {
         guard let skelSpritesURL = URL(string:"https://linkpicture.com/q/Download74503.png") else {
             fatalError("Skeleton collapsed...")
         }
+        
         //https://linkpicture.com/q/RobbieDevSprites.png
-        // 
+        // sprites for the skeletons, and the main character.
         boySprites = Image(sourceURL:boySpritesURL)
+        archerSprites = Image(sourceURL:archerSpritesURL)
         robbieSprites = Image(sourceURL:robbieSpritesURL)
         fireSprites = Image(sourceURL:fireSpritesURL)
         skelSprites = Image(sourceURL:skelSpritesURL)
 
         super.init(name:"Background")
     }
+    
+        
 
     override func setup(canvasSize:Size, canvas:Canvas) {
         canvas.setup(boySprites)
+        canvas.setup(archerSprites)
         canvas.setup(robbieSprites)
         canvas.setup(fireSprites)
         canvas.setup(skelSprites)
@@ -89,10 +114,170 @@ class Sprites : RenderableEntity {
         fyPos = yPos
         sxPos = xPos + 200
         syPos = yPos
+<<<<<<< HEAD
         var direction = Int.random(in:1...4)
+=======
+        sxPos2 = xPos
+        syPos2 = yPos + 200
+        // each time a new sprite is introduced, x and y coordinates are needed.
+        
+>>>>>>> 1ffbba529c9b6f46469639d1f616371c96a46247
     }
 
     override func render(canvas:Canvas) {        
+        // Easy rendering of skeletons. With this miraculous function, we can make unlimited skeletons, although this might not be a good idea. Yes, I did name the function funco.
+        func funco(skelLives: inout Int, countfour: inout Int, swapfour: inout Int, countfive: inout Int, slashone: inout Int, seenone: inout Bool, sSlashone: inout Bool, waitone: inout Int, boundone: inout Bool, directionone: inout Int, sxPosone: inout Int, syPosone: inout Int) {
+            
+            if skelSprites.isReady {
+            if skelLives < 0 && countfour == 5 {
+            } else {
+                swapfour += 1
+                if swapfour > 3 {
+                    swapfour = 0
+                    countfour += 1
+                    countfive += 1
+                    if sSlashone == true {
+                        slashone += 3
+                    }
+                }
+
+                if countfour > 8 {
+                    countfour = 0
+                    
+                }
+            }    
+            // the part above counts for 3 frames before switching to the next sprites
+            if countfive > 20 && seenone == false {
+                let chance = Int.random(in:1...10)
+                if chance == 4 && waitone < 1 {
+                    waitone = 30
+                    countfive = 0
+                }
+                
+            }
+            // Uses a randomized timer to switch the skeleton direction. A 1 in 10 chance every frame after 20 frames, it runs at 30 frames per second, so on average we go a different direction every second.
+
+            
+            
+            let downRect = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(10 * 64) + 7), size:Size(width:56, height:56))
+            let upRect = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(8 * 64) + 7), size:Size(width:56, height:56))
+            let leftRect = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(9 * 64) + 7), size:Size(width:56, height:56))
+            let rightRect = Rect(topLeft:Point(x: (64 * countfour) + 8, y:(11 * 64) + 7), size:Size(width:56, height:56))
+            let slasher = Rect(topLeft:Point(x: (64 * 4 * 3) + 72, y: (slashone * 64) + 7), size:Size(width:130, height:60))
+            
+            let deadRect = Rect(topLeft:Point(x: (64 * countfour) + 8, y:(20 * 64) + 7), size:Size(width:56, height: 56))
+            let slashRect = Rect(topLeft:Point(x:sxPosone - 25, y:syPosone), size:Size(width:149, height:64))
+            let destinationRect = Rect(topLeft:Point(x:sxPosone, y:syPosone), size:Size(width:64, height:64))
+            if skelLives < 0 {
+                directionone = 100
+                if countfour > 5 {
+                    countfour = 5
+                }
+                skelSprites.renderMode = .sourceAndDestination(sourceRect:deadRect, destinationRect:destinationRect)
+            }
+            // here are the location algebra for the skeletons. It is about 64 frames in between each sprite. I used a pixel counter and then tested it. Also, isn't this swift terminal wacky? I'm writing comments and yet it is highlighting my code. Weird.
+            if sSlashone == false {
+                switch directionone {
+                case 1:
+                    skelSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
+                    if waitone < 1 {
+                    if boundone == false {
+                        syPosone += 2
+                    } else {
+                        directionone = 2
+                        syPosone -= 2
+                    }
+                    }
+                case 2:
+                    skelSprites.renderMode = .sourceAndDestination(sourceRect:upRect, destinationRect:destinationRect)
+                    if waitone < 1 {
+                    if boundone == false {
+                        syPosone -= 2
+                    } else {
+                        directionone = 1
+                        syPosone += 2
+                    }
+                    }
+                case 3:
+                    skelSprites.renderMode = .sourceAndDestination(sourceRect:leftRect, destinationRect:destinationRect)
+                    if waitone < 1 {
+                    if boundone == false {
+                        sxPosone -= 2
+                    } else {
+                        directionone = 4
+                        sxPosone += 2
+                    }
+                    }
+                case 4:
+                    skelSprites.renderMode = .sourceAndDestination(sourceRect:rightRect, destinationRect:destinationRect)
+                    if waitone < 1 {
+                    if boundone == false {
+                        sxPosone += 2
+                    } else {
+                        direction = 3
+                        sxPosone -= 2
+                    }
+                }
+                default:
+                    break
+                }
+            }
+            
+            if waitone > 0 {
+                waitone -= 1
+                if waitone == 29 {
+                    switch directionone {
+                    case 1:
+                        directionone = 3
+                    case 2:
+                        directionone = 4
+                    case 3:
+                        directionone = 1
+                    case 4:
+                        directionone = 2
+                    default:
+                        break
+                    }
+                } else if waitone == 15  {
+                    switch directionone {
+                    case 3:
+                        directionone = 4
+                    case 4:
+                        directionone = 3
+                    case 1:
+                        directionone = 2
+                    case 2:
+                        directionone = 1
+                    default:
+                        break
+                    }
+                } else if waitone == 1 {
+                    directionone = Int.random(in: 1...4)
+                }
+                
+            }
+                        
+                        
+                
+                
+            
+                if sSlashone == true {
+                    if slashone > 31 {
+                        sSlashone = false
+                        slashone = 22
+                        countfour = 0
+                    }                                       
+                    skelSprites.renderMode = .sourceAndDestination(sourceRect:slasher, destinationRect:slashRect)
+                    
+                    
+                }
+                
+                
+                canvas.render(skelSprites)
+            }
+        }
+        
+        
         if downMove == true {
             current = "down"
             swap += 1
@@ -357,7 +542,10 @@ class Sprites : RenderableEntity {
         }
         
         
-        
+        funco(skelLives: &skelLives, countfour: &count4, swapfour: &swap4, countfive: &count5, slashone: &slashCount, seenone: &seen, sSlashone: &sSlash,  waitone: &wait, boundone: &bound, directionone: &direction, sxPosone: &sxPos, syPosone: &syPos)
+
+        funco(skelLives: &skelLives2, countfour: &count42, swapfour: &swap42, countfive: &count52, slashone: &slashCount2, seenone: &seen2, sSlashone: &sSlash2,  waitone: &wait2, boundone: &bound2, directionone: &direction2, sxPosone: &sxPos2, syPosone: &syPos2)
+        /*
         if skelSprites.isReady {
             if skelLives < 0 && count4 == 5 {
             } else {
@@ -500,10 +688,18 @@ class Sprites : RenderableEntity {
                     
                     
                 }
+<<<<<<< HEAD
                 if gamestart == true {
                     canvas.render(skelSprites)
                 }
             }
+=======
+                    
+                                    
+                canvas.render(skelSprites)
+        }
+        */
+>>>>>>> 1ffbba529c9b6f46469639d1f616371c96a46247
 
         
         if currentSprite == "main" {
@@ -673,161 +869,45 @@ class Sprites : RenderableEntity {
         let containment = canvasBoundingRect.containment(target: mainCharacter)
         let firebla = Rect(topLeft:Point(x:fxPos, y:fyPos), size:Size(width:fireSize, height:fireSize))
         let containment2 = canvasBoundingRect.containment(target: firebla)
+
+
         let skely = Rect(topLeft:Point(x:sxPos, y:syPos), size:Size(width:64, height:64 ))
+        let skely2 = Rect(topLeft:Point(x:sxPos2, y:syPos2), size:Size(width:64, height:64))
         let containment3 = canvasBoundingRect.containment(target: skely)
+        let containment32 = canvasBoundingRect.containment(target: skely2)
         let seeHorizontal = Rect(topLeft:Point(x:sxPos - (84 * 2), y:syPos - (84)), size:Size(width:84 * 5, height:84 * 3))
+        let seeHorizontal2 = Rect(topLeft:Point(x:sxPos2 - (84 * 2), y:syPos2 - 84), size:Size(width:84 * 5, height: 84 * 3))
         let seeVertical = Rect(topLeft:Point(x:sxPos - (84), y:syPos - (84 * 2)), size:Size(width:84 * 3, height:84 * 5))
+        let seeVertical2  = Rect(topLeft:Point(x:sxPos2 - (84), y:syPos2 - (84 * 2)), size:Size(width:84 * 3, height:84 * 5))
         let skelyAlign = Rect(topLeft:Point(x:sxPos + 28, y:syPos + 28), size:Size(width:1, height:1))
+        let skelyAlign2 = Rect(topLeft:Point(x:sxPos2 + 28, y:syPos2 + 28), size:Size(width:1, height:1))
+        let seeAll = Rect(topLeft:Point(x:sxPos - 84 * 2, y:syPos - 84 * 2), size:Size(width:84 * 5, height: 84 * 5))
+        let seeAll2 = Rect(topLeft:Point(x:sxPos2 - 84 * 2, y:syPos2 - 84 * 2), size:Size(width:84 * 5, height: 84 * 5))
         let containment7 = seeVertical.containment(target: mainCharacter)
+        let containment72 = seeVertical2.containment(target: mainCharacter)
         let containment4 = seeHorizontal.containment(target: mainCharacter)
+        let containment42 = seeHorizontal2.containment(target: mainCharacter)
         let containment5 = skely.containment(target: mainCharacter)
+        let containment52 = skely2.containment(target: mainCharacter)
         let firedeath = Rect(topLeft:Point(x:fxPos + 5, y:fyPos + 5), size:Size(width:fireSize * 3 / 4, height:fireSize * 3 / 4))
         let containfire = firedeath.containment(target:skely)
         let characterAlign = Rect(topLeft:Point(x: xPos + 28, y: yPos + 28), size:Size(width:1, height:1))
+     
         let containment6 = skelyAlign.containment(target:characterAlign)
+        let containment62 = skelyAlign2.containment(target:characterAlign)
         let containment8 = slashBox.containment(target:skely)
+        let containment82 = slashBox.containment(target:skely2)
+        let containment9 = skelyAlign.containment(target:mainCharacter)
+        let containment92 = skelyAlign2.containment(target:mainCharacter)
+        let containment10 = seeAll.containment(target:mainCharacter)
+        let containment102 = seeAll2.containment(target:mainCharacter)
+
         if !containment.intersection([.overlapsRight, .beyondRight]).isEmpty {
             rightBound = true
         } else {
             rightBound = false
         }
 
-        if (!containment4.intersection([.contact]).isEmpty || !containment7.intersection([.contact]).isEmpty) && skelLives >= 0 {
-            if !containment7.intersection([.beyondRight]).isEmpty && direction == 4 {
-                seen = true
-            }
-            if !containment7.intersection([.beyondLeft]).isEmpty && direction == 3 {
-                seen = true
-            }
-            if !containment4.intersection([.beyondBottom]).isEmpty && direction == 1{
-                seen = true
-            }
-            if !containment4.intersection([.beyondTop]).isEmpty && direction == 2 {
-                seen = true
-            }
-        }
-        
-        
-        if (!containment4.intersection([.contact]).isEmpty || !containment7.intersection([.contact]).isEmpty) && skelLives >= 0 && seen == true {
-            if !containment5.intersection([.beyondRight]).isEmpty {
-                direction = 4
-                sxPos += 2
-                if !containment6.intersection([.beyondBottom]).isEmpty {
-                    syPos += 3
-                } else if !containment6.intersection([.beyondTop]).isEmpty {
-                    syPos -= 3
-                }
-            }
-            if !containment5.intersection([.beyondLeft]).isEmpty {
-                direction = 3
-                sxPos -= 2
-                if !containment6.intersection([.beyondBottom]).isEmpty {
-                    syPos += 3
-                } else if !containment6.intersection([.beyondTop]).isEmpty {
-                    syPos -= 3
-                } 
-            }
-            if !containment5.intersection([.beyondBottom]).isEmpty {
-                direction = 1
-                syPos += 2
-                if !containment6.intersection([.beyondRight]).isEmpty {
-                    sxPos += 3
-                } else if !containment6.intersection([.beyondLeft]).isEmpty {
-                    sxPos -= 3
-                }
-            }
-            if !containment5.intersection([.beyondTop]).isEmpty {
-                direction = 2
-                syPos -= 2
-                if !containment6.intersection([.beyondRight]).isEmpty {
-                    syPos += 3
-                } else if !containment6.intersection([.beyondLeft]).isEmpty {
-                    syPos -= 3
-                }
-            }
-        } else {
-            seen = false
-        }
-        
-
-        if !containment5.intersection([.contact]).isEmpty && lives >= 0 && sSlash == false && skelLives >= 0 {
-            sSlash = true
-            count4 = 0
-        }
-        
-        if !containment8.intersection([.contact]).isEmpty && slash == true && count > 3 {
-            
-            switch current {
-            case "upSlash":
-                syPos -= 50
-            case "upShield":
-                syPos -= 50
-            case "downSlash":
-                syPos += 50
-            case "downShield":
-                syPos += 50
-            case "leftSlash":
-                sxPos -= 50
-            case "leftShield":
-                sxPos -= 50
-            case "rightSlash":
-                sxPos += 50
-            case "rightShield":
-                sxPos += 50
-            default:
-                break
-            }
-            if slash == true {
-                skelLives -= 1
-            }
-        }
-        if !containment5.intersection([.contact]).isEmpty && shield == true && count > 4 {
-            switch current {
-            case "upSlash":
-                syPos -= 50
-            case "upShield":
-                syPos -= 50
-            case "downSlash":
-                syPos += 50
-            case "downShield":
-                syPos += 50
-            case "leftSlash":
-                sxPos -= 50
-            case "leftShield":
-                sxPos -= 50
-            case "rightSlash":
-                sxPos += 50
-            case "rightShield":
-                sxPos += 50
-            default:
-                break
-            }
-        }
-        
-        if !containment5.intersection([.contact]).isEmpty && sSlash == true && slashCount > 25 && shield == false && count < 4 {
-            lives -= 1
-            switch direction {
-            case 1:
-                yPos += 50
-            case 2:
-                yPos -= 50
-            case 3:
-                xPos -= 50
-            case 4:
-                xPos += 50
-            default:
-                break
-            }
-            
-        }
-
-        
-        
-        //if !containfire.intersection([.contact]).isEmpty {
-        //    skelLives -= 1
-        //}
-            
-                
         if !containment2.intersection([.beyondRight]).isEmpty {
             fireball = false
             count3 = 0
@@ -837,11 +917,6 @@ class Sprites : RenderableEntity {
             leftBound = true
         } else {
             leftBound = false
-        }
-        if !containment3.intersection([.overlapsLeft, .beyondLeft]).isEmpty || !containment3.intersection([.overlapsRight, .beyondRight]).isEmpty || !containment3.intersection([.overlapsTop, .beyondTop]).isEmpty || !containment3.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
-            bound = true
-        } else {
-            bound = false
         }
         if !containment2.intersection([ .beyondLeft]).isEmpty {
             fireball = false
@@ -865,6 +940,153 @@ class Sprites : RenderableEntity {
             fireball = false
             count3 = 0
         }
+
+        if !containfire.intersection([.contact]).isEmpty && fireball == true {
+            skelLives -= 1
+        }
+        
+        func funca(containmentfour: ContainmentSet, containmentseven: ContainmentSet, skelLives: inout Int, directionone: inout Int, seenone: inout Bool, sxPosone: inout Int, syPosone: inout Int, sSlashone: inout Bool, containmentsix: ContainmentSet, containmenteight: ContainmentSet, containmentnine: ContainmentSet, containmentten: ContainmentSet, boundone: inout Bool, livesone: inout Int, countone: inout Int, slashone: inout Bool, shieldone: inout Bool, slashCountone: inout Int, containmentthree: ContainmentSet, xPosone: inout Int, yPosone: inout Int, containmentfive: ContainmentSet, countfour: inout Int) {
+          
+        if (!containmentfour.intersection([.contact]).isEmpty || !containmentseven.intersection([.contact]).isEmpty) && skelLives >= 0 {
+            if !containmentfour.intersection([.contact]).isEmpty && directionone == 4 {
+                seenone = true
+            }
+            if !containmentfour.intersection([.contact]).isEmpty && directionone == 3 {
+                seenone = true
+            }
+            if !containmentseven.intersection([.contact]).isEmpty && directionone == 1{
+                seenone = true
+            }
+            if !containmentseven.intersection([.contact]).isEmpty && directionone == 2 {
+                seenone = true
+            }
+        }
+        
+        
+        if (!containmentten.intersection([.contact]).isEmpty) && skelLives >= 0 && seenone == true {
+            if !containmentfive.intersection([.beyondRight]).isEmpty {
+                directionone = 4
+                sxPosone += 3
+                if !containmentsix.intersection([.beyondBottom]).isEmpty {
+                    syPosone += 3
+                } else if !containmentsix.intersection([.beyondTop]).isEmpty {
+                    syPosone -= 3
+                }
+            }
+            if !containmentfive.intersection([.beyondLeft]).isEmpty {
+                directionone = 3
+                sxPosone -= 3
+                if !containmentsix.intersection([.beyondBottom]).isEmpty {
+                    syPosone += 3
+                } else if !containmentsix.intersection([.beyondTop]).isEmpty {
+                    syPosone -= 3
+                } 
+            }
+            if !containmentfive.intersection([.beyondBottom]).isEmpty {
+                directionone = 1
+                syPosone += 3
+                if !containment6.intersection([.beyondRight]).isEmpty {
+                    sxPosone += 3
+                } else if !containmentsix.intersection([.beyondLeft]).isEmpty {
+                    sxPosone -= 3
+                }
+            }
+            if !containmentfive.intersection([.beyondTop]).isEmpty {
+                directionone = 2
+                syPosone -= 3
+                if !containmentsix.intersection([.beyondRight]).isEmpty {
+                    syPosone += 3
+                } else if !containmentsix.intersection([.beyondLeft]).isEmpty {
+                    syPosone -= 3
+                }
+            }
+        } else {
+            seenone = false
+        }
+        
+
+        if !containmentnine.intersection([.contact]).isEmpty && livesone >= 0 && sSlashone == false && skelLives >= 0 {
+            sSlashone = true
+            countfour = 0
+        }
+        
+        if !containmenteight.intersection([.contact]).isEmpty && slashone == true && countone > 3 {
+            
+            switch current {
+            case "upSlash":
+                syPosone -= 50
+            case "upShield":
+                syPosone -= 50
+            case "downSlash":
+                syPosone += 50
+            case "downShield":
+                syPosone += 50
+            case "leftSlash":
+                sxPosone -= 50
+            case "leftShield":
+                sxPosone -= 50
+            case "rightSlash":
+                sxPosone += 50
+            case "rightShield":
+                sxPosone += 50
+            default:
+                break
+            }
+            if slashone == true {
+                skelLives -= 1
+            }
+        }
+        if !containmentfive.intersection([.contact]).isEmpty && shieldone == true && countone > 4 {
+            switch current {
+            case "upSlash":
+                syPosone -= 75
+            case "upShield":
+                syPosone -= 75
+            case "downSlash":
+                syPosone += 75
+            case "downShield":
+                syPosone += 75
+            case "leftSlash":
+                sxPosone -= 75
+            case "leftShield":
+                sxPosone -= 75
+            case "rightSlash":
+                sxPosone += 75
+            case "rightShield":
+                sxPosone += 75
+            default:
+                break
+            }
+        }
+        
+        if !containmentfive.intersection([.contact]).isEmpty && sSlashone == true && slashCountone > 25 && shieldone == false {
+            livesone -= 1
+            switch directionone {
+            case 1:
+                yPosone += 50
+            case 2:
+                yPosone -= 50
+            case 3:
+                xPosone -= 50
+            case 4:
+                xPosone += 50
+            default:
+                break
+            }
+            
+        }
+
+        if !containmentthree.intersection([.overlapsLeft, .beyondLeft]).isEmpty || !containmentthree.intersection([.overlapsRight, .beyondRight]).isEmpty || !containmentthree.intersection([.overlapsTop, .beyondTop]).isEmpty || !containmentthree.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
+            boundone = true
+        } else {
+            boundone = false
+        }
+        
+        
+        
+        
+        }
+        funca(containmentfour: containment4, containmentseven: containment7, skelLives: &skelLives, directionone: &direction, seenone: &seen, sxPosone: &sxPos, syPosone: &syPos, sSlashone: &sSlash, containmentsix: containment6, containmenteight: containment8, containmentnine: containment9, containmentten: containment10, boundone: &bound, livesone: &lives, countone: &count, slashone: &slash, shieldone: &shield, slashCountone: &slashCount, containmentthree: containment3, xPosone: &xPos, yPosone: &yPos, containmentfive: containment5, countfour: &count4)
+        funca(containmentfour: containment42, containmentseven: containment72, skelLives: &skelLives2, directionone: &direction2, seenone: &seen2, sxPosone: &sxPos2, syPosone: &syPos2, sSlashone: &sSlash2, containmentsix: containment62, containmenteight: containment82, containmentnine: containment92, containmentten: containment102, boundone: &bound2, livesone: &lives, countone: &count, slashone: &slash, shieldone: &shield, slashCountone: &slashCount2, containmentthree: containment32, xPosone: &xPos, yPosone: &yPos, containmentfive: containment52, countfour: &count42)
     }
 }
-

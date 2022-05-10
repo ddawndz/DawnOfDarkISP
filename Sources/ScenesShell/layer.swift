@@ -10,6 +10,7 @@ class bgLayer : RenderableEntity, EntityMouseClickHandler {
     let gm : Image
     let gm2 : Image
     let gmb1 : Image
+    let background : Audio
     var csx = 0
     var csy = 0
     var ys = 0
@@ -18,7 +19,7 @@ class bgLayer : RenderableEntity, EntityMouseClickHandler {
     var xtot = 0
     var time = 0
     var xt = 0
-    var screen = 1
+    var screen = 2
     var inf = true
     var radians = 0.0
     var gamestart = false
@@ -90,7 +91,16 @@ class bgLayer : RenderableEntity, EntityMouseClickHandler {
     }
     
     func rS2(canvas: Canvas) {
-        
+        gGrid(canvas:canvas, obj: ground, columns: 21, xt: 0, yt: 0, rows: 11)        
+        gGrid(canvas:canvas, obj: grass, columns: 21, xt: 0, yt: 0, rows: 0)
+        gGrid(canvas:canvas, obj: grass, columns: 8, xt: 0, yt: 10, rows: 0)
+        gGrid(canvas:canvas, obj: grass, columns: 8, xt: 12, yt: 10, rows: 0)
+        gGrid(canvas:canvas, obj: grass, columns: 0, xt: 0, yt: 0, rows: 2)
+        gGrid(canvas:canvas, obj: grass, columns: 0, xt: 0, yt: 5, rows: 1)
+        gGrid(canvas:canvas, obj: grass, columns: 0, xt: 0, yt: 9, rows: 1)
+        gGrid(canvas:canvas, obj: grass, columns: 0, xt: 20, yt: 0, rows: 5)
+        gGrid(canvas:canvas, obj: grass, columns: 0, xt: 20, yt: 8, rows: 4)
+        gGrid(canvas:canvas, obj: grass, columns: 1, xt: 1, yt: 1, rows: 1)
     }
     
     func rS3(canvas: Canvas) {
@@ -148,8 +158,12 @@ class bgLayer : RenderableEntity, EntityMouseClickHandler {
             fatalError("Failed to create URL for GAMEMENUBUTTON2")
         }
         gm2 = Image(sourceURL:gm2URL)
-        // Using a meaningful name can be helpful for debugging
-        super.init(name:"bgLayer")
+        guard let backgroundURL = URL(string:"https://drive.google.com/file/d/1Zq_9MT8d4hFScu-poeZN9YsdXf0wgQNz/view?usp=sharing") else {
+            fatalError("Failed to create URL for AUDIO1")
+        }
+        background = Audio(sourceURL:backgroundURL, shouldLoop:true)
+
+        super.init(name:"bgLayer") 
     }
     override func setup(canvasSize:Size, canvas:Canvas) {
         canvas.setup(ground)
@@ -159,6 +173,7 @@ class bgLayer : RenderableEntity, EntityMouseClickHandler {
         canvas.setup(gm)
         canvas.setup(gm2)
         canvas.setup(gmb1)
+        canvas.setup(background)
         csx = canvasSize.width
         csy = canvasSize.height
 
@@ -175,6 +190,10 @@ class bgLayer : RenderableEntity, EntityMouseClickHandler {
     }
     
     override func render(canvas:Canvas) {
+        if background.isReady && gamestart == true {
+            background.mode = .play
+            canvas.render(background)
+        }
         if ground.isReady && grass.isReady && rock.isReady && gamestart == true {
             if screen == 1 {
                 rS1(canvas:canvas)

@@ -85,8 +85,9 @@ class Sprites : RenderableEntity {
         guard let skelSpritesURL = URL(string:"https://linkpicture.com/q/Download74503.png") else {
             fatalError("Skeleton collapsed...")
         }
+        
         //https://linkpicture.com/q/RobbieDevSprites.png
-        // 
+        // sprites for the skeletons, and the main character.
         boySprites = Image(sourceURL:boySpritesURL)
         archerSprites = Image(sourceURL:archerSpritesURL)
         robbieSprites = Image(sourceURL:robbieSpritesURL)
@@ -112,11 +113,12 @@ class Sprites : RenderableEntity {
         syPos = yPos
         sxPos2 = xPos
         syPos2 = yPos + 200
-        print(canvasSize)
+        // each time a new sprite is introduced, x and y coordinates are needed.
+        
     }
 
     override func render(canvas:Canvas) {        
-
+        // Easy rendering of skeletons. With this miraculous function, we can make unlimited skeletons, although this might not be a good idea. Yes, I did name the function funco.
         func funco(skelLives: inout Int, countfour: inout Int, swapfour: inout Int, countfive: inout Int, slashone: inout Int, seenone: inout Bool, sSlashone: inout Bool, waitone: inout Int, boundone: inout Bool, directionone: inout Int, sxPosone: inout Int, syPosone: inout Int) {
             
             if skelSprites.isReady {
@@ -137,16 +139,16 @@ class Sprites : RenderableEntity {
                     
                 }
             }    
-            
+            // the part above counts for 3 frames before switching to the next sprites
             if countfive > 20 && seenone == false {
                 let chance = Int.random(in:1...10)
                 if chance == 4 && waitone < 1 {
                     waitone = 30
-                //    direction = Int.random(in:1...4)
                     countfive = 0
                 }
                 
             }
+            // Uses a randomized timer to switch the skeleton direction. A 1 in 10 chance every frame after 20 frames, it runs at 30 frames per second, so on average we go a different direction every second.
 
             
             
@@ -166,6 +168,7 @@ class Sprites : RenderableEntity {
                 }
                 skelSprites.renderMode = .sourceAndDestination(sourceRect:deadRect, destinationRect:destinationRect)
             }
+            // here are the location algebra for the skeletons. It is about 64 frames in between each sprite. I used a pixel counter and then tested it. Also, isn't this swift terminal wacky? I'm writing comments and yet it is highlighting my code. Weird.
             if sSlashone == false {
                 switch directionone {
                 case 1:
@@ -854,21 +857,35 @@ class Sprites : RenderableEntity {
 
 
         let skely = Rect(topLeft:Point(x:sxPos, y:syPos), size:Size(width:64, height:64 ))
+        let skely2 = Rect(topLeft:Point(x:sxPos2, y:syPos2), size:Size(width:64, height:64))
         let containment3 = canvasBoundingRect.containment(target: skely)
+        let containment32 = canvasBoundingRect.containment(target: skely2)
         let seeHorizontal = Rect(topLeft:Point(x:sxPos - (84 * 2), y:syPos - (84)), size:Size(width:84 * 5, height:84 * 3))
+        let seeHorizontal2 = Rect(topLeft:Point(x:sxPos2 - (84 * 2), y:syPos2 - 84), size:Size(width:84 * 5, height: 84 * 3))
         let seeVertical = Rect(topLeft:Point(x:sxPos - (84), y:syPos - (84 * 2)), size:Size(width:84 * 3, height:84 * 5))
+        let seeVertical2  = Rect(topLeft:Point(x:sxPos2 - (84), y:syPos2 - (84 * 2)), size:Size(width:84 * 3, height:84 * 5))
         let skelyAlign = Rect(topLeft:Point(x:sxPos + 28, y:syPos + 28), size:Size(width:1, height:1))
+        let skelyAlign2 = Rect(topLeft:Point(x:sxPos2 + 28, y:syPos2 + 28), size:Size(width:1, height:1))
         let seeAll = Rect(topLeft:Point(x:sxPos - 84 * 2, y:syPos - 84 * 2), size:Size(width:84 * 5, height: 84 * 5))
+        let seeAll2 = Rect(topLeft:Point(x:sxPos2 - 84 * 2, y:syPos2 - 84 * 2), size:Size(width:84 * 5, height: 84 * 5))
         let containment7 = seeVertical.containment(target: mainCharacter)
+        let containment72 = seeVertical2.containment(target: mainCharacter)
         let containment4 = seeHorizontal.containment(target: mainCharacter)
+        let containment42 = seeHorizontal2.containment(target: mainCharacter)
         let containment5 = skely.containment(target: mainCharacter)
+        let containment52 = skely2.containment(target: mainCharacter)
         let firedeath = Rect(topLeft:Point(x:fxPos + 5, y:fyPos + 5), size:Size(width:fireSize * 3 / 4, height:fireSize * 3 / 4))
         let containfire = firedeath.containment(target:skely)
         let characterAlign = Rect(topLeft:Point(x: xPos + 28, y: yPos + 28), size:Size(width:1, height:1))
+     
         let containment6 = skelyAlign.containment(target:characterAlign)
+        let containment62 = skelyAlign2.containment(target:characterAlign)
         let containment8 = slashBox.containment(target:skely)
+        let containment82 = slashBox.containment(target:skely2)
         let containment9 = skelyAlign.containment(target:mainCharacter)
+        let containment92 = skelyAlign2.containment(target:mainCharacter)
         let containment10 = seeAll.containment(target:mainCharacter)
+        let containment102 = seeAll2.containment(target:mainCharacter)
 
         if !containment.intersection([.overlapsRight, .beyondRight]).isEmpty {
             rightBound = true
@@ -913,152 +930,148 @@ class Sprites : RenderableEntity {
             skelLives -= 1
         }
         
-
+        func funca(containmentfour: ContainmentSet, containmentseven: ContainmentSet, skelLives: inout Int, directionone: inout Int, seenone: inout Bool, sxPosone: inout Int, syPosone: inout Int, sSlashone: inout Bool, containmentsix: ContainmentSet, containmenteight: ContainmentSet, containmentnine: ContainmentSet, containmentten: ContainmentSet, boundone: inout Bool, livesone: inout Int, countone: inout Int, slashone: inout Bool, shieldone: inout Bool, slashCountone: inout Int, containmentthree: ContainmentSet, xPosone: inout Int, yPosone: inout Int, containmentfive: ContainmentSet, countfour: inout Int) {
           
-        if (!containment4.intersection([.contact]).isEmpty || !containment7.intersection([.contact]).isEmpty) && skelLives >= 0 {
-            if !containment4.intersection([.contact]).isEmpty && direction == 4 {
-                seen = true
+        if (!containmentfour.intersection([.contact]).isEmpty || !containmentseven.intersection([.contact]).isEmpty) && skelLives >= 0 {
+            if !containmentfour.intersection([.contact]).isEmpty && directionone == 4 {
+                seenone = true
             }
-            if !containment4.intersection([.contact]).isEmpty && direction == 3 {
-                seen = true
+            if !containmentfour.intersection([.contact]).isEmpty && directionone == 3 {
+                seenone = true
             }
-            if !containment7.intersection([.contact]).isEmpty && direction == 1{
-                seen = true
+            if !containmentseven.intersection([.contact]).isEmpty && directionone == 1{
+                seenone = true
             }
-            if !containment7.intersection([.contact]).isEmpty && direction == 2 {
-                seen = true
+            if !containmentseven.intersection([.contact]).isEmpty && directionone == 2 {
+                seenone = true
             }
         }
         
         
-        if (!containment10.intersection([.contact]).isEmpty) && skelLives >= 0 && seen == true {
-            if !containment5.intersection([.beyondRight]).isEmpty {
-                direction = 4
-                sxPos += 3
-                if !containment6.intersection([.beyondBottom]).isEmpty {
-                    syPos += 3
-                } else if !containment6.intersection([.beyondTop]).isEmpty {
-                    syPos -= 3
+        if (!containmentten.intersection([.contact]).isEmpty) && skelLives >= 0 && seenone == true {
+            if !containmentfive.intersection([.beyondRight]).isEmpty {
+                directionone = 4
+                sxPosone += 3
+                if !containmentsix.intersection([.beyondBottom]).isEmpty {
+                    syPosone += 3
+                } else if !containmentsix.intersection([.beyondTop]).isEmpty {
+                    syPosone -= 3
                 }
             }
-            if !containment5.intersection([.beyondLeft]).isEmpty {
-                direction = 3
-                sxPos -= 3
-                if !containment6.intersection([.beyondBottom]).isEmpty {
-                    syPos += 3
-                } else if !containment6.intersection([.beyondTop]).isEmpty {
-                    syPos -= 3
+            if !containmentfive.intersection([.beyondLeft]).isEmpty {
+                directionone = 3
+                sxPosone -= 3
+                if !containmentsix.intersection([.beyondBottom]).isEmpty {
+                    syPosone += 3
+                } else if !containmentsix.intersection([.beyondTop]).isEmpty {
+                    syPosone -= 3
                 } 
             }
-            if !containment5.intersection([.beyondBottom]).isEmpty {
-                direction = 1
-                syPos += 3
+            if !containmentfive.intersection([.beyondBottom]).isEmpty {
+                directionone = 1
+                syPosone += 3
                 if !containment6.intersection([.beyondRight]).isEmpty {
-                    sxPos += 3
-                } else if !containment6.intersection([.beyondLeft]).isEmpty {
-                    sxPos -= 3
+                    sxPosone += 3
+                } else if !containmentsix.intersection([.beyondLeft]).isEmpty {
+                    sxPosone -= 3
                 }
             }
-            if !containment5.intersection([.beyondTop]).isEmpty {
-                direction = 2
-                syPos -= 3
-                if !containment6.intersection([.beyondRight]).isEmpty {
-                    syPos += 3
-                } else if !containment6.intersection([.beyondLeft]).isEmpty {
-                    syPos -= 3
+            if !containmentfive.intersection([.beyondTop]).isEmpty {
+                directionone = 2
+                syPosone -= 3
+                if !containmentsix.intersection([.beyondRight]).isEmpty {
+                    syPosone += 3
+                } else if !containmentsix.intersection([.beyondLeft]).isEmpty {
+                    syPosone -= 3
                 }
             }
         } else {
-            seen = false
+            seenone = false
         }
         
 
-        if !containment9.intersection([.contact]).isEmpty && lives >= 0 && sSlash == false && skelLives >= 0 {
-            sSlash = true
-            count4 = 0
+        if !containmentnine.intersection([.contact]).isEmpty && livesone >= 0 && sSlashone == false && skelLives >= 0 {
+            sSlashone = true
+            countfour = 0
         }
         
-        if !containment8.intersection([.contact]).isEmpty && slash == true && count > 3 {
+        if !containmenteight.intersection([.contact]).isEmpty && slashone == true && countone > 3 {
             
             switch current {
             case "upSlash":
-                syPos -= 50
+                syPosone -= 50
             case "upShield":
-                syPos -= 50
+                syPosone -= 50
             case "downSlash":
-                syPos += 50
+                syPosone += 50
             case "downShield":
-                syPos += 50
+                syPosone += 50
             case "leftSlash":
-                sxPos -= 50
+                sxPosone -= 50
             case "leftShield":
-                sxPos -= 50
+                sxPosone -= 50
             case "rightSlash":
-                sxPos += 50
+                sxPosone += 50
             case "rightShield":
-                sxPos += 50
+                sxPosone += 50
             default:
                 break
             }
-            if slash == true {
+            if slashone == true {
                 skelLives -= 1
             }
         }
-        if !containment5.intersection([.contact]).isEmpty && shield == true && count > 4 {
+        if !containmentfive.intersection([.contact]).isEmpty && shieldone == true && countone > 4 {
             switch current {
             case "upSlash":
-                syPos -= 75
+                syPosone -= 75
             case "upShield":
-                syPos -= 75
+                syPosone -= 75
             case "downSlash":
-                syPos += 75
+                syPosone += 75
             case "downShield":
-                syPos += 75
+                syPosone += 75
             case "leftSlash":
-                sxPos -= 75
+                sxPosone -= 75
             case "leftShield":
-                sxPos -= 75
+                sxPosone -= 75
             case "rightSlash":
-                sxPos += 75
+                sxPosone += 75
             case "rightShield":
-                sxPos += 75
+                sxPosone += 75
             default:
                 break
             }
         }
         
-        if !containment5.intersection([.contact]).isEmpty && sSlash == true && slashCount > 25 && shield == false {
-            lives -= 1
-            switch direction {
+        if !containmentfive.intersection([.contact]).isEmpty && sSlashone == true && slashCountone > 25 && shieldone == false {
+            livesone -= 1
+            switch directionone {
             case 1:
-                yPos += 50
+                yPosone += 50
             case 2:
-                yPos -= 50
+                yPosone -= 50
             case 3:
-                xPos -= 50
+                xPosone -= 50
             case 4:
-                xPos += 50
+                xPosone += 50
             default:
                 break
             }
             
         }
 
-        
-        
-        
-            
-                
-        
-        if !containment3.intersection([.overlapsLeft, .beyondLeft]).isEmpty || !containment3.intersection([.overlapsRight, .beyondRight]).isEmpty || !containment3.intersection([.overlapsTop, .beyondTop]).isEmpty || !containment3.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
-            bound = true
+        if !containmentthree.intersection([.overlapsLeft, .beyondLeft]).isEmpty || !containmentthree.intersection([.overlapsRight, .beyondRight]).isEmpty || !containmentthree.intersection([.overlapsTop, .beyondTop]).isEmpty || !containmentthree.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
+            boundone = true
         } else {
-            bound = false
+            boundone = false
         }
-
-
-
         
+        
+        
+        
+        }
+        funca(containmentfour: containment4, containmentseven: containment7, skelLives: &skelLives, directionone: &direction, seenone: &seen, sxPosone: &sxPos, syPosone: &syPos, sSlashone: &sSlash, containmentsix: containment6, containmenteight: containment8, containmentnine: containment9, containmentten: containment10, boundone: &bound, livesone: &lives, countone: &count, slashone: &slash, shieldone: &shield, slashCountone: &slashCount, containmentthree: containment3, xPosone: &xPos, yPosone: &yPos, containmentfive: containment5, countfour: &count4)
+        funca(containmentfour: containment42, containmentseven: containment72, skelLives: &skelLives2, directionone: &direction2, seenone: &seen2, sxPosone: &sxPos2, syPosone: &syPos2, sSlashone: &sSlash2, containmentsix: containment62, containmenteight: containment82, containmentnine: containment92, containmentten: containment102, boundone: &bound2, livesone: &lives, countone: &count, slashone: &slash, shieldone: &shield, slashCountone: &slashCount2, containmentthree: containment32, xPosone: &xPos, yPosone: &yPos, containmentfive: containment52, countfour: &count42)
     }
 }
-

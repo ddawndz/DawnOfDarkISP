@@ -62,9 +62,9 @@ class Sprites : RenderableEntity {
     var seen = false
     var seen2 = false
     var wait = 0
-    var gamestart = false
     var wait2 = 0
-   
+    var gamestart = false
+    
     init() {
                
         guard let boySpritesURL = URL(string:"https://www.linkpicture.com/q/download-1_133.png") else {
@@ -109,12 +109,10 @@ class Sprites : RenderableEntity {
         yPos = canvasSize.center.y
         fxPos = xPos
         fyPos = yPos
-        sxPos = xPos + 200
-        syPos = yPos
-        var direction = Int.random(in:1...4)
-
-        sxPos2 = xPos
-        syPos2 = yPos + 200
+        sxPos = Int.random(in:1...canvasSize.center.x)
+        syPos = Int.random(in:1...canvasSize.center.y)
+        sxPos2 = Int.random(in:1...canvasSize.center.x)
+        syPos2 = Int.random(in:1...canvasSize.center.y)
         // each time a new sprite is introduced, x and y coordinates are needed.
         
 
@@ -125,9 +123,7 @@ class Sprites : RenderableEntity {
         // Easy rendering of skeletons. With this miraculous function, we can make unlimited skeletons, although this might not be a good idea. Yes, I did name the function funco
 
 
-        guard let layer = layer as? InteractionLayer else {
-            fatalError("Your fool")
-        }
+        
         func funco(skelLives: inout Int, countfour: inout Int, swapfour: inout Int, countfive: inout Int, slashone: inout Int, seenone: inout Bool, sSlashone: inout Bool, waitone: inout Int, boundone: inout Bool, directionone: inout Int, sxPosone: inout Int, syPosone: inout Int) {
             
             if skelSprites.isReady {
@@ -543,10 +539,11 @@ class Sprites : RenderableEntity {
             }
         }
         
-        
-        funco(skelLives: &skelLives, countfour: &count4, swapfour: &swap4, countfive: &count5, slashone: &slashCount, seenone: &seen, sSlashone: &sSlash,  waitone: &wait, boundone: &bound, directionone: &direction, sxPosone: &sxPos, syPosone: &syPos)
+        if gamestart == true {
+            funco(skelLives: &skelLives, countfour: &count4, swapfour: &swap4, countfive: &count5, slashone: &slashCount, seenone: &seen, sSlashone: &sSlash,  waitone: &wait, boundone: &bound, directionone: &direction, sxPosone: &sxPos, syPosone: &syPos)
 
-        funco(skelLives: &skelLives2, countfour: &count42, swapfour: &swap42, countfive: &count52, slashone: &slashCount2, seenone: &seen2, sSlashone: &sSlash2,  waitone: &wait2, boundone: &bound2, directionone: &direction2, sxPosone: &sxPos2, syPosone: &syPos2)
+            funco(skelLives: &skelLives2, countfour: &count42, swapfour: &swap42, countfive: &count52, slashone: &slashCount2, seenone: &seen2, sSlashone: &sSlash2,  waitone: &wait2, boundone: &bound2, directionone: &direction2, sxPosone: &sxPos2, syPosone: &syPos2)
+        }
         /*
         if skelSprites.isReady {
             if skelLives < 0 && count4 == 5 {
@@ -701,7 +698,7 @@ class Sprites : RenderableEntity {
         */
 
 
-        
+        if gamestart == true {
         if currentSprite == "main" {
             if boySprites.isReady  {
 
@@ -765,9 +762,9 @@ class Sprites : RenderableEntity {
                 if lives < 0 {
                     boySprites.renderMode = .sourceAndDestination(sourceRect:deadRect, destinationRect:destinationRect)
                 }
-                if gamestart == true {
+                
                     canvas.render(boySprites)
-                }
+                
             }
         }
         
@@ -849,13 +846,12 @@ class Sprites : RenderableEntity {
                 if fireball == true {
                     fireSprites.renderMode = .sourceAndDestination(sourceRect:fireCast, destinationRect:fireRect)
                 }
-                if gamestart == true {
                     if fireball == true {
                         canvas.render(fireSprites)
                     }
                     canvas.render(robbieSprites)
-                }                
             }
+        }
         }
     }
         
@@ -863,6 +859,8 @@ class Sprites : RenderableEntity {
     
 
     override func calculate(canvasSize: Size) {
+
+            
         let canvasBoundingRect = Rect(size:canvasSize)
         let mainCharacter = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:84, height:84))
         let slashBox = Rect(topLeft:Point(x: xPos - 56, y: yPos - 56), size:Size(width:56 * 3, height:56 * 3))
@@ -1086,7 +1084,10 @@ class Sprites : RenderableEntity {
         
         
         }
+
+        if gamestart == true {
         funca(containmentfour: containment4, containmentseven: containment7, skelLives: &skelLives, directionone: &direction, seenone: &seen, sxPosone: &sxPos, syPosone: &syPos, sSlashone: &sSlash, containmentsix: containment6, containmenteight: containment8, containmentnine: containment9, containmentten: containment10, boundone: &bound, livesone: &lives, countone: &count, slashone: &slash, shieldone: &shield, slashCountone: &slashCount, containmentthree: containment3, xPosone: &xPos, yPosone: &yPos, containmentfive: containment5, countfour: &count4)
         funca(containmentfour: containment42, containmentseven: containment72, skelLives: &skelLives2, directionone: &direction2, seenone: &seen2, sxPosone: &sxPos2, syPosone: &syPos2, sSlashone: &sSlash2, containmentsix: containment62, containmenteight: containment82, containmentnine: containment92, containmentten: containment102, boundone: &bound2, livesone: &lives, countone: &count, slashone: &slash, shieldone: &shield, slashCountone: &slashCount2, containmentthree: containment32, xPosone: &xPos, yPosone: &yPos, containmentfive: containment52, countfour: &count42)
+        }
     }
 }

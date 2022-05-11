@@ -12,12 +12,15 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler{
     let bglayer = bgLayer()
     var devCount = 0
 
+    
     init() {
         // Using a meaningful name can be helpful for debugging
         super.init(name:"Interaction")
 
         // We insert our RenderableEntities in the constructor
+        insert(entity: bglayer, at: .front)
         insert(entity: sprites, at: .front)
+        
     }
 
     override func preSetup(canvasSize: Size, canvas: Canvas) {
@@ -185,10 +188,6 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler{
     override func preCalculate(canvas: Canvas) {
         if bglayer.gamestart == true {
             sprites.gamestart = true
-            bglayer.gamestart = true
-        } else {
-            sprites.gamestart = false
-            bglayer.gamestart = true
         }
     }
 }

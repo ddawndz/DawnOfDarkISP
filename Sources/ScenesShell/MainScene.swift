@@ -13,7 +13,6 @@ class MainScene : Scene {
        One for the background, one for interaction,
        and one for the foreground.
      */
-    let bgLayer = LayerBase()
     let aLayer = AidanBase()
     let rLayer = RobbieBase()
     let iLayer = InteractionLayer()
@@ -25,7 +24,6 @@ class MainScene : Scene {
 
         // We insert our Layers in the constructor
         // We place each layer in front of the previous layer
-        insert(layer:bgLayer, at:.back)
         insert(layer:rLayer, at:.front)
         insert(layer:aLayer, at:.front)
         insert(layer:sLayer, at:.front)

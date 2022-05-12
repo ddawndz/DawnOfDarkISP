@@ -189,5 +189,18 @@ class InteractionLayer : Layer, KeyDownHandler, KeyUpHandler{
         if bglayer.gamestart == true {
             sprites.gamestart = true
         }
+        if sprites.screen != bglayer.screen {
+            if sprites.screen - bglayer.screen == 1 {
+                sprites.xPos = bglayer.csx / 21
+            } else if sprites.screen - bglayer.screen == -1 {
+                sprites.xPos = bglayer.csx / 21 * 19
+            } else if sprites.screen - bglayer.screen == 3 {
+                sprites.yPos = bglayer.csy / 11
+            } else if sprites.screen - bglayer.screen == -3 {
+                sprites.yPos = bglayer.csy / 11 * 10
+            }
+            bglayer.screen = sprites.screen
+        }
+        print(sprites.screen)
     }
 }

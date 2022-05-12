@@ -31,6 +31,9 @@ class Sprites : RenderableEntity {
     var count43 = 0
     var count44 = 0
     var count45 = 0
+    var count411 = 0
+    var count412 = 0
+    var count413 = 0
     var current = "down"
     var current2 = "down"
     var slash = false
@@ -45,10 +48,13 @@ class Sprites : RenderableEntity {
     var bound3 = false
     var bound4 = false
     var bound5 = false
+    var bound11 = false
+    var bound12 = false
+    var bound13 = false
     var currentSprite = "main"
     var fireball = false
     var fireSize = 10
-    var lives = 5
+    var lives = 7
     var sxPos = 0
     var sxPos2 = 0
     var sxPos3 = 0
@@ -64,16 +70,25 @@ class Sprites : RenderableEntity {
     var swap43 = 4
     var swap44 = 4
     var swap45 = 4
+    var swap411 = 4
+    var swap412 = 4
+    var swap413 = 4
     var direction = 1
     var direction2 = 2
     var direction3 = 3
     var direction4 = 4
     var direction5 = 3
+    var direction11 = 1
+    var direction12 = 2
+    var direction13 = 3
     var count5 = 0
     var count52 = 0
     var count53 = 0
     var count54 = 0
     var count55 = 0
+    var count511 = 0
+    var count512 = 0
+    var count513 = 0
     var skelLives = 5
     var skelLives2 = 5
     var skelLives3 = 5
@@ -84,6 +99,9 @@ class Sprites : RenderableEntity {
     var sSlash4 = false
     var sSlash3 = false
     var sSlash5 = false
+    var sSlash11 = false
+    var sSlash12 = false
+    var sSlash13 = false
     var slashCount = 22
     var slashCount2 = 22
     var slashCount3 = 22
@@ -94,13 +112,31 @@ class Sprites : RenderableEntity {
     var seen3 = false
     var seen4 = false
     var seen5 = false
+    var seen11 = false
+    var seen12 = false
+    var seen13 = false
     var wait = 0
     var wait2 = 0
     var wait3 = 0
     var wait4 = 0
     var wait5 = 0
+    var wait11 = 0
+    var wait12 = 0
+    var wait13 = 0
+   
+    var archerLives = 0
+    var archerLives2 = 0
+    var archerLives3 = 0
+    var axPos = 0
+    var axPos2 = 0
+    var axPos3 = 0
+    var ayPos = 0
+    var ayPos2 = 0
+    var ayPos3 = 0
+    
     var gamestart = false
     var skelnum = Int.random(in:3...5)
+    var archernum = Int.random(in:1...3)
     init() {
                
         guard let boySpritesURL = URL(string:"https://www.linkpicture.com/q/download-1_133.png") else {
@@ -132,7 +168,6 @@ class Sprites : RenderableEntity {
 
         super.init(name:"Background")
     }
-    
         
 
     override func setup(canvasSize:Size, canvas:Canvas) {
@@ -155,7 +190,8 @@ class Sprites : RenderableEntity {
         syPos4 = Int.random(in:1...canvasSize.height)
         sxPos5 = Int.random(in:1...canvasSize.width)
         syPos5 = Int.random(in:1...canvasSize.height)
-
+        axPos = Int.random(in:1...canvasSize.width)
+        ayPos = Int.random(in:1...canvasSize.height)
 
 
         // each time a new sprite is introduced, x and y coordinates are needed.
@@ -257,7 +293,7 @@ class Sprites : RenderableEntity {
                     if boundone == false {
                         sxPosone += 2
                     } else {
-                        direction = 3
+                        directionone = 3
                         sxPosone -= 2
                     }
                 }
@@ -319,7 +355,162 @@ class Sprites : RenderableEntity {
                 canvas.render(skelSprites)
             }
         }
+
+        func funcu(skelLives: inout Int, countfour: inout Int, swapfour: inout Int, countfive: inout Int, seenone: inout Bool, sSlashone: inout Bool, waitone: inout Int, boundone: inout Bool, directionone: inout Int, sxPosone: inout Int, syPosone: inout Int) {
+            
+            if archerSprites.isReady {
+            if skelLives < 0 && countfour == 5 {
+            } else {
+                swapfour += 1
+                if swapfour > 3 {
+                    swapfour = 0
+                    countfour += 1
+                    countfive += 1
+
+                }
+
+                if countfour > 8  {
+                    countfour = 0
+                    if sSlashone == true {
+                        sSlashone = false
+                    }                    
+                }
+            }    
+            // the part above counts for 3 frames before switching to the next sprites
+            if countfive > 20 && seenone == false {
+                let chance = Int.random(in:1...10)
+                if chance == 4 && waitone < 1 {
+                    waitone = 30
+                    countfive = 0
+                }
+                
+            }            
+            
+            let downRect = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(10 * 64) + 7), size:Size(width:56, height:56))
+            let upRect = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(8 * 64) + 7), size:Size(width:56, height:56))
+            let leftRect = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(9 * 64) + 7), size:Size(width:56, height:56))
+            let rightRect = Rect(topLeft:Point(x: (64 * countfour) + 8, y:(11 * 64) + 7), size:Size(width:56, height:56))
+            let upShoot = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(16 * 64) + 7), size:Size(width:56, height:56))
+            let leftShoot = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(17 * 64) + 7), size:Size(width:56, height:56))
+            let downShoot = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(18 * 64) + 7), size:Size(width:56, height:56))
+            let rightShoot = Rect(topLeft:Point(x:(64 * countfour) + 8, y:(19 * 64) + 7), size:Size(width:56, height:56))
+
+            let deadRect = Rect(topLeft:Point(x: (64 * countfour) + 8, y:(20 * 64) + 7), size:Size(width:56, height: 56))
+            let destinationRect = Rect(topLeft:Point(x:sxPosone, y:syPosone), size:Size(width:64, height:64))
+            if skelLives < 0 {
+                directionone = 100
+                if countfour > 5 {
+                    countfour = 5
+                }
+                archerSprites.renderMode = .sourceAndDestination(sourceRect:deadRect, destinationRect:destinationRect)
+            }
+
+            
+
+            
+            if sSlashone == false {
+                switch directionone {
+                case 1:
+                    archerSprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
+                    if waitone < 1 {
+                        if boundone == false {
+                        syPosone += 2
+                    } else {
+                        directionone = 2
+                        syPosone -= 2
+                    }
+                    }
+                case 2:
+                    archerSprites.renderMode = .sourceAndDestination(sourceRect:upRect, destinationRect:destinationRect)
+                    if waitone < 1 {
+                    if boundone == false {
+                        syPosone -= 2
+                    } else {
+                        directionone = 1
+                        syPosone += 2
+                    }
+                    }
+                case 3:
+                    archerSprites.renderMode = .sourceAndDestination(sourceRect:leftRect, destinationRect:destinationRect)
+                    if waitone < 1 {
+                    if boundone == false {
+                        sxPosone -= 2
+                    } else {
+                        directionone = 4
+                        sxPosone += 2
+                    }
+                    }
+                case 4:
+                    archerSprites.renderMode = .sourceAndDestination(sourceRect:rightRect, destinationRect:destinationRect)
+                    if waitone < 1 {
+                    if boundone == false {
+                        sxPosone += 2
+                    } else {
+                        directionone = 3
+                        sxPosone -= 2
+                    }
+                }
+                default:
+                    break
+                }
+            } else if sSlashone == true {
+                if direction == 1 {
+                    archerSprites.renderMode = .sourceAndDestination(sourceRect:upShoot, destinationRect:destinationRect)
+                }
+                if direction == 2 {
+                    archerSprites.renderMode = .sourceAndDestination(sourceRect:leftShoot, destinationRect:destinationRect)
+                }
+                if direction == 3 {
+                    archerSprites.renderMode = .sourceAndDestination(sourceRect:downShoot, destinationRect:destinationRect)
+                }
+                if direction == 4 {
+                    archerSprites.renderMode = .sourceAndDestination(sourceRect:rightShoot, destinationRect:destinationRect)
+                }
+            }
+
+                
+            if waitone > 0 {
+                waitone -= 1
+                if waitone == 29 {
+                    switch directionone {
+                    case 1:
+                        directionone = 3
+                    case 2:
+                        directionone = 4
+                    case 3:
+                        directionone = 1
+                    case 4:
+                        directionone = 2
+                    default:
+                        break
+                    }
+                } else if waitone == 15  {
+                    switch directionone {
+                    case 3:
+                        directionone = 4
+                    case 4:
+                        directionone = 3
+                    case 1:
+                        directionone = 2
+                    case 2:
+                        directionone = 1
+                    default:
+                        break
+                    }
+                } else if waitone == 1 {
+                    directionone = Int.random(in: 1...4)
+                }
+                
+            }
         
+
+            
+
+            canvas.render(archerSprites)
+
+            }
+        }
+
         
         if downMove == true {
             current = "down"
@@ -589,7 +780,7 @@ class Sprites : RenderableEntity {
 
             funco(skelLives: &skelLives2, countfour: &count42, swapfour: &swap42, countfive: &count52, slashone: &slashCount2, seenone: &seen2, sSlashone: &sSlash2,  waitone: &wait2, boundone: &bound2, directionone: &direction2, sxPosone: &sxPos2, syPosone: &syPos2)
             
-            funco(skelLives: &skelLives3, countfour: &count43, swapfour: &swap43, countfive: &count53, slashone: &slashCount3, seenone: &seen3, sSlashone: &sSlash3,  waitone: &wait3, boundone: &bound3, directionone: &direction3, sxPosone: &sxPos3, syPosone: &syPos3)
+            funco(skelLives: &skelLives3, countfour: &count43, swapfour: &swap43, countfive: &count53, slashone: &slashCount2,  seenone: &seen3, sSlashone: &sSlash3,  waitone: &wait3, boundone: &bound3, directionone: &direction3, sxPosone: &sxPos3, syPosone: &syPos3)
             
             if skelnum > 3 {
                 funco(skelLives: &skelLives4, countfour: &count44, swapfour: &swap44, countfive: &count54, slashone: &slashCount4, seenone: &seen4, sSlashone: &sSlash4,  waitone: &wait4, boundone: &bound4, directionone: &direction4, sxPosone: &sxPos4, syPosone: &syPos4)
@@ -597,11 +788,17 @@ class Sprites : RenderableEntity {
             if skelnum > 4 {
                 funco(skelLives: &skelLives5, countfour: &count45, swapfour: &swap45, countfive: &count55, slashone: &slashCount5, seenone: &seen5, sSlashone: &sSlash5,  waitone: &wait5, boundone: &bound5, directionone: &direction5, sxPosone: &sxPos5, syPosone: &syPos5)
             }
+            //funcu()
+            //if archernum > 1 {
+            //    funcu()
+            //}
+            //if archernum > 2 {
+            //    funcu()
+            //}
+
         }
-       
 
-
-
+        
         /*
         if skelSprites.isReady {
             if skelLives < 0 && count4 == 5 {
@@ -900,11 +1097,11 @@ class Sprites : RenderableEntity {
                 if current == "rightCast" {
                     robbieSprites.renderMode = .sourceAndDestination(sourceRect:rightCast, destinationRect:destinationRect)
                 }
-
+                
                 if fireball == true {
                     fireSprites.renderMode = .sourceAndDestination(sourceRect:fireCast, destinationRect:fireRect)
                 }
-                    if fireball == true {
+                if fireball == true {
                         canvas.render(fireSprites)
                     }
                     canvas.render(robbieSprites)

@@ -117,6 +117,7 @@ class Sprites : RenderableEntity {
     var seen13 = false
     var wait = 0
     var wait2 = 0
+<<<<<<< HEAD
     var wait3 = 0
     var wait4 = 0
     var wait5 = 0
@@ -133,6 +134,12 @@ class Sprites : RenderableEntity {
     var ayPos = 0
     var ayPos2 = 0
     var ayPos3 = 0
+=======
+    var gamestart = false
+    var screen = 1
+    var csx = 0
+    var csy = 0
+>>>>>>> 13c99885904d2d91928c9a110ef092432da479ce
     
     var gamestart = false
     var skelnum = Int.random(in:3...5)
@@ -176,6 +183,8 @@ class Sprites : RenderableEntity {
         canvas.setup(robbieSprites)
         canvas.setup(fireSprites)
         canvas.setup(skelSprites)
+        csx = canvasSize.width
+        csy = canvasSize.height
         xPos = canvasSize.center.x
         yPos = canvasSize.center.y
         fxPos = xPos
@@ -1114,9 +1123,8 @@ class Sprites : RenderableEntity {
     
 
     override func calculate(canvasSize: Size) {
-
             
-        let canvasBoundingRect = Rect(size:canvasSize)
+        let canvasBoundingRect = Rect(size:Size(width:csx, height:csy))
         let mainCharacter = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:84, height:84))
         let slashBox = Rect(topLeft:Point(x: xPos - 56, y: yPos - 56), size:Size(width:56 * 3, height:56 * 3))
         let containment = canvasBoundingRect.containment(target: mainCharacter)
@@ -1198,6 +1206,7 @@ class Sprites : RenderableEntity {
 
         if !containment.intersection([.overlapsRight, .beyondRight]).isEmpty {
             rightBound = true
+            screen += 1
         } else {
             rightBound = false
         }
@@ -1209,6 +1218,7 @@ class Sprites : RenderableEntity {
         
         if !containment.intersection([.overlapsLeft, .beyondLeft]).isEmpty {
             leftBound = true
+            screen -= 1
         } else {
             leftBound = false
         }
@@ -1218,6 +1228,7 @@ class Sprites : RenderableEntity {
         }
         if !containment.intersection([.overlapsBottom, .beyondBottom]).isEmpty {
             downBound = true
+            screen += 3
         } else {
             downBound = false
         }
@@ -1227,6 +1238,7 @@ class Sprites : RenderableEntity {
         }
         if !containment.intersection([.overlapsTop, .beyondTop]).isEmpty {
             upBound = true
+            screen -= 3
         } else {
             upBound = false
         }

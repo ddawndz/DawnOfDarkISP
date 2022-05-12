@@ -19,7 +19,7 @@ class bgLayer : RenderableEntity, EntityMouseClickHandler {
     var xtot = 0
     var time = 0
     var xt = 0
-    var screen = 2
+    var screen = 1
     var inf = true
     var radians = 0.0
     var gamestart = false
@@ -100,7 +100,7 @@ class bgLayer : RenderableEntity, EntityMouseClickHandler {
         gGrid(canvas:canvas, obj: grass, columns: 0, xt: 0, yt: 9, rows: 1)
         gGrid(canvas:canvas, obj: grass, columns: 0, xt: 20, yt: 0, rows: 5)
         gGrid(canvas:canvas, obj: grass, columns: 0, xt: 20, yt: 8, rows: 4)
-        gGrid(canvas:canvas, obj: grass, columns: 1, xt: 1, yt: 1, rows: 1)
+        gGrid(canvas:canvas, obj: grass, columns: 1, xt: 3, yt: 3, rows: 1)
     }
     
     func rS3(canvas: Canvas) {

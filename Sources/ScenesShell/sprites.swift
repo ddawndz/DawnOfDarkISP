@@ -28,6 +28,9 @@ class Sprites : RenderableEntity {
     var count3 = 0
     var count4 = 0
     var count42 = 0
+    var count43 = 0
+    var count44 = 0
+    var count45 = 0
     var current = "down"
     var current2 = "down"
     var slash = false
@@ -39,32 +42,65 @@ class Sprites : RenderableEntity {
     var rightBound = false
     var bound = false
     var bound2 = false
+    var bound3 = false
+    var bound4 = false
+    var bound5 = false
     var currentSprite = "main"
     var fireball = false
     var fireSize = 10
     var lives = 5
     var sxPos = 0
     var sxPos2 = 0
+    var sxPos3 = 0
+    var sxPos4 = 0
+    var sxPos5 = 0
     var syPos = 0
     var syPos2 = 0
+    var syPos3 = 0
+    var syPos4 = 0
+    var syPos5 = 0
     var swap4 = 4
     var swap42 = 4
+    var swap43 = 4
+    var swap44 = 4
+    var swap45 = 4
     var direction = 1
     var direction2 = 2
+    var direction3 = 3
+    var direction4 = 4
+    var direction5 = 3
     var count5 = 0
     var count52 = 0
-    var skelLives = 4
-    var skelLives2 = 4
+    var count53 = 0
+    var count54 = 0
+    var count55 = 0
+    var skelLives = 5
+    var skelLives2 = 5
+    var skelLives3 = 5
+    var skelLives4 = 5
+    var skelLives5 = 5
     var sSlash = false
     var sSlash2 = false
+    var sSlash4 = false
+    var sSlash3 = false
+    var sSlash5 = false
     var slashCount = 22
     var slashCount2 = 22
+    var slashCount3 = 22
+    var slashCount4 = 22
+    var slashCount5 = 22
     var seen = false
     var seen2 = false
+    var seen3 = false
+    var seen4 = false
+    var seen5 = false
     var wait = 0
     var wait2 = 0
+    var wait3 = 0
+    var wait4 = 0
+    var wait5 = 0
     var gamestart = false
-    
+    var skelnum = Int.random(in:3...5)
     init() {
                
         guard let boySpritesURL = URL(string:"https://www.linkpicture.com/q/download-1_133.png") else {
@@ -109,10 +145,19 @@ class Sprites : RenderableEntity {
         yPos = canvasSize.center.y
         fxPos = xPos
         fyPos = yPos
-        sxPos = Int.random(in:1...canvasSize.center.x)
-        syPos = Int.random(in:1...canvasSize.center.y)
-        sxPos2 = Int.random(in:1...canvasSize.center.x)
-        syPos2 = Int.random(in:1...canvasSize.center.y)
+        sxPos = Int.random(in:1...canvasSize.width)
+        syPos = Int.random(in:1...canvasSize.height)
+        sxPos2 = Int.random(in:1...canvasSize.width)
+        syPos2 = Int.random(in:1...canvasSize.height)
+        sxPos3 = Int.random(in:1...canvasSize.width)
+        syPos3 = Int.random(in:1...canvasSize.height)
+        sxPos4 = Int.random(in:1...canvasSize.width)
+        syPos4 = Int.random(in:1...canvasSize.height)
+        sxPos5 = Int.random(in:1...canvasSize.width)
+        syPos5 = Int.random(in:1...canvasSize.height)
+
+
+
         // each time a new sprite is introduced, x and y coordinates are needed.
         
 
@@ -543,7 +588,20 @@ class Sprites : RenderableEntity {
             funco(skelLives: &skelLives, countfour: &count4, swapfour: &swap4, countfive: &count5, slashone: &slashCount, seenone: &seen, sSlashone: &sSlash,  waitone: &wait, boundone: &bound, directionone: &direction, sxPosone: &sxPos, syPosone: &syPos)
 
             funco(skelLives: &skelLives2, countfour: &count42, swapfour: &swap42, countfive: &count52, slashone: &slashCount2, seenone: &seen2, sSlashone: &sSlash2,  waitone: &wait2, boundone: &bound2, directionone: &direction2, sxPosone: &sxPos2, syPosone: &syPos2)
+            
+            funco(skelLives: &skelLives3, countfour: &count43, swapfour: &swap43, countfive: &count53, slashone: &slashCount3, seenone: &seen3, sSlashone: &sSlash3,  waitone: &wait3, boundone: &bound3, directionone: &direction3, sxPosone: &sxPos3, syPosone: &syPos3)
+            
+            if skelnum > 3 {
+                funco(skelLives: &skelLives4, countfour: &count44, swapfour: &swap44, countfive: &count54, slashone: &slashCount4, seenone: &seen4, sSlashone: &sSlash4,  waitone: &wait4, boundone: &bound4, directionone: &direction4, sxPosone: &sxPos4, syPosone: &syPos4)
+            }
+            if skelnum > 4 {
+                funco(skelLives: &skelLives5, countfour: &count45, swapfour: &swap45, countfive: &count55, slashone: &slashCount5, seenone: &seen5, sSlashone: &sSlash5,  waitone: &wait5, boundone: &bound5, directionone: &direction5, sxPosone: &sxPos5, syPosone: &syPos5)
+            }
         }
+       
+
+
+
         /*
         if skelSprites.isReady {
             if skelLives < 0 && count4 == 5 {
@@ -871,34 +929,75 @@ class Sprites : RenderableEntity {
 
         let skely = Rect(topLeft:Point(x:sxPos, y:syPos), size:Size(width:64, height:64 ))
         let skely2 = Rect(topLeft:Point(x:sxPos2, y:syPos2), size:Size(width:64, height:64))
+        let skely3 = Rect(topLeft:Point(x:sxPos3, y:syPos3), size:Size(width:64, height:64))
+        let skely4 = Rect(topLeft:Point(x:sxPos4, y:syPos4), size:Size(width:64, height:64))
+        let skely5 = Rect(topLeft:Point(x:sxPos5, y:syPos5), size:Size(width:64, height:64))
         let containment3 = canvasBoundingRect.containment(target: skely)
         let containment32 = canvasBoundingRect.containment(target: skely2)
+        let containment33 = canvasBoundingRect.containment(target: skely3)
+        let containment34 = canvasBoundingRect.containment(target: skely4)
+        let containment35 = canvasBoundingRect.containment(target: skely5)  
         let seeHorizontal = Rect(topLeft:Point(x:sxPos - (84 * 2), y:syPos - (84)), size:Size(width:84 * 5, height:84 * 3))
         let seeHorizontal2 = Rect(topLeft:Point(x:sxPos2 - (84 * 2), y:syPos2 - 84), size:Size(width:84 * 5, height: 84 * 3))
+        let seeHorizontal3 = Rect(topLeft:Point(x:sxPos3 - (84 * 2), y:syPos3 - 84), size:Size(width:84 * 5, height: 84 * 3))
+        let seeHorizontal4 = Rect(topLeft:Point(x:sxPos4 - (84 * 2), y:syPos4 - 84), size:Size(width:84 * 5, height: 84 * 3))
+        let seeHorizontal5 = Rect(topLeft:Point(x:sxPos5 - (84 * 2), y:syPos5 - 84), size:Size(width:84 * 5, height: 84 * 3))
         let seeVertical = Rect(topLeft:Point(x:sxPos - (84), y:syPos - (84 * 2)), size:Size(width:84 * 3, height:84 * 5))
-        let seeVertical2  = Rect(topLeft:Point(x:sxPos2 - (84), y:syPos2 - (84 * 2)), size:Size(width:84 * 3, height:84 * 5))
+        let seeVertical2 = Rect(topLeft:Point(x:sxPos2 - (84), y:syPos2 - (84 * 2)), size:Size(width:84 * 3, height:84 * 5))
+        let seeVertical3 = Rect(topLeft:Point(x:sxPos3 - (84), y:syPos3 - (84 * 2)), size:Size(width:84 * 3, height:84 * 5))
+        let seeVertical4 = Rect(topLeft:Point(x:sxPos4 - (84), y:syPos4 - (84 * 2)), size:Size(width:84 * 3, height:84 * 5))
+        let seeVertical5 = Rect(topLeft:Point(x:sxPos5 - (84), y:syPos5 - (84 * 2)), size:Size(width:84 * 3, height:84 * 5))
         let skelyAlign = Rect(topLeft:Point(x:sxPos + 28, y:syPos + 28), size:Size(width:1, height:1))
         let skelyAlign2 = Rect(topLeft:Point(x:sxPos2 + 28, y:syPos2 + 28), size:Size(width:1, height:1))
+        let skelyAlign3 = Rect(topLeft:Point(x:sxPos3 + 28, y:syPos3 + 28), size:Size(width:1, height:1))
+        let skelyAlign4 = Rect(topLeft:Point(x:sxPos4 + 28, y:syPos4 + 28), size:Size(width:1, height:1))
+        let skelyAlign5 = Rect(topLeft:Point(x:sxPos5 + 28, y:syPos5 + 28), size:Size(width:1, height:1))
         let seeAll = Rect(topLeft:Point(x:sxPos - 84 * 2, y:syPos - 84 * 2), size:Size(width:84 * 5, height: 84 * 5))
         let seeAll2 = Rect(topLeft:Point(x:sxPos2 - 84 * 2, y:syPos2 - 84 * 2), size:Size(width:84 * 5, height: 84 * 5))
+        let seeAll3 = Rect(topLeft:Point(x:sxPos3 - 84 * 2, y:syPos3 - 84 * 2), size:Size(width:84 * 5, height: 84 * 5))
+        let seeAll4 = Rect(topLeft:Point(x:sxPos4 - 84 * 2, y:syPos4 - 84 * 2), size:Size(width:84 * 5, height: 84 * 5))
+        let seeAll5 = Rect(topLeft:Point(x:sxPos5 - 84 * 2, y:syPos5 - 84 * 2), size:Size(width:84 * 5, height: 84 * 5))
         let containment7 = seeVertical.containment(target: mainCharacter)
         let containment72 = seeVertical2.containment(target: mainCharacter)
+        let containment73 = seeVertical3.containment(target: mainCharacter)
+        let containment74 = seeVertical4.containment(target: mainCharacter)
+        let containment75 = seeVertical5.containment(target: mainCharacter)
         let containment4 = seeHorizontal.containment(target: mainCharacter)
         let containment42 = seeHorizontal2.containment(target: mainCharacter)
+        let containment43 = seeHorizontal3.containment(target: mainCharacter)
+        let containment44 = seeHorizontal4.containment(target: mainCharacter)
+        let containment45 = seeHorizontal5.containment(target: mainCharacter)
         let containment5 = skely.containment(target: mainCharacter)
         let containment52 = skely2.containment(target: mainCharacter)
+        let containment53 = skely3.containment(target: mainCharacter)
+        let containment54 = skely4.containment(target: mainCharacter)
+        let containment55 = skely5.containment(target: mainCharacter)
+        
         let firedeath = Rect(topLeft:Point(x:fxPos + 5, y:fyPos + 5), size:Size(width:fireSize * 3 / 4, height:fireSize * 3 / 4))
         let containfire = firedeath.containment(target:skely)
         let characterAlign = Rect(topLeft:Point(x: xPos + 28, y: yPos + 28), size:Size(width:1, height:1))
      
         let containment6 = skelyAlign.containment(target:characterAlign)
         let containment62 = skelyAlign2.containment(target:characterAlign)
+        let containment63 = skelyAlign3.containment(target:characterAlign)
+        let containment64 = skelyAlign4.containment(target:characterAlign)
+        let containment65 = skelyAlign5.containment(target:characterAlign)
         let containment8 = slashBox.containment(target:skely)
         let containment82 = slashBox.containment(target:skely2)
+        let containment83 = slashBox.containment(target:skely3)
+        let containment84 = slashBox.containment(target:skely4)
+        let containment85 = slashBox.containment(target:skely5)
+
         let containment9 = skelyAlign.containment(target:mainCharacter)
         let containment92 = skelyAlign2.containment(target:mainCharacter)
+        let containment93 = skelyAlign3.containment(target:mainCharacter)
+        let containment94 = skelyAlign4.containment(target:mainCharacter)
+        let containment95 = skelyAlign5.containment(target:mainCharacter)
         let containment10 = seeAll.containment(target:mainCharacter)
         let containment102 = seeAll2.containment(target:mainCharacter)
+        let containment103 = seeAll3.containment(target:mainCharacter)
+        let containment104 = seeAll4.containment(target:mainCharacter)
+        let containment105 = seeAll5.containment(target:mainCharacter)
 
         if !containment.intersection([.overlapsRight, .beyondRight]).isEmpty {
             rightBound = true
@@ -1088,6 +1187,15 @@ class Sprites : RenderableEntity {
         if gamestart == true {
         funca(containmentfour: containment4, containmentseven: containment7, skelLives: &skelLives, directionone: &direction, seenone: &seen, sxPosone: &sxPos, syPosone: &syPos, sSlashone: &sSlash, containmentsix: containment6, containmenteight: containment8, containmentnine: containment9, containmentten: containment10, boundone: &bound, livesone: &lives, countone: &count, slashone: &slash, shieldone: &shield, slashCountone: &slashCount, containmentthree: containment3, xPosone: &xPos, yPosone: &yPos, containmentfive: containment5, countfour: &count4)
         funca(containmentfour: containment42, containmentseven: containment72, skelLives: &skelLives2, directionone: &direction2, seenone: &seen2, sxPosone: &sxPos2, syPosone: &syPos2, sSlashone: &sSlash2, containmentsix: containment62, containmenteight: containment82, containmentnine: containment92, containmentten: containment102, boundone: &bound2, livesone: &lives, countone: &count, slashone: &slash, shieldone: &shield, slashCountone: &slashCount2, containmentthree: containment32, xPosone: &xPos, yPosone: &yPos, containmentfive: containment52, countfour: &count42)
+        funca(containmentfour: containment43, containmentseven: containment73, skelLives: &skelLives3, directionone: &direction3, seenone: &seen3, sxPosone: &sxPos3, syPosone: &syPos3, sSlashone: &sSlash3, containmentsix: containment63, containmenteight: containment83, containmentnine: containment93, containmentten: containment103, boundone: &bound3, livesone: &lives, countone: &count, slashone: &slash, shieldone: &shield, slashCountone: &slashCount3, containmentthree: containment33, xPosone: &xPos, yPosone: &yPos, containmentfive: containment53, countfour: &count43)
+        if skelnum > 3 {
+            funca(containmentfour: containment44, containmentseven: containment74, skelLives: &skelLives4, directionone: &direction4, seenone: &seen4, sxPosone: &sxPos4, syPosone: &syPos4, sSlashone: &sSlash4, containmentsix: containment64, containmenteight: containment84, containmentnine: containment94, containmentten: containment104, boundone: &bound4, livesone: &lives, countone: &count, slashone: &slash, shieldone: &shield, slashCountone: &slashCount4, containmentthree: containment34, xPosone: &xPos, yPosone: &yPos, containmentfive: containment54, countfour: &count44)
+        }
+        if skelnum > 4 {
+            funca(containmentfour: containment45, containmentseven: containment75, skelLives: &skelLives5, directionone: &direction5, seenone: &seen5, sxPosone: &sxPos5, syPosone: &syPos5, sSlashone: &sSlash5, containmentsix: containment65, containmenteight: containment85, containmentnine: containment95, containmentten: containment105, boundone: &bound5, livesone: &lives, countone: &count, slashone: &slash, shieldone: &shield, slashCountone: &slashCount5, containmentthree: containment35, xPosone: &xPos, yPosone: &yPos, containmentfive: containment55, countfour: &count45)
+        }
+
+        
         }
     }
 }

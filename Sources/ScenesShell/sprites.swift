@@ -117,7 +117,6 @@ class Sprites : RenderableEntity {
     var seen13 = false
     var wait = 0
     var wait2 = 0
-<<<<<<< HEAD
     var wait3 = 0
     var wait4 = 0
     var wait5 = 0
@@ -134,19 +133,16 @@ class Sprites : RenderableEntity {
     var ayPos = 0
     var ayPos2 = 0
     var ayPos3 = 0
-=======
-    var gamestart = false
     var screen = 1
     var csx = 0
     var csy = 0
->>>>>>> 13c99885904d2d91928c9a110ef092432da479ce
-    
+
     var gamestart = false
     var skelnum = Int.random(in:3...5)
     var archernum = Int.random(in:1...3)
     init() {
                
-        guard let boySpritesURL = URL(string:"https://www.linkpicture.com/q/download-1_133.png") else {
+        guard let boySpritesURL = URL(string:"https://www.linkpicture.com/q/Download97551.png") else {
             fatalError("Failed to create URL for whitehouse")
         }
 
@@ -201,7 +197,9 @@ class Sprites : RenderableEntity {
         syPos5 = Int.random(in:1...canvasSize.height)
         axPos = Int.random(in:1...canvasSize.width)
         ayPos = Int.random(in:1...canvasSize.height)
-
+        axPos2 = Int.random(in:1...canvasSize.width)
+        ayPos2 = Int.random(in:1...canvasSize.height)
+        
 
         // each time a new sprite is introduced, x and y coordinates are needed.
         
@@ -985,7 +983,7 @@ class Sprites : RenderableEntity {
                 let deadRect = Rect(topLeft:Point(x: (64 * count) + 8, y:(20 * 64) + 7), size:Size(width:56, height: 56))
 
                 let destinationRect = Rect(topLeft:Point(x:xPos, y:yPos), size:Size(width:64, height:64))
-                let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:149, height:84))
+                let slashRect = Rect(topLeft:Point(x:xPos - 25, y:yPos), size:Size(width:149, height:64))
                 
                 if current == "down" {
                     boySprites.renderMode = .sourceAndDestination(sourceRect:downRect, destinationRect:destinationRect)
@@ -1166,7 +1164,7 @@ class Sprites : RenderableEntity {
         let containment72 = seeVertical2.containment(target: mainCharacter)
         let containment73 = seeVertical3.containment(target: mainCharacter)
         let containment74 = seeVertical4.containment(target: mainCharacter)
-        let containment75 = seeVertical5.containment(target: mainCharacter)
+         let containment75 = seeVertical5.containment(target: mainCharacter)
         let containment4 = seeHorizontal.containment(target: mainCharacter)
         let containment42 = seeHorizontal2.containment(target: mainCharacter)
         let containment43 = seeHorizontal3.containment(target: mainCharacter)
